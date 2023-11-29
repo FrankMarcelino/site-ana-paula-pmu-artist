@@ -1,0 +1,66 @@
+/* introdução */
+
+.introducao-bg {
+    background: var(--p3) url("../../img/dec/bottom-left.svg") no-repeat bottom 160px left 20px;
+    color: var(--w);
+    /* O box-shadow foi aplicado para da um efeito que a img da bike esta flutuando */
+    box-shadow: inset 0 -120px var(--w);
+}
+
+.introducao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0px 40px;
+}
+
+.introducao-conteudo {
+    align-self: flex-end;
+    padding-bottom: 200px;
+}
+
+.introducao h1 {
+    margin-bottom: 32px;
+}
+
+.introducao img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.introducao p {
+    margin-bottom: 20px;
+}
+
+
+@media (max-width: 800px) {
+
+    .introducao-bg {
+        background: var(--c11);
+        padding-top: 40px;
+        box-shadow: inset 0 -60px var(--w);
+    }
+
+    .introducao-conteudo {
+        padding-bottom: 80px;
+        
+    }
+
+    .introducao.interface{
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .introducao-conteudo {
+        padding-bottom: 0px;
+    }
+
+    .introducao h1 {
+        margin-bottom: 16px;
+    }
+
+    .introducao-img  img{
+        height: 300px;
+        width: 100%;
+    }
+}

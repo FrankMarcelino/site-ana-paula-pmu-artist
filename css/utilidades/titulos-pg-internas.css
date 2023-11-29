@@ -1,0 +1,28 @@
+/* ---- titulos paginas internas ------ */
+
+.titulo-bg {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: var(--c11);
+}
+
+.titulo {
+    background: url('../../img/dec/top-right.svg') no-repeat top right 20px;
+}
+
+.titulo p {
+    margin-bottom: 4px;
+}
+
+@media (max-width: 800px) {
+    .titulo-bg{
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .titulo p {
+        font-size: 1rem;
+        text-transform: lowercase;
+        font-weight: 400;
+    }
+}

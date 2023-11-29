@@ -1,0 +1,56 @@
+/* fontes */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap');
+@import "utilidades/tipo-grafia.css";
+/* folhas de estilos */
+
+/* ------global------- */
+@import "./global/global.css";
+@import "./global/header.css";
+@import "global/footer.css";
+
+/* ------utilidades------- */
+@import "./utilidades/cores.css";
+@import "./utilidades/componentes.css";
+@import "./utilidades/titulos-pg-internas.css";
+@import "./utilidades/formulario.css";
+@import "./utilidades/animacao.css";
+
+/* -----home------- */
+@import "./home/introducao.css";
+@import "./home/tecnologias.css";
+@import "./home/parceiros.css";
+@import "./home/depoimento.css";
+
+
+/* -----bicicletas---- */
+@import "./bicicletas/bicicletas-lista.css";
+@import "./bicicletas/biciletas.css";
+
+/* -----bicicleta ----- */
+@import "./bicicleta/bicicleta.css";
+@import "./bicicleta/seguro.css";
+
+/*------ contato -----*/
+@import "./contato/contato.css";
+@import "./contato/lojas.css";
+
+/* ------ seguros ----- */
+@import "./seguros/seguros.css";
+@import "./seguros/vantagens.css";
+@import "./seguros/perguntas.css";
+
+/* ---temos---- */
+@import "./termos/termos.css";
+
+/* -----orçamento------ */
+@import "./orcamento/orcamento.css";
+
+/* -------------------------------------------------------- */
+
+
+
+
+
+
+

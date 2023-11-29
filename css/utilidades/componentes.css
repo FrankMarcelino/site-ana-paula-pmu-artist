@@ -1,0 +1,122 @@
+/* container */
+
+.interface {
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Botões */
+
+.btn-style-1 {
+    display: inline-block;
+    padding: 16px 32px;
+    background: linear-gradient(#EFC0C5, #DCA5AB);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+    text-transform: uppercase;
+    color: var(--p5);
+    font: 600 1.125rem/1.35 "Popprins", sans-serif;
+    max-width: max-content;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-style-1:hover {
+    background: linear-gradient(#EFC0C5, #DCA5AB);
+}
+
+@media (max-width: 600px) {
+    .btn-style-1{
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
+}
+
+
+.btn-style-2 {
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--c10);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+    text-transform: uppercase;
+    color: var(--c02);
+    font: 600 1.125rem/1.35 "Popprins", sans-serif;
+    max-width: max-content;
+    
+}
+
+.btn-style-2:hover {
+    background: var(--c09);
+}
+
+@media (max-width: 600px) {
+    .btn-style-2{
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
+}
+
+.btn-style-3 {
+    display: flex;
+    align-items: center;
+    padding: 16px 32px;
+    background: linear-gradient(#ffbf00, #f2a50c);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+    text-transform: uppercase;
+    color: var(--p5);
+    font: 600 1.125rem/1.35 "Popprins", sans-serif;
+    max-width: max-content;
+    
+}
+
+.btn-style-3::after {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 10px;
+    margin-left: 12px;
+    background: url("../../img/icones/seta.svg");
+    transition: transform .2s ;
+}
+
+.btn-style-3:hover::after {
+    transform: translateX(4px);
+}
+
+.btn-style-3:hover {
+    background: linear-gradient(#ffb60d, #e59317);
+}
+
+@media (max-width: 600px) {
+    .btn-style-3{
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
+}
+
+/* link */
+
+.link {
+    display: inline-block;
+    color: var(--p1);
+    font: 500 1.5rem/1.5 "Poppins",sans-serif;
+    text-transform: uppercase;
+}
+
+.link::after {
+    display: block;
+    content:"";
+    height: 4px;
+    width:100%;
+    background-color: currentColor;
+}
+
+.link:hover {
+    color: var(--w);

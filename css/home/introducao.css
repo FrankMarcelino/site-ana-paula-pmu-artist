@@ -18,8 +18,17 @@
     padding-bottom: 200px;
 }
 
+.container-h1-logo {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
 .introducao h1 {
     margin-bottom: 32px;
+}
+
+.logo-introducao {
+    width: 200px;
 }
 
 .introducao img {

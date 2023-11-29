@@ -41,18 +41,18 @@
 .btn-style-2 {
     display: inline-block;
     padding: 16px 32px;
-    background: var(--c10);
+    background: var(--w);
     border-radius: 4px;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
     text-transform: uppercase;
-    color: var(--c02);
+    color: var(--p3);
     font: 600 1.125rem/1.35 "Popprins", sans-serif;
     max-width: max-content;
     
 }
 
 .btn-style-2:hover {
-    background: var(--c09);
+    background-color: #bebebe;
 }
 
 @media (max-width: 600px) {

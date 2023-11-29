@@ -1,13 +1,13 @@
 /* ----- footer ------- */
 
 .footer-bg{
-    background-color: var(--c12);
+    background-color: var(--p4);
     
 }
 
 .footer {
     display: grid;
-    grid-template-columns: 3fr 5fr 4fr;
+    grid-template-columns: 4fr 5fr 4fr;
     gap: 40px;
     padding-top: 60px;
     padding-bottom: 60xp;
@@ -30,7 +30,7 @@
     display: block;
     max-width: 360px;
     height: 2px;
-    background: var(--c12);
+    background: var(--p3);
     margin-top: 16px;
 }
 

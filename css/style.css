@@ -18,9 +18,8 @@
 
 /* -----home------- */
 @import "./home/introducao.css";
-@import "./home/tecnologias.css";
-@import "./home/parceiros.css";
-@import "./home/depoimento.css";
+@import "./home/espaco.css";
+@import "./home/studio.css";
 
 
 /* -----bicicletas---- */
@@ -35,10 +34,10 @@
 @import "./contato/contato.css";
 @import "./contato/lojas.css";
 
-/* ------ seguros ----- */
-@import "./seguros/seguros.css";
-@import "./seguros/vantagens.css";
-@import "./seguros/perguntas.css";
+/* ------ combos ----- */
+@import "./combos/combos.css";
+@import "./combos/vantagens.css";
+@import "./combos/perguntas.css";
 
 /* ---temos---- */
 @import "./termos/termos.css";

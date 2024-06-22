@@ -1,10 +1,10 @@
-/* ----- pagina das bicicletas ---- */
+/* ----- pagina das servico ---- */
 
-.bicicletas-bg {
+.servico-bg {
     background: linear-gradient(to right, var(--w)20%,var(--c12)0%) ;
 }
 
-.bicicletas {
+.servico {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
@@ -13,11 +13,11 @@
     background: url('../../img/dec/top-right.svg') no-repeat top 40px right 20px;
 }
 
-.bicicletas-img {
+.servico-img {
     position: relative;
 }
 
-.bicicletas-img span {
+.servico-img span {
     display: inline-block;
     background: var(--c12);
     padding: 8px 16px 8px 8px;
@@ -27,22 +27,22 @@
     border-radius: 4px 0 0 4px;
 }
 
-.bicicletas-conteudo {
+.servico-conteudo {
     display: grid;
     grid-template-columns: 1fr auto;
     align-content: start;
 }
 
-.bicicletas-conteudo h2,
-.bicicletas-conteudo p {
+.servico-conteudo h2,
+.servico-conteudo p {
     grid-column: 1/-1;
 }
 
-.bicicletas h2 {
+.servico h2 {
     margin-bottom: 20px;
 }
 
-.bicicletas h2::before {
+.servico h2::before {
     content: "";
     display: block;
     width: 12px;
@@ -51,35 +51,35 @@
     margin-bottom: 8px;
 }
 
-.bicicletas p {
+.servico p {
     margin-bottom: 32px;
 }
 
-.bicicletas a {
+.servico a {
     place-self: end;
 }
 
-.bicicletas li {
+.servico li {
     display: flex;
     align-items: center;
 }
 
-.bicicletas-conteudo img {
+.servico-conteudo img {
     width: 24px;
     margin-right: 8px;
 }
 
-.bicicletas li+li {
+.servico li+li {
     margin-top: 16px;
 }
 
 @media (max-width: 800px) {
-    .bicicletas-bg {
+    .servico-bg {
         background: var(--c12);
     }
     
 
-    .bicicletas {
+    .servico {
         grid-template-columns: 1fr;
         gap: 20px;
         padding-top: 40px;
@@ -88,17 +88,17 @@
 }
 
 @media (max-width: 600px) {
-    .bicicletas-conteudo {
+    .servico-conteudo {
         grid-template-columns: 1fr;
     }
 
-    .bicicletas ul {
+    .servico ul {
         font-size: 1rem;
         grid-template-columns: 1fr 1fr;
         margin-bottom: 32px;
     }
 
-    .bicicletas a {
+    .servico a {
         place-self: start;
     }
 }

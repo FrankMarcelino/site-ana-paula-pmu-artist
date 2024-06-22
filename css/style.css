@@ -7,7 +7,7 @@
 /* ------global------- */
 @import "./global/global.css";
 @import "./global/header.css";
-@import "global/footer.css";
+@import "./global/footer.css";
 
 /* ------utilidades------- */
 @import "./utilidades/cores.css";
@@ -22,13 +22,13 @@
 @import "./home/studio.css";
 
 
-/* -----bicicletas---- */
-@import "./bicicletas/bicicletas-lista.css";
-@import "./bicicletas/biciletas.css";
+/* -----servico---- */
+@import "./servico/servico-lista.css";
+@import "./servico/servico.css";
 
-/* -----bicicleta ----- */
-@import "./bicicleta/bicicleta.css";
-@import "./bicicleta/seguro.css";
+/* -----servico ----- */
+@import "./servico/servico.css";
+@import "./servico/seguro.css";
 
 /*------ contato -----*/
 @import "./contato/contato.css";

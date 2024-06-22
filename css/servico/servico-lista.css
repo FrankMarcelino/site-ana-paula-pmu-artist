@@ -1,12 +1,12 @@
-/* ---- Bicicleta Lista----- */
+/* ---- servico Lista----- */
 
-.bicicletas-lista {
+.lista-servico {
     padding-top: 60px;
     padding-bottom: 120px;
 }
 
 
-ul.bicicletas-lista-items {
+ul.lista-servico-items {
     display: flex;
     gap: 40px;
     padding: 0 20px 20px 20px;
@@ -16,31 +16,31 @@ ul.bicicletas-lista-items {
     overflow-x: auto;
 }
 
-#bicicleta .bicicletas-lista-items{
+#servico .lista-servico-items{
   padding: 0px 0px 20px 0px ;  
 }
 
-.bicicletas-lista li {
+.lista-servico li {
     min-width: 280px;
 }
 
 
-.bicicletas-lista a {
+.lista-servico a {
     display: block;
 }
 
-.bicicletas-lista img {
+.lista-servico img {
     margin-bottom: 16px;
 }
 
-.bicicletas-lista h3 {
+.lista-servico h3 {
     margin-bottom: 8px;
     display: flex;
     align-items: center;
 
 }
 
-.bicicletas-lista h3::before {
+.lista-servico h3::before {
     content: "";
     height: 8px;
     width: 12px;
@@ -50,20 +50,20 @@ ul.bicicletas-lista-items {
     transition: width 0.2s;
 }
 
-.bicicletas-lista a:hover h3::before {
+.lista-servico a:hover h3::before {
     width: 24px;
 }
 
-.bicicletas-lista li span {
+.lista-servico li span {
     padding-left: 20px;
 }
 
 @media (max-width: 800px) {
-    .bicicletas-lista {
+    .lista-servico {
         padding-bottom: 60px;
     }
 
-    .bicicletas-lista ul {
+    .lista-servico ul {
         gap: 20px;
     }
 }

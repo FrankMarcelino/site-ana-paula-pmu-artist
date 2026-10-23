@@ -268,3 +268,16 @@ h1, h2, h3 { margin: 0; }
 .links-lista a:hover { border-color: var(--vinho); color: var(--vinho); }
 .links-lista small { font-weight: 400; font-size: var(--t-pequeno); color: var(--pigmento-suave); }
 .links-site { color: var(--pigmento); font-weight: 500; }
+
+/* ----- "Fale com a Belle": abre o chat da LIVIA, abaixo do botão do WhatsApp ----- */
+.fale-belle {
+  display: inline-flex; align-items: center; gap: .7rem; margin-top: .9rem;
+  padding: .7rem 1.4rem .7rem 1.1rem; min-height: 3rem;
+  background: transparent; border: 1px solid var(--pigmento); border-radius: 999px;
+  color: var(--pigmento); font: 600 var(--t-base)/1.15 var(--texto); text-align: left; cursor: pointer;
+}
+.fale-belle:hover { border-color: var(--vinho); color: var(--vinho); }
+.fale-belle svg { width: 1.4rem; height: 1.4rem; flex: none; }
+.fale-belle small { display: block; font-weight: 400; font-size: var(--t-pequeno); color: var(--pigmento-suave); }
+.topo-texto .fale-belle { display: flex; width: fit-content; }
+.fale-belle--cheio { display: flex; width: 100%; justify-content: center; background: #fff; border-radius: 1rem; }

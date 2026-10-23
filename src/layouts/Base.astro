@@ -8,6 +8,7 @@ import '../styles/global.css';
 import italiana from '@fontsource/italiana/files/italiana-latin-400-normal.woff2?url';
 import albertSans from '@fontsource/albert-sans/files/albert-sans-latin-400-normal.woff2?url';
 import IconeWhatsapp from '../components/IconeWhatsapp.astro';
+import ChatLivia from '../components/ChatLivia.astro';
 import logo from '../assets/logo.svg';
 import { ENDERECO, HORARIO, INSTAGRAM, INSTAGRAM_ESTUDIO, WHATSAPP, whatsapp } from '../data/ana';
 
@@ -109,24 +110,6 @@ const negocio = {
     <span class="whatsapp-dica">Agende seu horário!</span>
   </a>
 
-  <!-- Chat da LIVIA: só carrega depois da primeira interação (rolar, tocar, clicar) ou de 8 s,
-       para não pesar na primeira tela do celular. -->
-  <script is:inline>
-    (function () {
-      var feito = false;
-      function carregar() {
-        if (feito) return; feito = true;
-        var s = document.createElement('script');
-        s.src = 'https://livia.app.online24por7.ai/webchat.js';
-        s.async = true;
-        s.setAttribute('data-widget-id', 'a0497300-3b42-4fa7-9a58-b25f710e03fe');
-        // Empilha o chat acima do botão do WhatsApp (20 px do rodapé + 56 do botão + 20 de folga).
-        s.setAttribute('data-bottom-offset', '96');
-        document.body.appendChild(s);
-      }
-      ['scroll', 'pointerdown', 'keydown'].forEach(function (e) { addEventListener(e, carregar, { once: true, passive: true }); });
-      setTimeout(carregar, 8000);
-    })();
-  </script>
+  <ChatLivia />
 </body>
 </html>

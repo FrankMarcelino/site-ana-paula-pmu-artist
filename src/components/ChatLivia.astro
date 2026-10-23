@@ -1,0 +1,38 @@
+---
+// deslocamento: distância do balão até o rodapé. 96 = empilhado acima do botão flutuante do WhatsApp.
+interface Props { deslocamento?: number }
+const { deslocamento = 96 } = Astro.props;
+---
+<!-- Chat da LIVIA (a Belle, assistente de IA da Ana Paula).
+     Carrega só depois da primeira interação (rolar, tocar, clicar) ou de 8 s, para não
+     pesar na primeira tela do celular. Expõe window.abrirBelle(), usado pelo botão
+     "Fale com a Belle": abre o chat na hora se o widget já carregou, ou carrega e abre
+     assim que o balão dele aparecer. -->
+<script is:inline define:vars={{ deslocamento }}>
+  (function () {
+    var carregado = false;
+    function carregar() {
+      if (carregado) return; carregado = true;
+      var s = document.createElement('script');
+      s.src = 'https://livia.app.online24por7.ai/webchat.js';
+      s.async = true;
+      s.setAttribute('data-widget-id', 'a0497300-3b42-4fa7-9a58-b25f710e03fe');
+      // Empilha o chat acima do botão do WhatsApp (20 px do rodapé + 56 do botão + 20 de folga).
+      s.setAttribute('data-bottom-offset', String(deslocamento));
+      document.body.appendChild(s);
+    }
+    function balao() { return document.querySelector('button[aria-label="Abrir chat"]'); }
+    window.abrirBelle = function () {
+      var b = balao();
+      if (b) { b.click(); return; }
+      carregar();
+      var tentativas = 0;
+      var espera = setInterval(function () {
+        var b2 = balao();
+        if (b2 || ++tentativas > 50) { clearInterval(espera); if (b2) b2.click(); }
+      }, 100);
+    };
+    ['scroll', 'pointerdown', 'keydown'].forEach(function (e) { addEventListener(e, carregar, { once: true, passive: true }); });
+    setTimeout(carregar, 8000);
+  })();
+</script>

@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Agendar from '../components/Agendar.astro';
 import Fio from '../components/Fio.astro';
+import FaleComBelle from '../components/FaleComBelle.astro';
 import Cardapio from '../components/Cardapio.astro';
 import Videos from '../components/Videos.astro';
 import capa from '../assets/ana/capa.jpg';
@@ -17,6 +18,7 @@ import { INSTAGRAM, whatsapp } from '../data/ana';
       <p class="topo-oficio">Micropigmentação de sobrancelhas e lábios em Juazeiro do Norte, fio a fio.</p>
       <p class="topo-autoridade">Mais de 6 anos de profissão e milhares de atendimentos, inclusive de clientes de fora do país. Trabalho com os produtos mais reconhecidos do mercado e sigo estudando a técnica.</p>
       <Agendar />
+      <FaleComBelle />
     </div>
     <figure class="topo-foto" style="margin:0">
       <Image quality={70} width={534} src={capa} alt="Ana Paula Almeida no estúdio" widths={[360, 534]} sizes="(min-width: 52rem) 40vw, 100vw" loading="eager" fetchpriority="high" />

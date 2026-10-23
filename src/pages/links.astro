@@ -1,0 +1,67 @@
+---
+// Página de links para a bio do Instagram: anapaulapmu.vercel.app/links/
+// Fica fora do menu do site. Uma tela no celular, botões grandes, o agendamento primeiro.
+import { Image } from 'astro:assets';
+import '@fontsource/italiana/400.css';
+import '@fontsource/albert-sans/400.css';
+import '@fontsource/albert-sans/500.css';
+import '@fontsource/albert-sans/600.css';
+import '../styles/global.css';
+import IconeWhatsapp from '../components/IconeWhatsapp.astro';
+import Fio from '../components/Fio.astro';
+import retrato from '../assets/ana/retrato.jpeg';
+import { ENDERECO, INSTAGRAM_ESTUDIO, whatsapp } from '../data/ana';
+
+const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${ENDERECO.rua}, ${ENDERECO.bairro}, ${ENDERECO.cidade} - ${ENDERECO.uf}`)}`;
+const LINKS = [
+  { href: '/sobrancelhas/', texto: 'Sobrancelhas', detalhe: 'Micropigmentação fio a fio, brow lamination e design' },
+  { href: '/labios/', texto: 'Lábios', detalhe: 'Micropigmentação labial' },
+  { href: '/cilios/', texto: 'Cílios', detalhe: 'Extensão e manutenção' },
+  { href: '/videos/', texto: 'Vídeos dos procedimentos', detalhe: '' },
+  { href: maps, texto: 'Como chegar', detalhe: `${ENDERECO.rua}, ${ENDERECO.bairro}`, externo: true },
+  { href: INSTAGRAM_ESTUDIO, texto: 'Instagram do estúdio', detalhe: '@anapaula.beauty.studio', externo: true },
+];
+const titulo = 'Ana Paula Almeida | Links';
+const descricao = 'Agende pelo WhatsApp, veja preços de sobrancelhas, lábios e cílios, vídeos e como chegar ao estúdio em Juazeiro do Norte.';
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{titulo}</title>
+  <meta name="description" content={descricao}>
+  <link rel="canonical" href={new URL('/links/', Astro.site)}>
+  <meta name="theme-color" content="#F7EEEC">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={titulo}>
+  <meta property="og:description" content={descricao}>
+  <meta property="og:image" content={new URL('/og.jpg', Astro.site)}>
+</head>
+<body class="pagina-links">
+  <main class="links miolo">
+    <Image class="links-foto" src={retrato} alt="Ana Paula Almeida" width={192} height={192} densities={[1, 2]} quality={75} loading="eager" fetchpriority="high" />
+    <h1 class="links-nome">Ana Paula Almeida</h1>
+    <Fio />
+    <p class="links-oficio">Micropigmentação em Juazeiro do Norte. A avaliação é gratuita.</p>
+
+    <a class="links-principal" href={whatsapp('Olá, Ana! Vim pelo Instagram e gostaria de agendar um horário.')} target="_blank" rel="noopener">
+      <IconeWhatsapp />Agendar pelo WhatsApp
+    </a>
+
+    <ul class="links-lista">
+      {LINKS.map((l) => (
+        <li>
+          <a href={l.href} {...(l.externo ? { target: '_blank', rel: 'noopener' } : {})}>
+            <span>{l.texto}</span>
+            {l.detalhe && <small>{l.detalhe}</small>}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <a class="links-site" href="/">Ver o site completo</a>
+  </main>
+</body>
+</html>

@@ -245,3 +245,26 @@ h1, h2, h3 { margin: 0; }
 
 /* A foto de design com tintura é de uma cliente deitada: no círculo, enquadra a sobrancelha. */
 .cardapio img.foto-tintura { object-position: 38% 52%; transform: rotate(180deg); }
+
+/* ----- página de links (bio do Instagram) ----- */
+.links { max-width: 30rem; padding-block: 2.5rem 3rem; text-align: center; }
+.links-foto { width: 6rem; height: 6rem; margin: 0 auto 1rem; border-radius: 50%; object-fit: cover; object-position: 50% 30%; }
+.links-nome { font: 400 clamp(2.5rem, 11vw, 3.25rem)/1 var(--display); }
+.links .fio { width: 12rem; margin: .75rem auto 1rem; }
+.links-oficio { margin: 0 0 1.75rem; color: var(--pigmento-suave); }
+.links-principal {
+  display: flex; align-items: center; justify-content: center; gap: .6rem;
+  min-height: 3.5rem; padding: .9rem 1.25rem; border-radius: 999px;
+  background: #25D366; color: #fff; font: 600 var(--t-m)/1 var(--texto); text-decoration: none;
+}
+.links-principal:hover { background: #1EBE5A; }
+.links-principal svg { width: 1.4em; height: 1.4em; }
+.links-lista { display: grid; gap: .75rem; margin: 1.25rem 0 2rem; padding: 0; list-style: none; }
+.links-lista a {
+  display: grid; gap: .15rem; padding: .95rem 1.25rem; min-height: 3.5rem; align-content: center;
+  border: 1px solid var(--pigmento); border-radius: 1rem; background: #fff;
+  color: var(--pigmento); text-decoration: none; font-weight: 500;
+}
+.links-lista a:hover { border-color: var(--vinho); color: var(--vinho); }
+.links-lista small { font-weight: 400; font-size: var(--t-pequeno); color: var(--pigmento-suave); }
+.links-site { color: var(--pigmento); font-weight: 500; }

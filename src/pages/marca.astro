@@ -9,7 +9,7 @@ import '@fontsource/albert-sans/400.css';
 import '@fontsource/albert-sans/600.css';
 import '@fontsource/albert-sans/700.css';
 import '../styles/global.css';
-import Fio from '../components/Fio.astro';
+import Monograma from '../components/Monograma.astro';
 import logo from '../assets/logo.svg';
 import logoVinho from '../assets/logo-vinho.svg';
 import cormorant from '@fontsource/cormorant/files/cormorant-latin-400-normal.woff2?url';
@@ -18,7 +18,7 @@ import albertSans from '@fontsource/albert-sans/files/albert-sans-latin-400-norm
 
 const CORES = [
   { nome: 'Pó de arroz', hex: '#F7EEEC', uso: 'Fundo de todas as páginas.', contraste: '' },
-  { nome: 'Pigmento', hex: '#3B2420', uso: 'Texto, o fio e o rodapé. Nunca preto puro.', contraste: '12,6 : 1 sobre o pó de arroz' },
+  { nome: 'Pigmento', hex: '#3B2420', uso: 'Texto e rodapé. Nunca preto puro.', contraste: '12,6 : 1 sobre o pó de arroz' },
   { nome: 'Vinho', hex: '#882E4E', uso: 'A assinatura, o botão de agendar e os links.', contraste: '7,2 : 1 sobre o pó de arroz · branco sobre ele 8,2 : 1' },
   { nome: 'Rosa-pele', hex: '#EFC0C5', uso: 'Fundo das seções alternadas (a casa rosa).', contraste: 'texto em pigmento sobre ele 8,9 : 1' },
   { nome: 'Rosa-casa', hex: '#C0587D', uso: 'Só detalhe: números das etapas, ícones. Não serve para texto.', contraste: '3,7 : 1, abaixo do mínimo para texto' },
@@ -53,7 +53,7 @@ const ESCALA = [
   <main class="miolo manual">
     <header class="m-capa">
       <img class="m-capa-logo" src={logoVinho.src} width="354" height="35" alt="Ana Paula Almeida">
-      <Fio />
+      <Monograma />
       <h1>Manual da marca</h1>
       <p class="m-frase">Versão 0, outubro de 2026. Tirado do site, para valer em todo lugar onde a Ana aparece.</p>
     </header>
@@ -78,7 +78,7 @@ const ESCALA = [
       <ul class="m-regras">
         <li><strong>Tamanho mínimo:</strong> 160 px de largura na tela, 4 cm no impresso. Abaixo disso os traços finos somem.</li>
         <li><strong>Respiro:</strong> em volta da assinatura, deixar livre pelo menos a altura do “A” de Ana.</li>
-        <li><strong>O fio</strong> pode vir logo abaixo dela, na mesma cor, como na inicial e na página de links.</li>
+        <li><strong>O monograma “AP”</strong> vem logo abaixo dela, a 25% de opacidade, como na inicial e na página de links. Ele acompanha a assinatura, não a substitui; sozinho, só no ícone do site.</li>
         <li><strong>Não fazer:</strong> deixar a assinatura preta ou cinza, esticar, girar, pôr sombra ou contorno, colocar sobre foto agitada ou sobre o rosa Belle.</li>
       </ul>
     </section>
@@ -154,7 +154,6 @@ const ESCALA = [
     <section aria-labelledby="m-movimento">
       <h2 id="m-movimento">Movimento</h2>
       <ul class="m-regras">
-        <li><strong>O fio se desenha uma vez</strong>, quando a página abre. É o único movimento automático.</li>
         <li><strong>Parallax só nas fotos com moldura</strong> (a da Ana na inicial e a da casa rosa): a foto anda devagar dentro da moldura enquanto a página rola. Texto e botão nunca se mexem.</li>
         <li>Quem pediu menos movimento no celular vê tudo parado.</li>
       </ul>
@@ -185,7 +184,7 @@ const ESCALA = [
   .manual p { margin: 0 0 1rem; max-width: 38rem; }
   .m-capa { padding-bottom: 2.5rem; }
   .m-capa-logo { width: min(100%, 22rem); }
-  .m-capa .fio { width: min(85%, 16rem); }
+
   .m-capa h1 { font: 400 var(--t-xg)/.95 var(--display); }
   .m-frase { margin-top: 1rem; font: italic 400 var(--t-frase)/1.25 var(--display); }
   .m-pares { display: grid; gap: .75rem; margin: 1.5rem 0 0; }

@@ -1,0 +1,7 @@
+---
+// O monograma "AP" da Ana, a 25% de opacidade, logo abaixo da assinatura.
+// É enfeite: o nome já está na assinatura, então fica fora da leitura de tela.
+import { Image } from 'astro:assets';
+import monograma from '../assets/monograma.png';
+---
+<Image class="monograma" src={monograma} alt="" aria-hidden="true" width={96} densities={[1, 2]} quality={80} />

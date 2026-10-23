@@ -1,7 +1,7 @@
 /* ==========================================================================
    Ana Paula Almeida — identidade "o traço" (out/2026)
    A micropigmentação é feita fio a fio: o traço fino é a identidade.
-   Um único movimento automático (o fio que se desenha no topo da inicial).
+   Sem movimento automático: só o parallax das fotos com moldura, que responde à rolagem.
    Feito para o celular primeiro: é por onde as clientes chegam.
    ========================================================================== */
 
@@ -84,23 +84,9 @@ h1, h2, h3 { margin: 0; }
 /* O título da inicial é a assinatura (logo), não texto composto: o nome tem um desenho só. */
 .topo-nome { line-height: 0; }
 .topo-nome img { width: min(100%, 30rem); }
-.fio { width: min(100%, 26rem); margin: 1.25rem 0 1.5rem; color: var(--vinho); }
-.fio path { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; }
-@media (prefers-reduced-motion: no-preference) {
-  .fio path { stroke-dasharray: 60; stroke-dashoffset: 60; animation: risca .5s ease-out forwards; }
-  .fio path:nth-child(2) { animation-delay: .12s; }
-  .fio path:nth-child(3) { animation-delay: .24s; }
-  .fio path:nth-child(4) { animation-delay: .36s; }
-  .fio path:nth-child(5) { animation-delay: .48s; }
-  .fio path:nth-child(6) { animation-delay: .60s; }
-  .fio path:nth-child(7) { animation-delay: .72s; }
-  .fio path:nth-child(8) { animation-delay: .84s; }
-  .fio path:nth-child(9) { animation-delay: .96s; }
-}
-@keyframes risca { to { stroke-dashoffset: 0; } }
+/* O monograma "AP" a 25% embaixo da assinatura: presente, sem disputar com o nome. */
+.monograma { display: block; width: 5.5rem; height: auto; margin: 1rem 0 1.75rem; opacity: .25; }
 .topo-texto { max-width: 34rem; }
-/* O fio vem na cor da assinatura, logo abaixo dela: nome e traço formam um desenho só. */
-.topo .fio { width: min(85%, 20rem); margin: 1rem 0 1.75rem; }
 .topo-oficio { margin: 0 0 1rem; font: italic 400 var(--t-frase)/1.25 var(--display); }
 .topo-autoridade { margin: 0 0 2rem; color: var(--pigmento-suave); }
 .topo-foto { overflow: clip; border-radius: 12rem 12rem .5rem .5rem; }
@@ -260,7 +246,7 @@ h1, h2, h3 { margin: 0; }
 .links-foto { width: 6rem; height: 6rem; margin: 0 auto 1rem; border-radius: 50%; object-fit: cover; object-position: 50% 30%; }
 .links-nome { line-height: 0; }
 .links-nome img { width: min(100%, 18rem); margin-inline: auto; }
-.links .fio { width: 12rem; margin: .75rem auto 1rem; }
+.links .monograma { width: 4.5rem; margin: .75rem auto 1rem; }
 .links-oficio { margin: 0 0 1.75rem; color: var(--pigmento-suave); }
 .links-principal {
   display: flex; align-items: center; justify-content: center; gap: .6rem;

@@ -1,0 +1,227 @@
+---
+// Manual da marca (versão 0, out/2026), modelado a partir do site.
+// Fica fora do menu e do Google: é referência para quem cria peças da Ana Paula
+// (site, Instagram, cartão, fachada). Usa as mesmas fontes, cores e classes do site,
+// então o que está aqui é o que está no ar, sem cópia para envelhecer.
+import '@fontsource/cormorant/400.css';
+import '@fontsource/cormorant/400-italic.css';
+import '@fontsource/albert-sans/400.css';
+import '@fontsource/albert-sans/600.css';
+import '@fontsource/albert-sans/700.css';
+import '../styles/global.css';
+import Fio from '../components/Fio.astro';
+import logo from '../assets/logo.svg';
+import logoVinho from '../assets/logo-vinho.svg';
+import cormorant from '@fontsource/cormorant/files/cormorant-latin-400-normal.woff2?url';
+import cormorantItalico from '@fontsource/cormorant/files/cormorant-latin-400-italic.woff2?url';
+import albertSans from '@fontsource/albert-sans/files/albert-sans-latin-400-normal.woff2?url';
+
+const CORES = [
+  { nome: 'Pó de arroz', hex: '#F7EEEC', uso: 'Fundo de todas as páginas.', contraste: '' },
+  { nome: 'Pigmento', hex: '#3B2420', uso: 'Texto, o fio e o rodapé. Nunca preto puro.', contraste: '12,6 : 1 sobre o pó de arroz' },
+  { nome: 'Vinho', hex: '#882E4E', uso: 'A assinatura, o botão de agendar e os links.', contraste: '7,2 : 1 sobre o pó de arroz · branco sobre ele 8,2 : 1' },
+  { nome: 'Rosa-pele', hex: '#EFC0C5', uso: 'Fundo das seções alternadas (a casa rosa).', contraste: 'texto em pigmento sobre ele 8,9 : 1' },
+  { nome: 'Rosa-casa', hex: '#C0587D', uso: 'Só detalhe: números das etapas, ícones. Não serve para texto.', contraste: '3,7 : 1, abaixo do mínimo para texto' },
+  { nome: 'Pigmento suave', hex: '#6E5450', uso: 'Texto de apoio: descrições, legendas.', contraste: '6,0 : 1 sobre o pó de arroz' },
+  { nome: 'Rosa Belle', hex: '#D946A0', uso: 'Exclusivo da Belle, a assistente de IA. Não usar em outra peça.', contraste: 'branco sobre ele 3,9 : 1, só com texto grande e em negrito' },
+];
+
+const ESCALA = [
+  { token: '--t-xg', px: '48 a 88', familia: 'Cormorant 400', papel: 'Título de página e de seção', exemplo: 'Sobrancelhas', classe: 'ex-xg' },
+  { token: '--t-g', px: '36', familia: 'Cormorant 400', papel: 'Preço em destaque, nome de combo', exemplo: 'R$ 350', classe: 'ex-g' },
+  { token: '--t-frase', px: '26', familia: 'Cormorant 400 itálico', papel: 'A frase de abertura, a voz da Ana', exemplo: 'Especialista em sobrancelhas, lábios e cílios.', classe: 'ex-frase' },
+  { token: '--t-m', px: '22', familia: 'Albert Sans 400', papel: 'Texto de abertura das páginas internas', exemplo: 'Micropigmentação fio a fio para preencher e desenhar.', classe: 'ex-m' },
+  { token: '--t-sub', px: '19', familia: 'Albert Sans 600', papel: 'Nome de serviço, de etapa, pergunta', exemplo: 'Micropigmentação labial', classe: 'ex-sub' },
+  { token: '--t-base', px: '17', familia: 'Albert Sans 400', papel: 'Texto corrido', exemplo: 'A avaliação é gratuita, pelo WhatsApp ou no estúdio.', classe: 'ex-base' },
+  { token: '--t-pequeno', px: '14', familia: 'Albert Sans 400', papel: 'Detalhe: duração, legenda, parcelamento', exemplo: 'Cerca de 1h30 · até 3x sem juros', classe: 'ex-pequeno' },
+];
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manual da marca | Ana Paula Almeida</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F7EEEC">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="preload" href={cormorant} as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href={cormorantItalico} as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href={albertSans} as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+  <main class="miolo manual">
+    <header class="m-capa">
+      <img class="m-capa-logo" src={logoVinho.src} width="354" height="35" alt="Ana Paula Almeida">
+      <Fio />
+      <h1>Manual da marca</h1>
+      <p class="m-frase">Versão 0, outubro de 2026. Tirado do site, para valer em todo lugar onde a Ana aparece.</p>
+    </header>
+
+    <section aria-labelledby="m-essencia">
+      <h2 id="m-essencia">Quem é a marca</h2>
+      <p>A Ana Paula é conhecida por ser meiga e delicada, e quem a conhece diz que ela tem jeito de boneca. Ela ama os animais, as flores e as plantas, e o estúdio sempre pendeu para o romântico: hoje ele é uma casa rosa com jardim na frente.</p>
+      <p>O trabalho dela é feito fio a fio. Por isso a identidade se chama <strong>o traço</strong>: linha fina, curva, feita à mão. Tudo na marca deve parecer desenhado com cuidado, nunca carimbado.</p>
+      <dl class="m-pares">
+        <div><dt>É</dt><dd>delicada, romântica, próxima, cuidadosa, natural</dd></div>
+        <div><dt>Não é</dt><dd>luxo frio, fashion, infantil, chamativa, cheia de efeito</dd></div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="m-logo">
+      <h2 id="m-logo">A assinatura</h2>
+      <p>O logo é o nome da Ana escrito à mão. Ele é o título da página inicial e da página de links. Onde a assinatura aparece, o nome não se repete composto em outra fonte: o nome tem um desenho só.</p>
+      <div class="m-logos">
+        <figure class="m-logo m-logo--claro"><img src={logoVinho.src} width="354" height="35" alt="Assinatura em vinho sobre fundo claro"><figcaption>Vinho sobre o pó de arroz ou o branco. É a versão principal.</figcaption></figure>
+        <figure class="m-logo m-logo--escuro"><img src={logo.src} width="354" height="35" alt="Assinatura em branco sobre fundo pigmento"><figcaption>Branca sobre o pigmento (rodapé) ou sobre foto escura.</figcaption></figure>
+      </div>
+      <ul class="m-regras">
+        <li><strong>Tamanho mínimo:</strong> 160 px de largura na tela, 4 cm no impresso. Abaixo disso os traços finos somem.</li>
+        <li><strong>Respiro:</strong> em volta da assinatura, deixar livre pelo menos a altura do “A” de Ana.</li>
+        <li><strong>O fio</strong> pode vir logo abaixo dela, na mesma cor, como na inicial e na página de links.</li>
+        <li><strong>Não fazer:</strong> deixar a assinatura preta ou cinza, esticar, girar, pôr sombra ou contorno, colocar sobre foto agitada ou sobre o rosa Belle.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="m-cores">
+      <h2 id="m-cores">Cores</h2>
+      <p>Cinco cores de base e uma exclusiva da Belle. O contraste ao lado de cada uma diz onde ela pode ser texto: o mínimo para texto comum é 4,5 : 1.</p>
+      <ul class="m-cores">
+        {CORES.map((c) => (
+          <li>
+            <span class="m-amostra" style={`background:${c.hex}`}></span>
+            <div><strong>{c.nome}</strong> <code>{c.hex}</code><p>{c.uso}</p>{c.contraste && <p class="m-nota">{c.contraste}</p>}</div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section aria-labelledby="m-tipo">
+      <h2 id="m-tipo">Tipografia</h2>
+      <p>Duas famílias, cada uma com um trabalho. Elas conversam porque são opostas: a Cormorant tem o contraste de traço fino e grosso da caligrafia, e a Albert Sans tem traço uniforme e é fácil de ler no celular.</p>
+      <div class="m-familias">
+        <div class="m-familia">
+          <p class="m-familia-amostra m-cormorant">Aa <em>Aa</em></p>
+          <h3>Cormorant: a voz</h3>
+          <p>Títulos, preços em destaque e, em itálico, a frase de abertura. O itálico dela tem o mesmo movimento da assinatura, e é por isso que as duas combinam.</p>
+        </div>
+        <div class="m-familia">
+          <p class="m-familia-amostra m-albert">Aa</p>
+          <h3>Albert Sans: a informação</h3>
+          <p>Texto corrido, nomes de serviço, menu, botões e detalhes. Tudo o que a cliente precisa ler rápido.</p>
+        </div>
+      </div>
+
+      <h3 class="m-sub">Escala</h3>
+      <ol class="m-escala">
+        {ESCALA.map((e) => (
+          <li>
+            <p class={`m-ex ${e.classe}`}>{e.exemplo}</p>
+            <p class="m-nota"><code>{e.token}</code> · {e.px} px · {e.familia} · {e.papel}</p>
+          </li>
+        ))}
+      </ol>
+
+      <h3 class="m-sub">Pesos</h3>
+      <ul class="m-regras">
+        <li><strong>Cormorant 400</strong> nos títulos e <strong>400 itálico</strong> na frase de abertura. A Cormorant não usa negrito: o título ganha destaque pelo tamanho, não pelo peso.</li>
+        <li><strong>Albert Sans 400</strong> para o texto e o menu.</li>
+        <li><strong>Albert Sans 600</strong> para o que precisa de destaque: nome de serviço, link, botão, pergunta.</li>
+        <li><strong>Albert Sans 700</strong> só no botão da Belle. O branco sobre o rosa Belle só passa no contraste mínimo como texto grande em negrito.</li>
+      </ul>
+
+      <h3 class="m-sub">Regras</h3>
+      <ul class="m-regras">
+        <li>O itálico é para uma frase de até duas linhas. Parágrafo longo em itálico cansa a leitura.</li>
+        <li>Parágrafo nunca vai em Cormorant, e título nunca vai em Albert Sans.</li>
+        <li>Número em Cormorant usa algarismo alinhado (<code>lining-nums</code>): “R$ 350”, sem o 3 e o 5 descendo da linha.</li>
+        <li>Nada em caixa-alta. Destaque é tamanho, peso ou cor, um de cada vez.</li>
+        <li>Linha de texto com no máximo uns 70 caracteres.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="m-acoes">
+      <h2 id="m-acoes">Botões</h2>
+      <p>Cada botão tem um papel, e cada papel tem sempre a mesma cara.</p>
+      <ul class="m-regras">
+        <li><strong>Agendar pelo WhatsApp</strong>: vinho, cheio, arredondado. É a ação principal e aparece em toda página.</li>
+        <li><strong>Fale com a Belle</strong>: rosa Belle, com o selo “Mais rápido”. Abre o chat com a assistente de IA.</li>
+        <li><strong>Links</strong>: Albert Sans 600, sublinhados. Para ir a outra página do site.</li>
+        <li>Na página de links, o botão do WhatsApp é verde-escuro <code>#0B7A3E</code>: o verde claro do WhatsApp com texto branco não passa no contraste.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="m-movimento">
+      <h2 id="m-movimento">Movimento</h2>
+      <ul class="m-regras">
+        <li><strong>O fio se desenha uma vez</strong>, quando a página abre. É o único movimento automático.</li>
+        <li><strong>Parallax só nas fotos com moldura</strong> (a da Ana na inicial e a da casa rosa): a foto anda devagar dentro da moldura enquanto a página rola. Texto e botão nunca se mexem.</li>
+        <li>Quem pediu menos movimento no celular vê tudo parado.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="m-voz">
+      <h2 id="m-voz">Como a marca escreve</h2>
+      <ul class="m-regras">
+        <li>Fala com “você”, como a Ana falaria no estúdio.</li>
+        <li>Frase curta e informação concreta: preço, duração, parcelamento.</li>
+        <li>Sem exagero de venda (“imperdível”, “o melhor da região”) e sem gíria de internet.</li>
+        <li>Preços, serviços e regras vêm da agenda e do que a Belle sabe. Se não estiver lá, não entra.</li>
+      </ul>
+    </section>
+
+    <footer class="m-rodape">
+      <p>A fonte de verdade deste manual é o site: as cores e as medidas estão em <code>src/styles/global.css</code>.</p>
+    </footer>
+  </main>
+</body>
+</html>
+
+<style>
+  .manual { max-width: 46rem; padding-block: 3rem 4rem; }
+  .manual section { padding-block: 2.5rem; border-top: 1px solid color-mix(in srgb, var(--pigmento) 20%, transparent); }
+  .manual h2 { margin-bottom: 1rem; font: 400 var(--t-xg)/.95 var(--display); }
+  .manual h3 { font: 600 var(--t-sub)/1.25 var(--texto); }
+  .manual p { margin: 0 0 1rem; max-width: 38rem; }
+  .m-capa { padding-bottom: 2.5rem; }
+  .m-capa-logo { width: min(100%, 22rem); }
+  .m-capa .fio { width: min(85%, 16rem); }
+  .m-capa h1 { font: 400 var(--t-xg)/.95 var(--display); }
+  .m-frase { margin-top: 1rem; font: italic 400 var(--t-frase)/1.25 var(--display); }
+  .m-pares { display: grid; gap: .75rem; margin: 1.5rem 0 0; }
+  .m-pares div { display: grid; grid-template-columns: 4.5rem 1fr; gap: 1rem; }
+  .m-pares dt { font-weight: 600; }
+  .m-pares dd { margin: 0; }
+  .m-logos { display: grid; gap: 1rem; margin: 1.5rem 0; }
+  @media (min-width: 40rem) { .m-logos { grid-template-columns: 1fr 1fr; } }
+  .m-logo { margin: 0; padding: 2.5rem 1.5rem 1.25rem; border-radius: .5rem; }
+  .m-logo img { width: 100%; max-width: 16rem; margin: 0 auto 2rem; }
+  .m-logo figcaption { font-size: var(--t-pequeno); }
+  .m-logo--claro { background: #fff; color: var(--pigmento-suave); }
+  .m-logo--escuro { background: var(--pigmento); color: var(--po-de-arroz); }
+  .m-regras { display: grid; gap: .6rem; margin: 0 0 1rem; padding-left: 1.1rem; }
+  .m-cores { display: grid; gap: 1rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+  .m-cores li { display: grid; grid-template-columns: 3.5rem 1fr; gap: 1rem; align-items: start; }
+  .m-cores p { margin: .15rem 0 0; }
+  .m-amostra { width: 3.5rem; height: 3.5rem; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--pigmento) 20%, transparent); }
+  .m-nota { color: var(--pigmento-suave); font-size: var(--t-pequeno); }
+  code { font: 400 var(--t-pequeno)/1 var(--texto); padding: .1rem .35rem; border-radius: .25rem; background: #fff; }
+  .m-familias { display: grid; gap: 1.5rem; margin: 1.5rem 0 2rem; }
+  @media (min-width: 40rem) { .m-familias { grid-template-columns: 1fr 1fr; } }
+  .m-familia { padding: 1.5rem; border-radius: .5rem; background: #fff; }
+  .m-familia-amostra { margin: 0 0 .75rem; font-size: 4.5rem; line-height: 1; color: var(--vinho); }
+  .m-cormorant { font-family: var(--display); }
+  .m-albert { font-family: var(--texto); }
+  .manual .m-sub { margin: 2rem 0 1rem; }
+  .m-escala { display: grid; gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
+  .m-escala li { padding-bottom: 1.25rem; border-bottom: 1px solid color-mix(in srgb, var(--pigmento) 12%, transparent); }
+  .manual .m-ex { margin: 0 0 .35rem; }
+  .ex-xg { font: 400 var(--t-xg)/.95 var(--display); }
+  .ex-g { font: 400 var(--t-g)/1 var(--display); font-variant-numeric: lining-nums; }
+  .ex-frase { font: italic 400 var(--t-frase)/1.25 var(--display); }
+  .ex-m { font-size: var(--t-m); line-height: 1.4; }
+  .ex-sub { font: 600 var(--t-sub)/1.25 var(--texto); }
+  .ex-base { font-size: var(--t-base); }
+  .ex-pequeno { font-size: var(--t-pequeno); color: var(--pigmento-suave); }
+  .m-rodape { padding-top: 2rem; border-top: 1px solid color-mix(in srgb, var(--pigmento) 20%, transparent); color: var(--pigmento-suave); font-size: var(--t-pequeno); }
+</style>

@@ -2,16 +2,16 @@
 // Página de links para a bio do Instagram: anapaulapmu.vercel.app/links/
 // Fica fora do menu do site. Uma tela no celular, botões grandes, o agendamento primeiro.
 import { Image } from 'astro:assets';
-import '@fontsource/italiana/400.css';
 import '@fontsource/albert-sans/400.css';
-import '@fontsource/albert-sans/500.css';
 import '@fontsource/albert-sans/600.css';
+import '@fontsource/albert-sans/700.css';
 import '../styles/global.css';
 import IconeWhatsapp from '../components/IconeWhatsapp.astro';
 import Fio from '../components/Fio.astro';
 import FaleComBelle from '../components/FaleComBelle.astro';
 import ChatLivia from '../components/ChatLivia.astro';
 import retrato from '../assets/ana/retrato.jpeg';
+import logoVinho from '../assets/logo-vinho.svg';
 import { ENDERECO, whatsapp } from '../data/ana';
 
 const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${ENDERECO.rua}, ${ENDERECO.bairro}, ${ENDERECO.cidade} - ${ENDERECO.uf}`)}`;
@@ -47,7 +47,7 @@ const descricao = 'Agende pelo WhatsApp, veja preços de sobrancelhas, lábios e
 <body class="pagina-links">
   <main class="links miolo">
     <Image class="links-foto" src={retrato} alt="Ana Paula Almeida" width={192} height={192} densities={[1, 2]} quality={75} loading="eager" fetchpriority="high" />
-    <h1 class="links-nome">Ana Paula Almeida</h1>
+    <h1 class="links-nome"><img src={logoVinho.src} width="354" height="35" alt="Ana Paula Almeida"></h1>
     <Fio />
     <p class="links-oficio">Especialista em sobrancelhas, lábios e cílios: micropigmentação, design e extensão. Avaliação gratuita.</p>
 

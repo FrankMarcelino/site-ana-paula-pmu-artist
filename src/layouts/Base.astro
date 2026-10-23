@@ -1,15 +1,18 @@
 ---
-import '@fontsource/italiana/400.css';
+import '@fontsource/cormorant/400.css';
+import '@fontsource/cormorant/400-italic.css';
 import '@fontsource/albert-sans/400.css';
-import '@fontsource/albert-sans/500.css';
 import '@fontsource/albert-sans/600.css';
+import '@fontsource/albert-sans/700.css';
 import '../styles/global.css';
-// As duas fontes da primeira tela baixam logo no começo: o texto aparece mais cedo e não pula de lugar.
-import italiana from '@fontsource/italiana/files/italiana-latin-400-normal.woff2?url';
+// As fontes da primeira tela baixam logo no começo: o texto aparece mais cedo e não pula de lugar.
+import cormorant from '@fontsource/cormorant/files/cormorant-latin-400-normal.woff2?url';
+import cormorantItalico from '@fontsource/cormorant/files/cormorant-latin-400-italic.woff2?url';
 import albertSans from '@fontsource/albert-sans/files/albert-sans-latin-400-normal.woff2?url';
 import IconeWhatsapp from '../components/IconeWhatsapp.astro';
 import ChatLivia from '../components/ChatLivia.astro';
 import logo from '../assets/logo.svg';
+import logoVinho from '../assets/logo-vinho.svg';
 import { ENDERECO, HORARIO, INSTAGRAM, WHATSAPP, whatsapp } from '../data/ana';
 
 interface Props { titulo: string; descricao: string; mensagemAgendar?: string }
@@ -23,6 +26,8 @@ const PAGINAS = [
   { url: 'espaco/', nome: 'O espaço' },
 ];
 const atual = (url: string) => Astro.url.pathname === `/${url}`;
+// Na inicial a assinatura grande é o título da página: no cabeçalho ela repetiria o nome.
+const inicial = atual('');
 const canonica = new URL(Astro.url.pathname, Astro.site);
 const telefone = `+${WHATSAPP}`;
 // Marcação de negócio local: é por ela que o Google lê endereço, horário e telefone.
@@ -51,7 +56,8 @@ const negocio = {
   <meta name="description" content={descricao}>
   <link rel="canonical" href={canonica}>
   <meta name="theme-color" content="#F7EEEC">
-  <link rel="preload" href={italiana} as="font" type="font/woff2" crossorigin>
+  {/* Na inicial a primeira tela tem o itálico (a frase de abertura); nas outras, o título em pé. */}
+  <link rel="preload" href={inicial ? cormorantItalico : cormorant} as="font" type="font/woff2" crossorigin>
   <link rel="preload" href={albertSans} as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
@@ -68,7 +74,7 @@ const negocio = {
 <body>
   <a class="pular" href="#conteudo">Pular para o conteúdo</a>
   <header class="cabecalho miolo">
-    <a class="marca" href="/"><img src={logo.src} width="400" height="100" alt="Ana Paula Almeida, micropigmentação"></a>
+    {!inicial && <a class="marca" href="/"><img src={logoVinho.src} width="354" height="35" alt="Ana Paula Almeida, micropigmentação"></a>}
     <nav class="menu" aria-label="Páginas">
       <ul>
         {PAGINAS.map((p) => <li><a href={`/${p.url}`} aria-current={atual(p.url) ? 'page' : undefined}>{p.nome}</a></li>)}
@@ -84,7 +90,7 @@ const negocio = {
     <div class="miolo">
       <div class="rodape-grade">
         <div>
-          <a class="marca" href="/"><img src={logo.src} width="400" height="100" alt="Ana Paula Almeida"></a>
+          <a class="marca" href="/"><img src={logo.src} width="354" height="35" alt="Ana Paula Almeida" loading="lazy"></a>
         </div>
         <div>
           <h2>Onde fica</h2>

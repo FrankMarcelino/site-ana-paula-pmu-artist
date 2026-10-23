@@ -13,15 +13,19 @@
   --rosa-pele: #EFC0C5;      /* fundo de seção alternada */
   --pigmento-suave: #6E5450; /* texto secundário (contraste AA sobre o fundo) */
 
-  --display: 'Italiana', 'Didot', serif;
+  /* Duas famílias, cada uma com um papel (ver /marca/):
+     Cormorant: a voz da marca. Títulos em pé; o itálico é a frase que a Ana diria.
+     Albert Sans: a informação. Texto, preços na lista, botões, menu. */
+  --display: 'Cormorant', 'Cormorant Garamond', Garamond, serif;
   --texto: 'Albert Sans', system-ui, sans-serif;
 
   --t-pequeno: 0.875rem;
   --t-base: 1.0625rem;
+  --t-sub: 1.1875rem;    /* nome de serviço, de etapa: Albert Sans 600 */
   --t-m: 1.375rem;
-  --t-g: 2rem;
-  --t-xg: clamp(2.75rem, 9vw, 5.5rem);
-  --t-nome: clamp(3.25rem, 13vw, 8.5rem);
+  --t-frase: 1.625rem;   /* Cormorant itálico: o olho da Cormorant é pequeno, por isso maior que --t-m */
+  --t-g: 2.25rem;
+  --t-xg: clamp(3rem, 10vw, 5.5rem);
 
   --margem: clamp(1.25rem, 5vw, 3rem);
   --largura: 72rem;
@@ -59,9 +63,9 @@ h1, h2, h3 { margin: 0; }
 
 /* ----- cabeçalho ----- */
 .cabecalho { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.25rem; }
-.cabecalho .marca img { width: 9.5rem; filter: brightness(0); opacity: .85; }
+.cabecalho .marca img { width: 11rem; }
 .menu ul { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; margin: 0; padding: 0; list-style: none; }
-.menu a { color: var(--pigmento); text-decoration: none; font-weight: 500; }
+.menu a { color: var(--pigmento); text-decoration: none; }
 .menu a:hover, .menu a[aria-current='page'] { color: var(--vinho); }
 .menu a[aria-current='page'] { text-decoration: underline; text-underline-offset: .35em; text-decoration-thickness: 1px; }
 
@@ -77,9 +81,10 @@ h1, h2, h3 { margin: 0; }
 /* ----- topo da inicial ----- */
 .topo { display: grid; gap: 2.5rem; align-items: end; padding-block: 2rem 4.5rem; }
 @media (min-width: 52rem) { .topo { grid-template-columns: 1.1fr .9fr; padding-block: 3rem 6rem; } }
-.topo-nome { font: 400 var(--t-nome)/.88 var(--display); letter-spacing: -.01em; }
-.topo-nome span { display: block; }
-.fio { width: min(100%, 26rem); margin: 1.25rem 0 1.5rem; color: var(--pigmento); }
+/* O título da inicial é a assinatura (logo), não texto composto: o nome tem um desenho só. */
+.topo-nome { line-height: 0; }
+.topo-nome img { width: min(100%, 30rem); }
+.fio { width: min(100%, 26rem); margin: 1.25rem 0 1.5rem; color: var(--vinho); }
 .fio path { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; }
 @media (prefers-reduced-motion: no-preference) {
   .fio path { stroke-dasharray: 60; stroke-dashoffset: 60; animation: risca .5s ease-out forwards; }
@@ -94,24 +99,27 @@ h1, h2, h3 { margin: 0; }
 }
 @keyframes risca { to { stroke-dashoffset: 0; } }
 .topo-texto { max-width: 34rem; }
-.topo-oficio { margin: 0 0 1rem; font-size: var(--t-m); line-height: 1.35; }
+/* O fio vem na cor da assinatura, logo abaixo dela: nome e traço formam um desenho só. */
+.topo .fio { width: min(85%, 20rem); margin: 1rem 0 1.75rem; }
+.topo-oficio { margin: 0 0 1rem; font: italic 400 var(--t-frase)/1.25 var(--display); }
 .topo-autoridade { margin: 0 0 2rem; color: var(--pigmento-suave); }
-.topo-foto img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 12rem 12rem .5rem .5rem; }
+.topo-foto { overflow: clip; border-radius: 12rem 12rem .5rem .5rem; }
+.topo-foto img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
 
 /* ----- cabeçalho das páginas internas ----- */
 .pagina-topo { padding-block: 2.5rem 3rem; }
-.pagina-topo h1 { font: 400 var(--t-xg)/1 var(--display); }
+.pagina-topo h1 { font: 400 var(--t-xg)/.95 var(--display); }
 .pagina-topo p { margin: 1rem 0 0; max-width: 38rem; font-size: var(--t-m); line-height: 1.4; }
 
 /* ----- seções ----- */
 .secao { padding-block: 4rem 4.5rem; }
 .secao--branca { background: #fff; }
 .secao--rosa { background: var(--rosa-pele); }
-.titulo-secao { margin: 0 0 .5rem; font: 400 var(--t-xg)/1 var(--display); }
+.titulo-secao { margin: 0 0 .5rem; font: 400 var(--t-xg)/.95 var(--display); }
 .titulo-secao--menor { font-size: clamp(2.25rem, 7vw, 3.75rem); }
 .intro-secao { margin: 0 0 2.5rem; max-width: 38rem; color: var(--pigmento-suave); }
 .acoes { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; margin-top: 2.5rem; }
-.acoes .link-forte { color: var(--pigmento); font-weight: 500; }
+.acoes .link-forte { color: var(--pigmento); font-weight: 600; }
 
 /* ----- cardápio de serviços ----- */
 .cardapio { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--pigmento); }
@@ -120,11 +128,11 @@ h1, h2, h3 { margin: 0; }
   padding-block: 1.25rem; border-bottom: 1px solid color-mix(in srgb, var(--pigmento) 25%, transparent);
 }
 .cardapio img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; }
-.cardapio h3 { font: 500 var(--t-m)/1.2 var(--texto); }
+.cardapio h3 { font: 600 var(--t-sub)/1.25 var(--texto); }
 .cardapio h3 a { color: inherit; text-decoration: none; }
 .cardapio h3 a:hover { color: var(--vinho); }
 .cardapio p { margin: .25rem 0 0; font-size: var(--t-pequeno); color: var(--pigmento-suave); }
-.cardapio .preco { font: 400 var(--t-g)/1 var(--display); white-space: nowrap; text-align: right; }
+.cardapio .preco { font: 400 var(--t-g)/1 var(--display); font-variant-numeric: lining-nums; white-space: nowrap; text-align: right; }
 .cardapio .preco small { display: block; margin-top: .35rem; font: 400 var(--t-pequeno)/1.2 var(--texto); color: var(--pigmento-suave); }
 /* no celular o nome é longo demais para dividir a linha com o preço */
 @media (max-width: 39.99rem) {
@@ -141,9 +149,9 @@ h1, h2, h3 { margin: 0; }
 .etapas li { counter-increment: etapa; }
 .etapas li::before {
   content: counter(etapa); display: block; margin-bottom: .5rem;
-  font: 400 var(--t-g)/1 var(--display); color: var(--rosa-casa);
+  font: 400 var(--t-g)/1 var(--display); font-variant-numeric: lining-nums; color: var(--rosa-casa);
 }
-.etapas h3 { font: 500 var(--t-m)/1.25 var(--texto); margin-bottom: .4rem; }
+.etapas h3 { font: 600 var(--t-sub)/1.25 var(--texto); margin-bottom: .4rem; }
 .etapas p { margin: 0; color: var(--pigmento-suave); }
 
 /* ----- resultados ----- */
@@ -155,7 +163,7 @@ h1, h2, h3 { margin: 0; }
 /* ----- vídeos: nada baixa até a pessoa apertar o play ----- */
 .videos { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); margin: 0; padding: 0; list-style: none; }
 .videos video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: var(--pigmento); border-radius: .75rem; }
-.videos h3 { margin-top: .75rem; font: 500 var(--t-base)/1.3 var(--texto); }
+.videos h3 { margin-top: .75rem; font: 600 var(--t-base)/1.3 var(--texto); }
 .videos p { margin: .2rem 0 0; font-size: var(--t-pequeno); color: var(--pigmento-suave); }
 
 /* ----- perguntas ----- */
@@ -163,7 +171,7 @@ h1, h2, h3 { margin: 0; }
 .perguntas details { border-bottom: 1px solid color-mix(in srgb, var(--pigmento) 25%, transparent); }
 .perguntas summary {
   display: flex; justify-content: space-between; gap: 1rem; padding-block: 1.1rem;
-  font-weight: 500; cursor: pointer; list-style: none;
+  font-weight: 600; cursor: pointer; list-style: none;
 }
 .perguntas summary::-webkit-details-marker { display: none; }
 .perguntas summary::after { content: '+'; font: 400 1.5rem/1 var(--texto); color: var(--vinho); }
@@ -173,7 +181,8 @@ h1, h2, h3 { margin: 0; }
 /* ----- o espaço ----- */
 .espaco { display: grid; gap: 2.5rem; align-items: center; }
 @media (min-width: 52rem) { .espaco { grid-template-columns: 1fr 1fr; } }
-.espaco-foto img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: .5rem; }
+.espaco-foto { overflow: clip; border-radius: .5rem; }
+.espaco-foto img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
 .dados { display: grid; gap: 1.5rem; margin: 0; }
 .dados dt { font-weight: 600; }
 .dados dd { margin: .25rem 0 0; color: var(--pigmento-suave); }
@@ -191,7 +200,7 @@ h1, h2, h3 { margin: 0; }
 .combos { display: grid; gap: 1.25rem; }
 @media (min-width: 48rem) { .combos { grid-template-columns: 1fr 1fr; } }
 .combo { padding: 2rem; border: 1px solid var(--pigmento); border-radius: .75rem; background: var(--po-de-arroz); }
-.combo h3 { font: 400 var(--t-g)/1 var(--display); }
+.combo h3 { font: 400 var(--t-g)/1 var(--display); font-variant-numeric: lining-nums; }
 .combo .valor { margin: .75rem 0 0; font-size: var(--t-m); font-weight: 600; }
 .combo .valor small { font-weight: 400; color: var(--pigmento-suave); font-size: var(--t-pequeno); }
 .combo ul { margin: 1rem 0 1.5rem; padding-left: 1.1rem; }
@@ -222,7 +231,7 @@ h1, h2, h3 { margin: 0; }
 .whatsapp-dica {
   position: absolute; right: calc(100% + .75rem); white-space: nowrap;
   padding: .45rem .8rem; border-radius: 999px;
-  background: var(--pigmento); color: var(--po-de-arroz); font: 500 var(--t-pequeno)/1 var(--texto);
+  background: var(--pigmento); color: var(--po-de-arroz); font: 600 var(--t-pequeno)/1 var(--texto);
   opacity: 0; transform: translateX(.35rem); pointer-events: none;
   transition: opacity .15s, transform .15s;
 }
@@ -249,7 +258,8 @@ h1, h2, h3 { margin: 0; }
 /* ----- página de links (bio do Instagram) ----- */
 .links { max-width: 30rem; padding-block: 2.5rem 3rem; text-align: center; }
 .links-foto { width: 6rem; height: 6rem; margin: 0 auto 1rem; border-radius: 50%; object-fit: cover; object-position: 50% 30%; }
-.links-nome { font: 400 clamp(2.5rem, 11vw, 3.25rem)/1 var(--display); }
+.links-nome { line-height: 0; }
+.links-nome img { width: min(100%, 18rem); margin-inline: auto; }
 .links .fio { width: 12rem; margin: .75rem auto 1rem; }
 .links-oficio { margin: 0 0 1.75rem; color: var(--pigmento-suave); }
 .links-principal {
@@ -264,11 +274,11 @@ h1, h2, h3 { margin: 0; }
 .links-lista a {
   display: grid; gap: .15rem; padding: .95rem 1.25rem; min-height: 3.5rem; align-content: center;
   border: 1px solid var(--pigmento); border-radius: 1rem; background: #fff;
-  color: var(--pigmento); text-decoration: none; font-weight: 500;
+  color: var(--pigmento); text-decoration: none; font-weight: 600;
 }
 .links-lista a:hover { border-color: var(--vinho); color: var(--vinho); }
 .links-lista small { font-weight: 400; font-size: var(--t-pequeno); color: var(--pigmento-suave); }
-.links-site { color: var(--pigmento); font-weight: 500; }
+.links-site { color: var(--pigmento); font-weight: 600; }
 
 /* ----- "Fale com a Belle": abre o chat da LIVIA, abaixo do botão do WhatsApp -----
    Rosa #D946A0 (escolha do Frank). Branco sobre ele dá 3,9:1: só passa no AA como texto
@@ -306,3 +316,24 @@ h1, h2, h3 { margin: 0; }
   box-shadow: 0 2px 8px rgb(143 31 99 / .25);
 }
 .fale-belle-selo svg { width: .85rem; height: .85rem; }
+
+/* ----- parallax: a foto anda devagar dentro da moldura enquanto a página rola -----
+   Só CSS (animation-timeline: view()), sem JavaScript: o navegador move a imagem na placa
+   de vídeo, não recalcula a página, então não pesa no celular. Quem não suporta (Firefox)
+   vê a foto parada; quem pediu menos movimento no aparelho também.
+   A moldura corta com overflow: clip, não hidden: hidden faz dela um contêiner de rolagem,
+   e a view() passaria a medir a rolagem da moldura (que nunca rola), com a foto parada. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .topo-foto img, .espaco-foto img {
+      scale: 1.12;
+      /* Propriedades separadas de propósito: o minificador junta "animation" + "animation-timeline"
+         num atalho só, que o navegador recusa (a timeline não vale dentro do atalho). */
+      animation-name: flutua;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+    }
+  }
+}
+@keyframes flutua { from { translate: 0 -5%; } to { translate: 0 5%; } }

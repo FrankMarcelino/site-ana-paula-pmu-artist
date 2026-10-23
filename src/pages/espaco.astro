@@ -6,7 +6,7 @@ import fachada from '../assets/espaco/fachada.jpeg';
 import fachadaFlores from '../assets/espaco/fachada-flores.jpeg';
 import retrato from '../assets/ana/retrato.jpeg';
 import Perguntas from '../components/Perguntas.astro';
-import { ENDERECO, HORARIO, INSTAGRAM_ESTUDIO, PERGUNTAS_GERAIS } from '../data/ana';
+import { ENDERECO, HORARIO, INSTAGRAM, PERGUNTAS_GERAIS } from '../data/ana';
 const enderecoBusca = encodeURIComponent(`${ENDERECO.rua}, ${ENDERECO.bairro}, ${ENDERECO.cidade} - ${ENDERECO.uf}`);
 ---
 <Base titulo="O espaço | Ana Paula Almeida, micropigmentação em Juazeiro do Norte" descricao="Endereço, horário e fotos do estúdio de Ana Paula Almeida em Juazeiro do Norte.">
@@ -39,7 +39,7 @@ const enderecoBusca = encodeURIComponent(`${ENDERECO.rua}, ${ENDERECO.bairro}, $
       <ul class="resultados">
         <li><figure><Image quality={70} width={600} src={fachadaFlores} alt="Varanda da casa rosa com o balanço" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /></figure></li>
       </ul>
-      <p class="intro-secao" style="margin-top:1.5rem">Mais fotos no <a href={INSTAGRAM_ESTUDIO} target="_blank" rel="noopener">Instagram do estúdio</a>.</p>
+      <p class="intro-secao" style="margin-top:1.5rem">Mais fotos no <a href={INSTAGRAM} target="_blank" rel="noopener">Instagram da Ana</a>.</p>
     </div>
   </section>
 

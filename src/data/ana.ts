@@ -6,7 +6,6 @@
 export const WHATSAPP = '5588981035530';
 export const whatsapp = (texto: string) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
 export const INSTAGRAM = 'https://www.instagram.com/anapaula_pmu_artist/';
-export const INSTAGRAM_ESTUDIO = 'https://www.instagram.com/anapaula.beauty.studio/';
 
 export const ENDERECO = {
   rua: 'Rua José Sebastião de Carvalho, 450',

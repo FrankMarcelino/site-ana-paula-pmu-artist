@@ -12,7 +12,7 @@ import Fio from '../components/Fio.astro';
 import FaleComBelle from '../components/FaleComBelle.astro';
 import ChatLivia from '../components/ChatLivia.astro';
 import retrato from '../assets/ana/retrato.jpeg';
-import { ENDERECO, INSTAGRAM_ESTUDIO, whatsapp } from '../data/ana';
+import { ENDERECO, whatsapp } from '../data/ana';
 
 const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${ENDERECO.rua}, ${ENDERECO.bairro}, ${ENDERECO.cidade} - ${ENDERECO.uf}`)}`;
 const LINKS = [
@@ -21,7 +21,6 @@ const LINKS = [
   { href: '/cilios/', texto: 'Cílios', detalhe: 'Extensão e manutenção' },
   { href: '/videos/', texto: 'Vídeos dos procedimentos', detalhe: '' },
   { href: maps, texto: 'Como chegar', detalhe: `${ENDERECO.rua}, ${ENDERECO.bairro}`, externo: true },
-  { href: INSTAGRAM_ESTUDIO, texto: 'Instagram do estúdio', detalhe: '@anapaula.beauty.studio', externo: true },
 ];
 const titulo = 'Ana Paula Almeida | Links';
 const descricao = 'Agende pelo WhatsApp, veja preços de sobrancelhas, lábios e cílios, vídeos e como chegar ao estúdio em Juazeiro do Norte.';

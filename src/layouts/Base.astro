@@ -10,7 +10,7 @@ import albertSans from '@fontsource/albert-sans/files/albert-sans-latin-400-norm
 import IconeWhatsapp from '../components/IconeWhatsapp.astro';
 import ChatLivia from '../components/ChatLivia.astro';
 import logo from '../assets/logo.svg';
-import { ENDERECO, HORARIO, INSTAGRAM, INSTAGRAM_ESTUDIO, WHATSAPP, whatsapp } from '../data/ana';
+import { ENDERECO, HORARIO, INSTAGRAM, WHATSAPP, whatsapp } from '../data/ana';
 
 interface Props { titulo: string; descricao: string; mensagemAgendar?: string }
 const { titulo, descricao, mensagemAgendar } = Astro.props;
@@ -39,7 +39,7 @@ const negocio = {
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Thursday', opens: '08:00', closes: '21:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '08:00', closes: '12:00' },
   ],
-  sameAs: [INSTAGRAM, INSTAGRAM_ESTUDIO],
+  sameAs: [INSTAGRAM],
 };
 ---
 <!doctype html>

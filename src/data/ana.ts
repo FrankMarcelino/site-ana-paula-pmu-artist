@@ -11,6 +11,8 @@ export const ENDERECO = {
   bairro: 'Lagoa Seca',
   cidade: 'Juazeiro do Norte',
   uf: 'CE',
+  // O mesmo texto da base da Belle (a IA da Miss Belle).
+  referencia: 'Próximo ao Pastos e Pizzas e ao Colégio Espaço Brincar',
 };
 
 // Expediente da agenda (Ana Paula). Domingo fechado.

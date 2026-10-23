@@ -20,7 +20,7 @@ const enderecoBusca = encodeURIComponent(`${ENDERECO.rua}, ${ENDERECO.bairro}, $
       <div>
         <h2 id="t-visite" class="titulo-secao titulo-secao--menor">Como chegar</h2>
         <dl class="dados">
-          <div><dt>Endereço</dt><dd>{ENDERECO.rua}<br>{ENDERECO.bairro}, {ENDERECO.cidade} – {ENDERECO.uf}</dd></div>
+          <div><dt>Endereço</dt><dd>{ENDERECO.rua}<br>{ENDERECO.bairro}, {ENDERECO.cidade} – {ENDERECO.uf}<br>{ENDERECO.referencia}</dd></div>
           <div><dt>Horário</dt><dd><ul class="horario">{HORARIO.map((h) => <li><span>{h.dias}</span><span>{h.horas}</span></li>)}<li><span>Domingo</span><span>fechado</span></li></ul></dd></div>
           <div><dt>Estacionamento</dt><dd>Estacionamento interno para moto e rua larga para o carro.</dd></div>
         </dl>

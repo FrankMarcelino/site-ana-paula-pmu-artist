@@ -117,6 +117,8 @@ const negocio = {
         s.src = 'https://livia.app.online24por7.ai/webchat.js';
         s.async = true;
         s.setAttribute('data-widget-id', 'a0497300-3b42-4fa7-9a58-b25f710e03fe');
+        // Empilha o chat acima do botão do WhatsApp (20 px do rodapé + 56 do botão + 20 de folga).
+        s.setAttribute('data-bottom-offset', '96');
         document.body.appendChild(s);
       }
       ['scroll', 'pointerdown', 'keydown'].forEach(function (e) { addEventListener(e, carregar, { once: true, passive: true }); });

@@ -7,9 +7,9 @@ import '../styles/global.css';
 // As duas fontes da primeira tela baixam logo no começo: o texto aparece mais cedo e não pula de lugar.
 import italiana from '@fontsource/italiana/files/italiana-latin-400-normal.woff2?url';
 import albertSans from '@fontsource/albert-sans/files/albert-sans-latin-400-normal.woff2?url';
-import Agendar from '../components/Agendar.astro';
+import IconeWhatsapp from '../components/IconeWhatsapp.astro';
 import logo from '../assets/logo.svg';
-import { ENDERECO, HORARIO, INSTAGRAM, INSTAGRAM_ESTUDIO, WHATSAPP } from '../data/ana';
+import { ENDERECO, HORARIO, INSTAGRAM, INSTAGRAM_ESTUDIO, WHATSAPP, whatsapp } from '../data/ana';
 
 interface Props { titulo: string; descricao: string; mensagemAgendar?: string }
 const { titulo, descricao, mensagemAgendar } = Astro.props;
@@ -100,7 +100,11 @@ const negocio = {
     </div>
   </footer>
 
-  <div class="barra-agendar"><Agendar mensagem={mensagemAgendar} /></div>
+  <!-- Botão flutuante do WhatsApp em todas as telas, acima do balão do chat da LIVIA. -->
+  <a class="whatsapp-flutuante" href={whatsapp(mensagemAgendar ?? 'Olá, Ana! Gostaria de agendar um horário.')} target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp">
+    <IconeWhatsapp />
+    <span class="whatsapp-dica">Agende seu horário!</span>
+  </a>
 
   <!-- Chat da LIVIA: só carrega depois da primeira interação (rolar, tocar, clicar) ou de 8 s,
        para não pesar na primeira tela do celular. -->

@@ -206,20 +206,27 @@ h1, h2, h3 { margin: 0; }
 .rodape ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .35rem; }
 .rodape-copy { margin: 2.5rem 0 0; font-size: var(--t-pequeno); opacity: .75; }
 
-/* ----- barra fixa no celular ----- */
-.barra-agendar { display: none; }
-@media (max-width: 40rem) {
-  .barra-agendar {
-    display: flex; justify-content: center;
-    position: fixed; inset: auto 0 0 0; z-index: 10;
-    padding: .75rem calc(var(--margem) + 4.25rem) calc(.75rem + env(safe-area-inset-bottom)) var(--margem);
-    background: color-mix(in srgb, var(--po-de-arroz) 92%, transparent);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid color-mix(in srgb, var(--pigmento) 15%, transparent);
-  }
-  .barra-agendar .agendar { width: 100%; justify-content: center; }
-  body { padding-bottom: 5rem; }
+/* ----- botão flutuante do WhatsApp (todas as telas) -----
+   Fica acima do balão do chat da LIVIA (canto inferior direito), sem se sobrepor a ele. */
+.whatsapp-flutuante {
+  position: fixed; z-index: 10;
+  right: 1.25rem; bottom: calc(5.75rem + env(safe-area-inset-bottom));
+  display: grid; place-items: center;
+  width: 3.5rem; height: 3.5rem; border-radius: 50%;
+  background: #25D366; color: #fff;
+  box-shadow: 0 6px 18px rgb(59 36 32 / .25);
 }
+.whatsapp-flutuante svg { width: 1.9rem; height: 1.9rem; }
+.whatsapp-flutuante:hover { background: #1EBE5A; }
+.whatsapp-dica {
+  position: absolute; right: calc(100% + .75rem); white-space: nowrap;
+  padding: .45rem .8rem; border-radius: 999px;
+  background: var(--pigmento); color: var(--po-de-arroz); font: 500 var(--t-pequeno)/1 var(--texto);
+  opacity: 0; transform: translateX(.35rem); pointer-events: none;
+  transition: opacity .15s, transform .15s;
+}
+.whatsapp-flutuante:hover .whatsapp-dica, .whatsapp-flutuante:focus-visible .whatsapp-dica { opacity: 1; transform: none; }
+@media (hover: none) { .whatsapp-dica { display: none; } }
 
 /* No celular os vídeos (verticais) viram uma faixa que rola para o lado: cada um
    ocupa ~70% da largura e o próximo aparece na borda, avisando que tem mais. */

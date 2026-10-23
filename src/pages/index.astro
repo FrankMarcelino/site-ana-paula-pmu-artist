@@ -6,23 +6,25 @@ import Monograma from '../components/Monograma.astro';
 import FaleComBelle from '../components/FaleComBelle.astro';
 import Cardapio from '../components/Cardapio.astro';
 import Videos from '../components/Videos.astro';
-import capa from '../assets/ana/capa.jpg';
+import fotoTopo from '../assets/ana/topo.jpeg';
 import logoVinho from '../assets/logo-vinho.svg';
 import fachada from '../assets/espaco/fachada.jpeg';
 import { INSTAGRAM, whatsapp } from '../data/ana';
 ---
 <Base titulo="Ana Paula Almeida | Micropigmentação em Juazeiro do Norte" descricao="Micropigmentação de sobrancelhas e lábios em Juazeiro do Norte, com Ana Paula Almeida. Veja preços, vídeos e agende pelo WhatsApp.">
-  <section class="topo miolo" aria-labelledby="nome">
-    <div class="topo-texto">
-      <Monograma fundo />
-      <h1 id="nome" class="topo-nome"><img src={logoVinho.src} width="354" height="35" alt="Ana Paula Almeida" fetchpriority="high"></h1>
-      <p class="topo-oficio">Especialista em sobrancelhas, lábios e cílios, em Juazeiro do Norte.</p>
-      <p class="topo-autoridade">Mais de 6 anos de profissão e milhares de atendimentos, inclusive de clientes de fora do país. Trabalho com os produtos mais reconhecidos do mercado e sigo estudando a técnica.</p>
-      <FaleComBelle />
-    </div>
-    <figure class="topo-foto" style="margin:0">
-      <Image quality={70} width={534} src={capa} alt="Ana Paula Almeida no estúdio" widths={[360, 534]} sizes="(min-width: 52rem) 40vw, 100vw" loading="eager" fetchpriority="high" />
+  <section class="topo" aria-labelledby="nome">
+    <figure class="topo-foto">
+      <Image quality={72} width={1448} src={fotoTopo} alt="Ana Paula Almeida sorrindo" widths={[480, 800, 1200, 1448]} sizes="(min-width: 52rem) 60vw, 100vw" loading="eager" fetchpriority="high" />
     </figure>
+    <div class="miolo topo-miolo">
+      <div class="topo-texto">
+        <Monograma fundo />
+        <h1 id="nome" class="topo-nome"><img src={logoVinho.src} width="354" height="35" alt="Ana Paula Almeida"></h1>
+        <p class="topo-oficio">Especialista em sobrancelhas, lábios e cílios, em Juazeiro do Norte.</p>
+        <p class="topo-autoridade">Mais de 6 anos de profissão e milhares de atendimentos, inclusive de clientes de fora do país. Trabalho com os produtos mais reconhecidos do mercado e sigo estudando a técnica.</p>
+        <FaleComBelle />
+      </div>
+    </div>
   </section>
 
   <section class="secao secao--branca" aria-labelledby="titulo-servicos">

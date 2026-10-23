@@ -255,9 +255,10 @@ h1, h2, h3 { margin: 0; }
 .links-principal {
   display: flex; align-items: center; justify-content: center; gap: .6rem;
   min-height: 3.5rem; padding: .9rem 1.25rem; border-radius: 999px;
-  background: #25D366; color: #fff; font: 600 var(--t-m)/1 var(--texto); text-decoration: none;
+  /* Verde escuro: branco sobre o verde claro do WhatsApp (#25D366) dá só 2:1; aqui, 5,4:1. */
+  background: #0B7A3E; color: #fff; font: 600 var(--t-m)/1 var(--texto); text-decoration: none;
 }
-.links-principal:hover { background: #1EBE5A; }
+.links-principal:hover { background: #096A35; }
 .links-principal svg { width: 1.4em; height: 1.4em; }
 .links-lista { display: grid; gap: .75rem; margin: 1.25rem 0 2rem; padding: 0; list-style: none; }
 .links-lista a {
@@ -269,15 +270,27 @@ h1, h2, h3 { margin: 0; }
 .links-lista small { font-weight: 400; font-size: var(--t-pequeno); color: var(--pigmento-suave); }
 .links-site { color: var(--pigmento); font-weight: 500; }
 
-/* ----- "Fale com a Belle": abre o chat da LIVIA, abaixo do botão do WhatsApp ----- */
+/* ----- "Fale com a Belle": abre o chat da LIVIA, abaixo do botão do WhatsApp -----
+   Rosa #D946A0 (escolha do Frank). Branco sobre ele dá 3,9:1: só passa no AA como texto
+   GRANDE, então o título vai a 19 px em negrito. A linha pequena vai numa etiqueta clara
+   com o rosa escuro (contraste alto). */
+:root { --rosa-belle: #D946A0; --rosa-belle-escuro: #8F1F63; --rosa-belle-claro: #FCE7F3; }
 .fale-belle {
-  display: inline-flex; align-items: center; gap: .7rem; margin-top: .9rem;
-  padding: .7rem 1.4rem .7rem 1.1rem; min-height: 3rem;
-  background: transparent; border: 1px solid var(--pigmento); border-radius: 999px;
-  color: var(--pigmento); font: 600 var(--t-base)/1.15 var(--texto); text-align: left; cursor: pointer;
+  display: inline-flex; align-items: center; gap: .75rem; margin-top: .9rem;
+  padding: .6rem 1.1rem .6rem .9rem; min-height: 3.25rem;
+  background: var(--rosa-belle); border: 0; border-radius: 999px;
+  color: #fff; font: 700 1.1875rem/1.1 var(--texto); text-align: left; cursor: pointer;
+  box-shadow: 0 6px 18px rgb(217 70 160 / .35);
 }
-.fale-belle:hover { border-color: var(--vinho); color: var(--vinho); }
-.fale-belle svg { width: 1.4rem; height: 1.4rem; flex: none; }
-.fale-belle small { display: block; font-weight: 400; font-size: var(--t-pequeno); color: var(--pigmento-suave); }
+.fale-belle:hover { background: #C93A92; }
+.fale-belle:focus-visible { outline-color: var(--rosa-belle-escuro); }
+.fale-belle svg { width: 1.5rem; height: 1.5rem; flex: none; }
+.fale-belle span { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .6rem; }
+.fale-belle small {
+  padding: .2rem .55rem; border-radius: 999px;
+  background: var(--rosa-belle-claro); color: var(--rosa-belle-escuro);
+  font: 600 var(--t-pequeno)/1.2 var(--texto);
+}
 .topo-texto .fale-belle { display: flex; width: fit-content; }
-.fale-belle--cheio { display: flex; width: 100%; justify-content: center; background: #fff; border-radius: 1rem; }
+.fale-belle--cheio { display: flex; width: 100%; justify-content: center; border-radius: 1rem; padding-block: .8rem; }
+.fale-belle--cheio span { flex: 0 1 auto; flex-direction: column; align-items: flex-start; }

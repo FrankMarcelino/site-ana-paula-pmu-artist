@@ -7,7 +7,7 @@ export const INSTAGRAM = 'https://www.instagram.com/anapaula_pmu_artist/';
 export const INSTAGRAM_ESTUDIO = 'https://www.instagram.com/anapaula.beauty.studio/';
 
 export const ENDERECO = {
-  rua: 'Rua Sargento José Marcolino Brasileiro, 603',
+  rua: 'Rua José Sebastião de Carvalho, 450',
   bairro: 'Lagoa Seca',
   cidade: 'Juazeiro do Norte',
   uf: 'CE',

@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import Videos from '../components/Videos.astro';
+import Agendar from '../components/Agendar.astro';
+import { INSTAGRAM } from '../data/ana';
+---
+<Base titulo="Vídeos dos procedimentos | Ana Paula Almeida" descricao="Vídeos dos procedimentos de micropigmentação feitos por Ana Paula Almeida em Juazeiro do Norte.">
+  <section class="pagina-topo miolo">
+    <h1>Vídeos</h1>
+    <p>Procedimentos gravados no estúdio. Toque no vídeo para assistir.</p>
+  </section>
+  <section class="secao secao--branca">
+    <div class="miolo">
+      <Videos />
+      <div class="acoes">
+        <Agendar />
+        <a class="link-forte" href={INSTAGRAM} target="_blank" rel="noopener">Mais vídeos no Instagram</a>
+      </div>
+    </div>
+  </section>
+</Base>

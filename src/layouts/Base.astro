@@ -1,0 +1,123 @@
+---
+import '@fontsource/italiana/400.css';
+import '@fontsource/albert-sans/400.css';
+import '@fontsource/albert-sans/500.css';
+import '@fontsource/albert-sans/600.css';
+import '../styles/global.css';
+// As duas fontes da primeira tela baixam logo no começo: o texto aparece mais cedo e não pula de lugar.
+import italiana from '@fontsource/italiana/files/italiana-latin-400-normal.woff2?url';
+import albertSans from '@fontsource/albert-sans/files/albert-sans-latin-400-normal.woff2?url';
+import Agendar from '../components/Agendar.astro';
+import logo from '../assets/logo.svg';
+import { ENDERECO, HORARIO, INSTAGRAM, INSTAGRAM_ESTUDIO, WHATSAPP } from '../data/ana';
+
+interface Props { titulo: string; descricao: string; mensagemAgendar?: string }
+const { titulo, descricao, mensagemAgendar } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const PAGINAS = [
+  { url: '', nome: 'Início' },
+  { url: 'sobrancelhas/', nome: 'Sobrancelhas' },
+  { url: 'labios/', nome: 'Lábios' },
+  { url: 'videos/', nome: 'Vídeos' },
+  { url: 'espaco/', nome: 'O espaço' },
+];
+const atual = (url: string) => Astro.url.pathname === `${base}${url}`;
+const canonica = new URL(Astro.url.pathname, Astro.site);
+const telefone = `+${WHATSAPP}`;
+// Marcação de negócio local: é por ela que o Google lê endereço, horário e telefone.
+const negocio = {
+  '@context': 'https://schema.org',
+  '@type': 'BeautySalon',
+  name: 'Ana Paula Almeida — Micropigmentação',
+  url: new URL(base, Astro.site).href,
+  telephone: telefone,
+  address: { '@type': 'PostalAddress', streetAddress: ENDERECO.rua, addressLocality: ENDERECO.cidade, addressRegion: ENDERECO.uf, addressCountry: 'BR' },
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Wednesday', 'Friday'], opens: '08:00', closes: '18:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Tuesday', opens: '09:00', closes: '18:30' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Thursday', opens: '08:00', closes: '21:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '08:00', closes: '12:00' },
+  ],
+  sameAs: [INSTAGRAM, INSTAGRAM_ESTUDIO],
+};
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{titulo}</title>
+  <meta name="description" content={descricao}>
+  <link rel="canonical" href={canonica}>
+  <meta name="theme-color" content="#F7EEEC">
+  <link rel="preload" href={italiana} as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href={albertSans} as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content={titulo}>
+  <meta property="og:description" content={descricao}>
+  <meta property="og:url" content={canonica}>
+  <meta property="og:image" content={new URL(`${base}og.jpg`, Astro.site)}>
+  <script type="application/ld+json" set:html={JSON.stringify(negocio)} />
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+  <header class="cabecalho miolo">
+    <a class="marca" href={base}><img src={logo.src} width="400" height="100" alt="Ana Paula Almeida, micropigmentação"></a>
+    <nav class="menu" aria-label="Páginas">
+      <ul>
+        {PAGINAS.map((p) => <li><a href={`${base}${p.url}`} aria-current={atual(p.url) ? 'page' : undefined}>{p.nome}</a></li>)}
+      </ul>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <slot />
+  </main>
+
+  <footer class="rodape">
+    <div class="miolo">
+      <div class="rodape-grade">
+        <div>
+          <a class="marca" href={base}><img src={logo.src} width="400" height="100" alt="Ana Paula Almeida"></a>
+        </div>
+        <div>
+          <h2>Onde fica</h2>
+          <ul>
+            <li>{ENDERECO.rua}</li>
+            <li>{ENDERECO.bairro}, {ENDERECO.cidade} – {ENDERECO.uf}</li>
+            <li><a href={`tel:${telefone}`}>(88) 9 8103-5530</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Horário</h2>
+          <ul>{HORARIO.map((h) => <li>{h.dias}: {h.horas}</li>)}<li>Domingo: fechado</li></ul>
+          <p style="margin:.75rem 0 0"><a href={INSTAGRAM} target="_blank" rel="noopener">Instagram</a></p>
+        </div>
+      </div>
+      <p class="rodape-copy">© {new Date().getFullYear()} Ana Paula Almeida · Micropigmentação em Juazeiro do Norte</p>
+    </div>
+  </footer>
+
+  <div class="barra-agendar"><Agendar mensagem={mensagemAgendar} /></div>
+
+  <!-- Chat da LIVIA: só carrega depois da primeira interação (rolar, tocar, clicar) ou de 8 s,
+       para não pesar na primeira tela do celular. -->
+  <script is:inline>
+    (function () {
+      var feito = false;
+      function carregar() {
+        if (feito) return; feito = true;
+        var s = document.createElement('script');
+        s.src = 'https://livia.app.online24por7.ai/webchat.js';
+        s.async = true;
+        s.setAttribute('data-widget-id', 'a0497300-3b42-4fa7-9a58-b25f710e03fe');
+        document.body.appendChild(s);
+      }
+      ['scroll', 'pointerdown', 'keydown'].forEach(function (e) { addEventListener(e, carregar, { once: true, passive: true }); });
+      setTimeout(carregar, 8000);
+    })();
+  </script>
+</body>
+</html>

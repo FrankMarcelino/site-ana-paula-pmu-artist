@@ -1,0 +1,8 @@
+---
+// O botão de agendar: o mesmo texto e o mesmo destino em todo o site.
+import IconeWhatsapp from './IconeWhatsapp.astro';
+import { whatsapp } from '../data/ana';
+interface Props { mensagem?: string }
+const { mensagem = 'Olá, Ana! Gostaria de agendar um horário.' } = Astro.props;
+---
+<a class="agendar" href={whatsapp(mensagem)} target="_blank" rel="noopener"><IconeWhatsapp />Agendar pelo WhatsApp</a>

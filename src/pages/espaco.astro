@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Agendar from '../components/Agendar.astro';
+import fachada from '../assets/espaco/fachada.jpeg';
+import fachadaFlores from '../assets/espaco/fachada-flores.jpeg';
+import retrato from '../assets/ana/retrato.jpeg';
+import { ENDERECO, HORARIO, INSTAGRAM_ESTUDIO } from '../data/ana';
+const enderecoBusca = encodeURIComponent(`${ENDERECO.rua}, ${ENDERECO.bairro}, ${ENDERECO.cidade} - ${ENDERECO.uf}`);
+---
+<Base titulo="O espaço | Ana Paula Almeida, micropigmentação em Juazeiro do Norte" descricao="Endereço, horário e fotos do estúdio de Ana Paula Almeida em Juazeiro do Norte.">
+  <section class="pagina-topo miolo">
+    <h1>O espaço</h1>
+    <p>A casa rosa, em {ENDERECO.cidade}.</p>
+  </section>
+
+  <section class="secao secao--branca" aria-labelledby="t-visite">
+    <div class="miolo espaco">
+      <div class="espaco-foto"><Image quality={70} width={1000} src={fachada} alt="Fachada rosa do estúdio, com jardim de flores na frente" widths={[400, 700, 1000]} sizes="(min-width: 52rem) 50vw, 100vw" loading="eager" /></div>
+      <div>
+        <h2 id="t-visite" class="titulo-secao titulo-secao--menor">Como chegar</h2>
+        <dl class="dados">
+          <div><dt>Endereço</dt><dd>{ENDERECO.rua}<br>{ENDERECO.bairro}, {ENDERECO.cidade} – {ENDERECO.uf}</dd></div>
+          <div><dt>Horário</dt><dd><ul class="horario">{HORARIO.map((h) => <li><span>{h.dias}</span><span>{h.horas}</span></li>)}<li><span>Domingo</span><span>fechado</span></li></ul></dd></div>
+          <div><dt>Estacionamento</dt><dd>Estacionamento interno para moto e rua larga para o carro.</dd></div>
+        </dl>
+        <div class="acoes">
+          <Agendar />
+          <a class="link-forte" href={`https://www.google.com/maps/search/?api=1&query=${enderecoBusca}`} target="_blank" rel="noopener">Abrir no Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" aria-labelledby="t-fotos">
+    <div class="miolo">
+      <h2 id="t-fotos" class="titulo-secao titulo-secao--menor">Fotos</h2>
+      <ul class="resultados">
+        <li><figure><Image quality={70} width={600} src={fachadaFlores} alt="Varanda da casa rosa com o balanço" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /></figure></li>
+      </ul>
+      <p class="intro-secao" style="margin-top:1.5rem">Mais fotos no <a href={INSTAGRAM_ESTUDIO} target="_blank" rel="noopener">Instagram do estúdio</a>.</p>
+    </div>
+  </section>
+
+  <section class="secao secao--rosa" aria-labelledby="t-ana">
+    <div class="miolo sobre">
+      <Image quality={70} width={800} src={retrato} alt="Retrato de Ana Paula Almeida" widths={[400, 800]} sizes="(min-width: 52rem) 35vw, 100vw" loading="lazy" />
+      <div>
+        <h2 id="t-ana" class="titulo-secao titulo-secao--menor">Quem atende</h2>
+        <p>Ana Paula Almeida é especializada em micropigmentação de sobrancelhas e lábios, com mais de 6 anos de profissão e milhares de atendimentos, inclusive de clientes de fora do país.</p>
+      </div>
+    </div>
+  </section>
+</Base>

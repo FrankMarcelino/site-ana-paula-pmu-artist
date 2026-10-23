@@ -1,0 +1,19 @@
+---
+// preload="none": a página não baixa nenhum byte do vídeo até a pessoa apertar o play.
+import { VIDEOS } from '../data/ana';
+interface Props { limite?: number }
+const { limite } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const lista = limite ? VIDEOS.slice(0, limite) : VIDEOS;
+---
+<ul class="videos">
+  {lista.map((v) => (
+    <li>
+      <video controls playsinline preload="none" poster={`${base}videos/${v.arquivo}.webp`} width="720" height="1280">
+        <source src={`${base}videos/${v.arquivo}.mp4`} type="video/mp4" />
+      </video>
+      <h3>{v.titulo}</h3>
+      <p>{v.descricao}</p>
+    </li>
+  ))}
+</ul>

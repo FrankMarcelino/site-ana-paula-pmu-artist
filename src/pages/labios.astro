@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Agendar from '../components/Agendar.astro';
+import Cardapio from '../components/Cardapio.astro';
+import ComoFunciona from '../components/ComoFunciona.astro';
+import microLabial from '../assets/resultados/micro-labial.jpeg';
+import microLabialAntigo from '../assets/servicos/micro-labial.jpg';
+import { INSTAGRAM } from '../data/ana';
+const msg = 'Olá, Ana! Quero agendar para os lábios.';
+---
+<Base titulo="Micropigmentação labial em Juazeiro do Norte | Ana Paula Almeida" descricao="Micropigmentação labial e hydra gloss em Juazeiro do Norte. Preços, como funciona, resultados e agendamento pelo WhatsApp." mensagemAgendar={msg}>
+  <section class="pagina-topo miolo">
+    <h1>Lábios</h1>
+    <p>Micropigmentação labial para cor e contorno, e hydra gloss para hidratar e dar brilho.</p>
+  </section>
+
+  <section class="secao secao--branca" aria-labelledby="t-precos">
+    <div class="miolo">
+      <h2 id="t-precos" class="titulo-secao titulo-secao--menor">Serviços e valores</h2>
+      <Cardapio pagina="labios" />
+      <div class="acoes"><Agendar mensagem={msg} /></div>
+    </div>
+  </section>
+
+  <section class="secao" aria-labelledby="t-como">
+    <div class="miolo">
+      <h2 id="t-como" class="titulo-secao titulo-secao--menor">Como funciona a micropigmentação labial</h2>
+      <ComoFunciona />
+    </div>
+  </section>
+
+  <section class="secao secao--rosa" aria-labelledby="t-resultados">
+    <div class="miolo">
+      <h2 id="t-resultados" class="titulo-secao titulo-secao--menor">Resultados</h2>
+      <p class="intro-secao">Mais trabalhos no <a href={INSTAGRAM} target="_blank" rel="noopener">Instagram da Ana</a>.</p>
+      <ul class="resultados">
+        <li><figure><Image quality={70} width={600} src={microLabial} alt="Lábios logo após a micropigmentação labial" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Logo após o procedimento</figcaption></figure></li>
+        <li><figure><Image quality={70} width={600} src={microLabialAntigo} alt="Antes e depois de micropigmentação labial" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Micropigmentação labial</figcaption></figure></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="secao secao--branca" aria-labelledby="t-perguntas">
+    <div class="miolo">
+      <h2 id="t-perguntas" class="titulo-secao titulo-secao--menor">Perguntas frequentes</h2>
+      <div class="perguntas">
+        <details><summary>A cor fica forte assim para sempre?</summary><p>Logo depois do procedimento a cor fica mais intensa. Ela suaviza durante a cicatrização e fica no tom escolhido na avaliação.</p></details>
+        <details><summary>Quanto tempo leva?</summary><p>Cerca de 3h30, contando o desenho e a aplicação.</p></details>
+        <details><summary>Quando é o retoque?</summary><p>Depois da cicatrização, por volta de 40 dias após o procedimento. O retoque custa R$ 200.</p></details>
+      </div>
+      <div class="acoes"><Agendar mensagem={msg} /></div>
+    </div>
+  </section>
+</Base>

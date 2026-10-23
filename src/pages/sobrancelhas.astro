@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Agendar from '../components/Agendar.astro';
+import Cardapio from '../components/Cardapio.astro';
+import ComoFunciona from '../components/ComoFunciona.astro';
+import Videos from '../components/Videos.astro';
+import tintura from '../assets/resultados/sobrancelha-tintura.jpeg';
+import microSobrancelhas from '../assets/servicos/micro-sobrancelhas.jpg';
+import { INSTAGRAM } from '../data/ana';
+const msg = 'Olá, Ana! Quero agendar sobrancelhas.';
+---
+<Base titulo="Micropigmentação de sobrancelhas em Juazeiro do Norte | Ana Paula Almeida" descricao="Micropigmentação de sobrancelhas fio a fio e brow lamination em Juazeiro do Norte. Preços, como funciona, resultados e agendamento pelo WhatsApp." mensagemAgendar={msg}>
+  <section class="pagina-topo miolo">
+    <h1>Sobrancelhas</h1>
+    <p>Micropigmentação fio a fio para preencher e desenhar, e brow lamination para alinhar os fios que você já tem.</p>
+  </section>
+
+  <section class="secao secao--branca" aria-labelledby="t-precos">
+    <div class="miolo">
+      <h2 id="t-precos" class="titulo-secao titulo-secao--menor">Serviços e valores</h2>
+      <Cardapio pagina="sobrancelhas" />
+      <div class="acoes"><Agendar mensagem={msg} /></div>
+    </div>
+  </section>
+
+  <section class="secao" aria-labelledby="t-como">
+    <div class="miolo">
+      <h2 id="t-como" class="titulo-secao titulo-secao--menor">Como funciona a micropigmentação</h2>
+      <ComoFunciona />
+    </div>
+  </section>
+
+  <section class="secao secao--rosa" aria-labelledby="t-resultados">
+    <div class="miolo">
+      <h2 id="t-resultados" class="titulo-secao titulo-secao--menor">Resultados</h2>
+      <p class="intro-secao">Mais trabalhos no <a href={INSTAGRAM} target="_blank" rel="noopener">Instagram da Ana</a>.</p>
+      <ul class="resultados">
+        <li><figure><Image quality={70} width={600} src={microSobrancelhas} alt="Antes e depois de micropigmentação de sobrancelhas" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Micropigmentação fio a fio</figcaption></figure></li>
+        <li><figure><Image quality={70} width={600} src={tintura} alt="Sobrancelhas com design e tintura" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Design com tintura</figcaption></figure></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="secao" aria-labelledby="t-video">
+    <div class="miolo">
+      <h2 id="t-video" class="titulo-secao titulo-secao--menor">A técnica em vídeo</h2>
+      <Videos limite={1} />
+    </div>
+  </section>
+
+  <section class="secao secao--branca" aria-labelledby="t-perguntas">
+    <div class="miolo">
+      <h2 id="t-perguntas" class="titulo-secao titulo-secao--menor">Perguntas frequentes</h2>
+      <div class="perguntas">
+        <details><summary>Quanto tempo dura a micropigmentação?</summary><p>Depende da pele, dos cuidados e da exposição ao sol. A Ana explica na avaliação o que esperar no seu caso.</p></details>
+        <details><summary>Dói?</summary><p>A sensibilidade varia de pessoa para pessoa. A maioria das clientes descreve como um incômodo leve.</p></details>
+        <details><summary>Quando é o retoque?</summary><p>Depois da cicatrização, por volta de 40 dias após o procedimento. O retoque custa R$ 200.</p></details>
+        <details><summary>Qual a diferença para o brow lamination?</summary><p>A micropigmentação desenha fios com pigmento na pele e dura meses. O brow lamination só alinha e fixa os seus próprios fios, sem pigmento.</p></details>
+      </div>
+      <div class="acoes"><Agendar mensagem={msg} /></div>
+    </div>
+  </section>
+</Base>

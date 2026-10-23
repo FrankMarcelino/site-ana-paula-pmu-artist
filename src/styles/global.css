@@ -80,14 +80,20 @@ h1, h2, h3 { margin: 0; }
 
 /* ----- topo da inicial ----- */
 .topo { display: grid; gap: 2.5rem; align-items: end; padding-block: 2rem 4.5rem; }
-@media (min-width: 52rem) { .topo { grid-template-columns: 1.1fr .9fr; padding-block: 3rem 6rem; } }
+/* No computador o texto fica centrado na altura da foto (não preso ao pé dela), e a foto
+   cabe na tela: no máximo a altura da janela menos o cabeçalho. */
+@media (min-width: 52rem) {
+  .topo { grid-template-columns: 1.1fr .9fr; align-items: center; padding-block: 1.5rem 5rem; }
+  .topo-nome img { width: min(100%, 34rem); }
+  .topo-foto img { aspect-ratio: auto; height: min(calc(100svh - 8rem), 46rem); }
+}
 /* O título da inicial é a assinatura (logo), não texto composto: o nome tem um desenho só. */
 .topo-nome { line-height: 0; }
 .topo-nome img { width: min(100%, 30rem); }
 /* O monograma "AP" a 25% embaixo da assinatura: presente, sem disputar com o nome. */
 .monograma { display: block; width: 5.5rem; height: auto; margin: 1rem 0 1.75rem; opacity: .25; }
 .topo-texto { max-width: 34rem; }
-.topo-oficio { margin: 0 0 1rem; font: italic 400 var(--t-frase)/1.25 var(--display); }
+.topo-oficio { margin: 0 0 1rem; font: italic 400 var(--t-frase)/1.25 var(--display); text-wrap: pretty; }
 .topo-autoridade { margin: 0 0 2rem; color: var(--pigmento-suave); }
 .topo-foto { overflow: clip; border-radius: 12rem 12rem .5rem .5rem; }
 .topo-foto img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }

@@ -2,7 +2,7 @@
   "name": "Ana Paula Almeida — Micropigmentação",
   "short_name": "Ana Paula",
   "icons": [{ "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }],
-  "theme_color": "#882E4E",
+  "theme_color": "#F7EEEC",
   "background_color": "#F7EEEC",
   "display": "browser"
 }

@@ -1,7 +1,12 @@
 ---
-// O monograma "AP" da Ana, a 25% de opacidade, logo abaixo da assinatura.
-// É enfeite: o nome já está na assinatura, então fica fora da leitura de tela.
+// O monograma "AP" da Ana. É enfeite: o nome já está na assinatura, então fica fora da
+// leitura de tela. Pequeno (padrão) embaixo da assinatura; "fundo" atrás do texto da inicial.
 import { Image } from 'astro:assets';
 import monograma from '../assets/monograma.png';
+
+interface Props { fundo?: boolean }
+const { fundo = false } = Astro.props;
 ---
-<Image class="monograma" src={monograma} alt="" aria-hidden="true" width={96} densities={[1, 2]} quality={80} />
+{fundo
+  ? <Image class="monograma-fundo" src={monograma} alt="" aria-hidden="true" width={303} widths={[303, 606]} sizes="(min-width: 52rem) 36rem, 100vw" quality={80} />
+  : <Image class="monograma" src={monograma} alt="" aria-hidden="true" width={96} densities={[1, 2]} quality={80} />}

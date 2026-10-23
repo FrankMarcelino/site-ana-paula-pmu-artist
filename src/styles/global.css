@@ -92,7 +92,17 @@ h1, h2, h3 { margin: 0; }
 .topo-nome img { width: min(100%, 30rem); }
 /* O monograma "AP" a 25% embaixo da assinatura: presente, sem disputar com o nome. */
 .monograma { display: block; width: 5.5rem; height: auto; margin: 1rem 0 1.75rem; opacity: .25; }
-.topo-texto { max-width: 34rem; }
+.topo-texto { max-width: 34rem; position: relative; isolation: isolate; }
+/* O "AP" grande atrás de todo o texto do topo, a 18%: personaliza sem atrapalhar a leitura.
+   O texto cinza sobre o ponto mais escuro do AP fica em 5,2 : 1 (mínimo 4,5). */
+.monograma-fundo {
+  position: absolute; z-index: -1; top: 50%; left: 50%; translate: -50% -50%;
+  width: min(100%, 36rem); height: auto; opacity: .18; pointer-events: none; user-select: none;
+}
+/* No celular o AP fica na largura do texto (passar dela criaria rolagem lateral); no
+   computador ele pode crescer para o vão entre o texto e a foto. */
+@media (min-width: 52rem) { .monograma-fundo { width: min(115%, 36rem); } }
+.topo-nome { margin-bottom: 1.5rem; }
 .topo-oficio { margin: 0 0 1rem; font: italic 400 var(--t-frase)/1.25 var(--display); text-wrap: pretty; }
 .topo-autoridade { margin: 0 0 2rem; color: var(--pigmento-suave); }
 .topo-foto { overflow: clip; border-radius: 12rem 12rem .5rem .5rem; }

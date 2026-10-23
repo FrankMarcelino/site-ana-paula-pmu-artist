@@ -207,10 +207,11 @@ h1, h2, h3 { margin: 0; }
 .rodape-copy { margin: 2.5rem 0 0; font-size: var(--t-pequeno); opacity: .75; }
 
 /* ----- botão flutuante do WhatsApp (todas as telas) -----
-   Fica acima do balão do chat da LIVIA (canto inferior direito), sem se sobrepor a ele. */
+   Canto inferior ESQUERDO: o direito é do chat da LIVIA, que abre a janela e o balão de
+   boas-vindas para cima. Um em cada canto, na mesma linha, os dois nunca se cruzam. */
 .whatsapp-flutuante {
   position: fixed; z-index: 10;
-  right: 1.25rem; bottom: calc(5.75rem + env(safe-area-inset-bottom));
+  left: 1.25rem; bottom: calc(1.25rem + env(safe-area-inset-bottom));
   display: grid; place-items: center;
   width: 3.5rem; height: 3.5rem; border-radius: 50%;
   background: #25D366; color: #fff;
@@ -219,10 +220,10 @@ h1, h2, h3 { margin: 0; }
 .whatsapp-flutuante svg { width: 1.9rem; height: 1.9rem; }
 .whatsapp-flutuante:hover { background: #1EBE5A; }
 .whatsapp-dica {
-  position: absolute; right: calc(100% + .75rem); white-space: nowrap;
+  position: absolute; left: calc(100% + .75rem); white-space: nowrap;
   padding: .45rem .8rem; border-radius: 999px;
   background: var(--pigmento); color: var(--po-de-arroz); font: 500 var(--t-pequeno)/1 var(--texto);
-  opacity: 0; transform: translateX(.35rem); pointer-events: none;
+  opacity: 0; transform: translateX(-.35rem); pointer-events: none;
   transition: opacity .15s, transform .15s;
 }
 .whatsapp-flutuante:hover .whatsapp-dica, .whatsapp-flutuante:focus-visible .whatsapp-dica { opacity: 1; transform: none; }

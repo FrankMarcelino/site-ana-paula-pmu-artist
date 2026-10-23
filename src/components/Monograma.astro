@@ -8,5 +8,5 @@ interface Props { fundo?: boolean }
 const { fundo = false } = Astro.props;
 ---
 {fundo
-  ? <Image class="monograma-fundo" src={monograma} alt="" aria-hidden="true" width={303} widths={[303, 606]} sizes="(min-width: 52rem) 36rem, 100vw" quality={80} />
+  ? <Image class="monograma-fundo" src={monograma} alt="" aria-hidden="true" width={576} widths={[400, 800]} sizes="(min-width: 52rem) 36rem, 100vw" quality={70} loading="eager" />
   : <Image class="monograma" src={monograma} alt="" aria-hidden="true" width={96} densities={[1, 2]} quality={80} />}

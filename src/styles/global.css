@@ -303,7 +303,7 @@ h1, h2, h3 { margin: 0; }
   background: var(--rosa-belle-claro); color: var(--rosa-belle-escuro);
   font: 600 var(--t-pequeno)/1.2 var(--texto);
 }
-.topo-texto .fale-belle { display: flex; width: fit-content; }
+.topo-texto .fale-belle { display: flex; width: fit-content; margin-top: .5rem; }
 .fale-belle--cheio { display: flex; width: 100%; justify-content: center; border-radius: 1rem; padding-block: .8rem; }
 .fale-belle--cheio span { flex: 0 1 auto; flex-direction: column; align-items: flex-start; }
 

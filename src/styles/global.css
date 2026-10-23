@@ -91,17 +91,17 @@ h1, h2, h3 { margin: 0; }
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 50%, transparent 94%);
   mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 50%, transparent 94%);
 }
-.topo-miolo { position: relative; margin-top: -4.5rem; }
+.topo-miolo { position: relative; margin-top: -3rem; }
 @media (min-width: 52rem) {
   .topo { display: flex; align-items: center; min-height: min(calc(100svh - 5rem), 50rem); padding-block: 2rem 4rem; }
-  .topo-foto { position: absolute; inset: 0 0 0 auto; width: 60%; height: auto; }
+  .topo-foto { position: absolute; inset: 0 0 0 auto; width: 52%; height: auto; }
   .topo-foto img {
-    object-position: 60% 25%;
+    object-position: 62% 25%;
     /* Some para a esquerda (onde está o texto) e de leve em cima e embaixo, para a borda
        da foto (cinza-claro) não marcar uma linha contra o pó de arroz. */
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 45%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 40%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 80%, transparent 100%);
     -webkit-mask-composite: source-in;
-    mask-image: linear-gradient(to right, transparent 0%, #000 45%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 80%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 40%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 80%, transparent 100%);
     mask-composite: intersect;
   }
   .topo-miolo { margin-top: 0; }
@@ -112,6 +112,9 @@ h1, h2, h3 { margin: 0; }
 /* O monograma "AP" a 25% embaixo da assinatura: presente, sem disputar com o nome. */
 .monograma { display: block; width: 5.5rem; height: auto; margin: 1rem 0 1.75rem; opacity: .25; }
 .topo-texto { max-width: 34rem; position: relative; isolation: isolate; }
+/* No computador o texto não passa de 42% da tela: a foto começa em 48%, então sempre sobra
+   respiro entre o fim do parágrafo e o cabelo, de 1024 px a telas grandes. */
+@media (min-width: 52rem) { .topo-texto { max-width: min(34rem, 42vw); } }
 /* O "AP" grande atrás de todo o texto do topo, a 18%: personaliza sem atrapalhar a leitura.
    O texto cinza sobre o ponto mais escuro do AP fica em 5,2 : 1 (mínimo 4,5). */
 .monograma-fundo {

@@ -1,0 +1,8 @@
+---
+import type { Pergunta } from '../data/ana';
+interface Props { lista: Pergunta[] }
+const { lista } = Astro.props;
+---
+<div class="perguntas">
+  {lista.map((q) => <details><summary>{q.p}</summary><p set:html={q.r.replace(/\n/g, '<br>')} /></details>)}
+</div>

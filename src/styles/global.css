@@ -166,7 +166,7 @@ h1, h2, h3 { margin: 0; }
   font-weight: 500; cursor: pointer; list-style: none;
 }
 .perguntas summary::-webkit-details-marker { display: none; }
-.perguntas summary::after { content: '+'; font: 400 1.5rem/1 var(--display); color: var(--vinho); }
+.perguntas summary::after { content: '+'; font: 400 1.5rem/1 var(--texto); color: var(--vinho); }
 .perguntas details[open] summary::after { content: '–'; }
 .perguntas details p { margin: 0 0 1.25rem; max-width: 42rem; color: var(--pigmento-suave); }
 
@@ -234,3 +234,6 @@ h1, h2, h3 { margin: 0; }
 
 /* Sobre o rosa, o texto secundário claro não alcança o contraste 4.5:1: usa o pigmento cheio. */
 .secao--rosa .intro-secao, .secao--rosa .resultados figcaption { color: var(--pigmento); }
+
+/* A foto de design com tintura é de uma cliente deitada: no círculo, enquadra a sobrancelha. */
+.cardapio img.foto-tintura { object-position: 38% 52%; transform: rotate(180deg); }

@@ -8,7 +8,6 @@ import Videos from '../components/Videos.astro';
 import capa from '../assets/ana/capa.jpg';
 import fachada from '../assets/espaco/fachada.jpeg';
 import { INSTAGRAM, whatsapp } from '../data/ana';
-const base = import.meta.env.BASE_URL;
 ---
 <Base titulo="Ana Paula Almeida | Micropigmentação em Juazeiro do Norte" descricao="Micropigmentação de sobrancelhas e lábios em Juazeiro do Norte, com Ana Paula Almeida. Veja preços, vídeos e agende pelo WhatsApp.">
   <section class="topo miolo" aria-labelledby="nome">
@@ -27,12 +26,13 @@ const base = import.meta.env.BASE_URL;
   <section class="secao secao--branca" aria-labelledby="titulo-servicos">
     <div class="miolo">
       <h2 id="titulo-servicos" class="titulo-secao">Serviços</h2>
-      <p class="intro-secao">Os valores são por procedimento. Na micropigmentação, a sessão de retoque é marcada depois da cicatrização.</p>
-      <Cardapio comLink />
+      <p class="intro-secao">Os principais serviços. A avaliação é gratuita, e a micropigmentação sai em até 3x sem juros.</p>
+      <Cardapio destaques comLink />
       <div class="acoes">
         <Agendar mensagem="Olá, Ana! Quero saber sobre os serviços." />
-        <a class="link-forte" href={`${base}sobrancelhas/`}>Sobrancelhas</a>
-        <a class="link-forte" href={`${base}labios/`}>Lábios</a>
+        <a class="link-forte" href={`/sobrancelhas/`}>Sobrancelhas</a>
+        <a class="link-forte" href={`/labios/`}>Lábios</a>
+        <a class="link-forte" href={`/cilios/`}>Cílios</a>
       </div>
     </div>
   </section>
@@ -43,7 +43,7 @@ const base = import.meta.env.BASE_URL;
       <p class="intro-secao">Alguns procedimentos do começo ao fim.</p>
       <Videos limite={2} />
       <div class="acoes">
-        <a class="link-forte" href={`${base}videos/`}>Ver todos os vídeos</a>
+        <a class="link-forte" href={`/videos/`}>Ver todos os vídeos</a>
         <a class="link-forte" href={INSTAGRAM} target="_blank" rel="noopener">Mais no Instagram</a>
       </div>
     </div>
@@ -55,7 +55,7 @@ const base = import.meta.env.BASE_URL;
       <div>
         <h2 id="titulo-espaco" class="titulo-secao titulo-secao--menor">A casa rosa</h2>
         <p class="intro-secao">Um espaço novo, pensado para você se sentir à vontade do começo ao fim do atendimento.</p>
-        <a class="link-forte" href={`${base}espaco/`}>Endereço, horário e fotos do espaço</a>
+        <a class="link-forte" href={`/espaco/`}>Endereço, horário e fotos do espaço</a>
       </div>
     </div>
   </section>

@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import Agendar from '../components/Agendar.astro';
+import Cardapio from '../components/Cardapio.astro';
+import Videos from '../components/Videos.astro';
+import Perguntas from '../components/Perguntas.astro';
+import { PAGAMENTO } from '../data/ana';
+const msg = 'Olá, Ana! Quero agendar extensão de cílios.';
+// Treinamento da Belle.
+const perguntas = [
+  { p: 'Quanto tempo leva?', r: 'A extensão de cílios leva cerca de 1 hora e 30 minutos.' },
+  { p: 'Caíram alguns fios logo depois da aplicação. E agora?', r: 'Se alguns fios caírem pouco tempo depois da aplicação, a Ana Paula faz a reposição sem custo. É só avisar para agendar a correção.' },
+  { p: 'Como posso pagar?', r: PAGAMENTO },
+];
+---
+<Base titulo="Extensão de cílios em Juazeiro do Norte | Ana Paula Almeida" descricao="Extensão e manutenção de cílios em Juazeiro do Norte com Ana Paula Almeida. Valores e agendamento pelo WhatsApp." mensagemAgendar={msg}>
+  <section class="pagina-topo miolo">
+    <h1>Cílios</h1>
+    <p>Extensão de cílios e manutenção, no estúdio da Ana Paula.</p>
+  </section>
+
+  <section class="secao secao--branca" aria-labelledby="t-precos">
+    <div class="miolo">
+      <h2 id="t-precos" class="titulo-secao titulo-secao--menor">Valores</h2>
+      <Cardapio pagina="cilios" />
+      <div class="acoes"><Agendar mensagem={msg} /></div>
+    </div>
+  </section>
+
+  <section class="secao" aria-labelledby="t-video">
+    <div class="miolo">
+      <h2 id="t-video" class="titulo-secao titulo-secao--menor">Antes e depois</h2>
+      <Videos pagina="cilios" />
+    </div>
+  </section>
+
+  <section class="secao secao--branca" aria-labelledby="t-perguntas">
+    <div class="miolo">
+      <h2 id="t-perguntas" class="titulo-secao titulo-secao--menor">Perguntas frequentes</h2>
+      <Perguntas lista={perguntas} />
+      <div class="acoes"><Agendar mensagem={msg} /></div>
+    </div>
+  </section>
+</Base>

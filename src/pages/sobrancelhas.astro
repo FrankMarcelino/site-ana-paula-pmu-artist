@@ -5,20 +5,32 @@ import Agendar from '../components/Agendar.astro';
 import Cardapio from '../components/Cardapio.astro';
 import ComoFunciona from '../components/ComoFunciona.astro';
 import Videos from '../components/Videos.astro';
+import Perguntas from '../components/Perguntas.astro';
 import tintura from '../assets/resultados/sobrancelha-tintura.jpeg';
 import microSobrancelhas from '../assets/servicos/micro-sobrancelhas.jpg';
-import { INSTAGRAM } from '../data/ana';
+import { INSTAGRAM, PAGAMENTO } from '../data/ana';
 const msg = 'Olá, Ana! Quero agendar sobrancelhas.';
+// Treinamento da Belle (perguntas e respostas da micropigmentação de sobrancelhas).
+const perguntas = [
+  { p: 'Vou poder ver o formato antes?', r: 'Sim. Antes de qualquer procedimento, a Ana Paula faz uma demonstração completa em lápis, para você visualizar o formato e a técnica escolhida. Esse momento serve para alinhar expectativas e tirar todas as dúvidas.' },
+  { p: 'Como funciona o retoque?', r: 'O retoque é a segunda sessão da micropigmentação, feita após 40 dias, se houver necessidade, para aperfeiçoar o resultado. Custa R$ 200 e pode ser parcelado em até 2x sem juros. O valor de retoque vale até 60 dias depois do procedimento.' },
+  { p: 'Posso fazer o retoque antes de 40 dias?', r: 'O retoque é feito após 40 dias, quando a cicatrização está completa. Em casos excepcionais, como uma viagem, a antecipação pode ser avaliada pela Ana Paula.' },
+  { p: 'Já tenho micropigmentação feita por outra profissional. Dá para fazer por cima?', r: 'Depende de como está o pigmento antigo. Quando ainda está forte, não é possível trabalhar por cima e é preciso fazer a remoção antes. Envie uma foto de como está hoje para a Ana Paula avaliar.' },
+  { p: 'Já fiz com a Ana Paula há mais de 1 ano. Quanto custa refazer?', r: 'Quem já fez a micropigmentação com a Ana Paula há mais de 1 ano tem um valor diferenciado para refazer: R$ 300, em até 2x sem juros.' },
+  { p: 'Quais são os cuidados depois?', r: '1. Não molhar diretamente as sobrancelhas por 5 dias.\n2. Não arrancar a casquinha quando ela se formar.\n3. Higienizar com algodão e água filtrada durante 5 dias, pela manhã e à noite.\n4. Aplicar a pomada cicatrizante após a higienização, conforme a orientação da profissional.\n5. Evitar bebidas alcoólicas por 10 dias.\n6. Evitar carne de porco, peixes e frutos do mar durante a cicatrização.\n7. Evitar secador, sauna e vapores quentes.\n8. Não entrar em piscina ou praia por 15 dias.\n9. Não usar maquiagem ou qualquer outro produto sobre as sobrancelhas por 24 dias.\n10. Beber bastante água para ajudar na cicatrização.\n11. Não praticar atividades físicas por no mínimo 5 dias.' },
+  { p: 'Como posso pagar?', r: PAGAMENTO },
+];
 ---
-<Base titulo="Micropigmentação de sobrancelhas em Juazeiro do Norte | Ana Paula Almeida" descricao="Micropigmentação de sobrancelhas fio a fio e brow lamination em Juazeiro do Norte. Preços, como funciona, resultados e agendamento pelo WhatsApp." mensagemAgendar={msg}>
+<Base titulo="Micropigmentação de sobrancelhas em Juazeiro do Norte | Ana Paula Almeida" descricao="Micropigmentação de sobrancelhas fio a fio, brow lamination, design com henna e tintura em Juazeiro do Norte. Preços, cuidados e agendamento pelo WhatsApp." mensagemAgendar={msg}>
   <section class="pagina-topo miolo">
     <h1>Sobrancelhas</h1>
-    <p>Micropigmentação fio a fio para preencher e desenhar, e brow lamination para alinhar os fios que você já tem.</p>
+    <p>Micropigmentação fio a fio para preencher e desenhar, e design para valorizar os fios que você já tem. Cada procedimento respeita o formato do rosto e a beleza natural.</p>
   </section>
 
   <section class="secao secao--branca" aria-labelledby="t-precos">
     <div class="miolo">
       <h2 id="t-precos" class="titulo-secao titulo-secao--menor">Serviços e valores</h2>
+      <p class="intro-secao">A avaliação é gratuita.</p>
       <Cardapio pagina="sobrancelhas" />
       <div class="acoes"><Agendar mensagem={msg} /></div>
     </div>
@@ -34,10 +46,10 @@ const msg = 'Olá, Ana! Quero agendar sobrancelhas.';
   <section class="secao secao--rosa" aria-labelledby="t-resultados">
     <div class="miolo">
       <h2 id="t-resultados" class="titulo-secao titulo-secao--menor">Resultados</h2>
-      <p class="intro-secao">Mais trabalhos no <a href={INSTAGRAM} target="_blank" rel="noopener">Instagram da Ana</a>.</p>
+      <p class="intro-secao">A Ana Paula também envia fotos de resultados já cicatrizados. Mais trabalhos no <a href={INSTAGRAM} target="_blank" rel="noopener">Instagram @anapaula_pmu_artist</a>.</p>
       <ul class="resultados">
         <li><figure><Image quality={70} width={600} src={microSobrancelhas} alt="Antes e depois de micropigmentação de sobrancelhas" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Micropigmentação fio a fio</figcaption></figure></li>
-        <li><figure><Image quality={70} width={600} src={tintura} alt="Sobrancelhas com design e tintura" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Design com tintura</figcaption></figure></li>
+        <li><figure><Image quality={70} width={600} src={tintura} alt="Sobrancelhas com design e finalização em tintura" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Design com finalização em tintura</figcaption></figure></li>
       </ul>
     </div>
   </section>
@@ -45,19 +57,14 @@ const msg = 'Olá, Ana! Quero agendar sobrancelhas.';
   <section class="secao" aria-labelledby="t-video">
     <div class="miolo">
       <h2 id="t-video" class="titulo-secao titulo-secao--menor">A técnica em vídeo</h2>
-      <Videos limite={1} />
+      <Videos pagina="sobrancelhas" />
     </div>
   </section>
 
   <section class="secao secao--branca" aria-labelledby="t-perguntas">
     <div class="miolo">
       <h2 id="t-perguntas" class="titulo-secao titulo-secao--menor">Perguntas frequentes</h2>
-      <div class="perguntas">
-        <details><summary>Quanto tempo dura a micropigmentação?</summary><p>Depende da pele, dos cuidados e da exposição ao sol. A Ana explica na avaliação o que esperar no seu caso.</p></details>
-        <details><summary>Dói?</summary><p>A sensibilidade varia de pessoa para pessoa. A maioria das clientes descreve como um incômodo leve.</p></details>
-        <details><summary>Quando é o retoque?</summary><p>Depois da cicatrização, por volta de 40 dias após o procedimento. O retoque custa R$ 200.</p></details>
-        <details><summary>Qual a diferença para o brow lamination?</summary><p>A micropigmentação desenha fios com pigmento na pele e dura meses. O brow lamination só alinha e fixa os seus próprios fios, sem pigmento.</p></details>
-      </div>
+      <Perguntas lista={perguntas} />
       <div class="acoes"><Agendar mensagem={msg} /></div>
     </div>
   </section>

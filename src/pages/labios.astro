@@ -4,20 +4,30 @@ import Base from '../layouts/Base.astro';
 import Agendar from '../components/Agendar.astro';
 import Cardapio from '../components/Cardapio.astro';
 import ComoFunciona from '../components/ComoFunciona.astro';
+import Perguntas from '../components/Perguntas.astro';
 import microLabial from '../assets/resultados/micro-labial.jpeg';
 import microLabialAntigo from '../assets/servicos/micro-labial.jpg';
-import { INSTAGRAM } from '../data/ana';
-const msg = 'Olá, Ana! Quero agendar para os lábios.';
+import { INSTAGRAM, PAGAMENTO } from '../data/ana';
+const msg = 'Olá, Ana! Quero agendar micropigmentação labial.';
+// Treinamento da Belle (perguntas e respostas da micropigmentação labial).
+const perguntas = [
+  { p: 'Como funcionam as duas sessões?', r: 'A micropigmentação labial é dividida em duas sessões, essenciais para um resultado mais duradouro e bem finalizado. A primeira sai em até 3x sem juros. A segunda (retoque), feita após 40 dias, custa R$ 200 e sai em até 2x sem juros.' },
+  { p: 'A boca fica inchada?', r: 'Pode ficar um pouco inchada, mas apenas nas primeiras 24 horas.' },
+  { p: 'Já fiz micropigmentação com a Ana Paula. Tenho desconto?', r: 'Quem já fez algum procedimento de micropigmentação com a Ana Paula tem desconto na primeira sessão.' },
+  { p: 'Quais são os cuidados depois?', r: '1. Não beijar por 5 dias.\n2. Beber qualquer líquido com canudo por 3 dias.\n3. Não usar batom ou hidratante labial com cor por 30 dias.\n4. Fazer uma higienização leve nas primeiras 24 horas, com algodão levemente umedecido.\n5. Usar a pomada indicada nos primeiros 3 dias, se orientado pela profissional.\n6. Após 24 horas, aplicar hidratante labial, como Cicaplast ou Nivea transparente.\n7. Evitar exposição ao sol e sauna por 20 dias.\n8. Não remover nem arrancar as casquinhas.\n9. Evitar carne de porco, peixe e frutos do mar por 30 dias.\n10. Evitar bebidas alcoólicas por 15 dias.\n11. Evitar alimentos com pigmentos escuros, como açaí, chocolate, feijoada e Coca-Cola, por 15 dias.' },
+  { p: 'Como posso pagar?', r: PAGAMENTO },
+];
 ---
-<Base titulo="Micropigmentação labial em Juazeiro do Norte | Ana Paula Almeida" descricao="Micropigmentação labial e hydra gloss em Juazeiro do Norte. Preços, como funciona, resultados e agendamento pelo WhatsApp." mensagemAgendar={msg}>
+<Base titulo="Micropigmentação labial em Juazeiro do Norte | Ana Paula Almeida" descricao="Micropigmentação labial em Juazeiro do Norte: cor suave, contorno delicado e aparência saudável. Preços, cuidados e agendamento pelo WhatsApp." mensagemAgendar={msg}>
   <section class="pagina-topo miolo">
     <h1>Lábios</h1>
-    <p>Micropigmentação labial para cor e contorno, e hydra gloss para hidratar e dar brilho.</p>
+    <p>A micropigmentação labial uniformiza os lábios e realça uma cor mais bonita sem perder a naturalidade: aparência saudável, cor suave e contorno delicado.</p>
   </section>
 
   <section class="secao secao--branca" aria-labelledby="t-precos">
     <div class="miolo">
-      <h2 id="t-precos" class="titulo-secao titulo-secao--menor">Serviços e valores</h2>
+      <h2 id="t-precos" class="titulo-secao titulo-secao--menor">Valor</h2>
+      <p class="intro-secao">A avaliação é gratuita. Nela a Ana Paula alinha as expectativas e tira todas as dúvidas antes do procedimento.</p>
       <Cardapio pagina="labios" />
       <div class="acoes"><Agendar mensagem={msg} /></div>
     </div>
@@ -25,7 +35,7 @@ const msg = 'Olá, Ana! Quero agendar para os lábios.';
 
   <section class="secao" aria-labelledby="t-como">
     <div class="miolo">
-      <h2 id="t-como" class="titulo-secao titulo-secao--menor">Como funciona a micropigmentação labial</h2>
+      <h2 id="t-como" class="titulo-secao titulo-secao--menor">Como funciona</h2>
       <ComoFunciona />
     </div>
   </section>
@@ -33,10 +43,10 @@ const msg = 'Olá, Ana! Quero agendar para os lábios.';
   <section class="secao secao--rosa" aria-labelledby="t-resultados">
     <div class="miolo">
       <h2 id="t-resultados" class="titulo-secao titulo-secao--menor">Resultados</h2>
-      <p class="intro-secao">Mais trabalhos no <a href={INSTAGRAM} target="_blank" rel="noopener">Instagram da Ana</a>.</p>
+      <p class="intro-secao">A Ana Paula também envia fotos de resultados já cicatrizados. Mais trabalhos no <a href={INSTAGRAM} target="_blank" rel="noopener">Instagram @anapaula_pmu_artist</a>.</p>
       <ul class="resultados">
-        <li><figure><Image quality={70} width={600} src={microLabial} alt="Lábios logo após a micropigmentação labial" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Logo após o procedimento</figcaption></figure></li>
-        <li><figure><Image quality={70} width={600} src={microLabialAntigo} alt="Antes e depois de micropigmentação labial" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Micropigmentação labial</figcaption></figure></li>
+        <li><figure><Image quality={70} width={600} src={microLabial} alt="Lábios logo após a micropigmentação labial" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Logo após o procedimento: a cor suaviza na cicatrização</figcaption></figure></li>
+        <li><figure><Image quality={70} width={600} src={microLabialAntigo} alt="Antes e depois de micropigmentação labial" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Antes e depois</figcaption></figure></li>
       </ul>
     </div>
   </section>
@@ -44,11 +54,7 @@ const msg = 'Olá, Ana! Quero agendar para os lábios.';
   <section class="secao secao--branca" aria-labelledby="t-perguntas">
     <div class="miolo">
       <h2 id="t-perguntas" class="titulo-secao titulo-secao--menor">Perguntas frequentes</h2>
-      <div class="perguntas">
-        <details><summary>A cor fica forte assim para sempre?</summary><p>Logo depois do procedimento a cor fica mais intensa. Ela suaviza durante a cicatrização e fica no tom escolhido na avaliação.</p></details>
-        <details><summary>Quanto tempo leva?</summary><p>Cerca de 3h30, contando o desenho e a aplicação.</p></details>
-        <details><summary>Quando é o retoque?</summary><p>Depois da cicatrização, por volta de 40 dias após o procedimento. O retoque custa R$ 200.</p></details>
-      </div>
+      <Perguntas lista={perguntas} />
       <div class="acoes"><Agendar mensagem={msg} /></div>
     </div>
   </section>

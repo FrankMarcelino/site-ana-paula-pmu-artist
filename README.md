@@ -7,14 +7,14 @@ estritamente necessário (o chat da LIVIA, que carrega depois da primeira intera
 
 ```bash
 npm install
-npm run dev        # http://localhost:4321/site-ana-paula-pmu-artist/
+npm run dev        # http://localhost:4321/
 npm run build      # gera em dist/
 npm run preview    # serve o que foi gerado
 ```
 
 ## Onde mudar cada coisa
 
-- **Preços, serviços, horário, endereço, vídeos:** `src/data/ana.ts`.
+- **Preços, serviços, horário, endereço, vídeos:** `src/data/ana.ts`. Preço e duração vêm da agenda da Miss Belle (Agenda LIVIA); textos e regras, do treinamento da Belle (a IA da Miss Belle).
 - **Fotos:** `src/assets/` (o Astro gera as versões leves sozinho na publicação).
 - **Vídeos novos:** ponha o original em `midia-original/videos/` (fora do git) e rode `npm run midia`:
   ele gera o MP4 em 720p e a capa em WebP em `public/videos/`. Depois cadastre em `VIDEOS` no `ana.ts`.
@@ -22,4 +22,4 @@ npm run preview    # serve o que foi gerado
 
 ## Publicação
 
-A Action `.github/workflows/publicar.yml` gera e publica no GitHub Pages a cada push na `main`.
+A Vercel gera e publica sozinha: cada branch enviada ganha uma prévia, e a `main` vai para produção.

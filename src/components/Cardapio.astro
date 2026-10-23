@@ -1,32 +1,26 @@
 ---
 import { Image } from 'astro:assets';
-import { SERVICOS, reais, type Servico } from '../data/ana';
+import { SERVICOS, reais, type Pagina } from '../data/ana';
 import microSobrancelhas from '../assets/servicos/micro-sobrancelhas.jpg';
 import microLabial from '../assets/servicos/micro-labial.jpg';
 import browLamination from '../assets/servicos/brow-lamination.jpg';
-import hydraGloss from '../assets/servicos/hydra-gloss.jpg';
+import tintura from '../assets/resultados/sobrancelha-tintura.jpeg';
+import cilios from '../assets/servicos/cilios.jpg';
 
-interface Props { pagina?: Servico['pagina']; comLink?: boolean }
-const { pagina, comLink = false } = Astro.props;
-const FOTO = { 'micro-sobrancelhas': microSobrancelhas, 'micro-labial': microLabial, 'brow-lamination': browLamination, 'hydra-gloss': hydraGloss };
-const ALT = {
-  'micro-sobrancelhas': 'Sobrancelha com micropigmentação fio a fio',
-  'micro-labial': 'Lábios com micropigmentação',
-  'brow-lamination': 'Sobrancelhas após brow lamination',
-  'hydra-gloss': 'Lábios após hydra gloss',
-};
-const lista = pagina ? SERVICOS.filter((s) => s.pagina === pagina) : SERVICOS;
-const base = import.meta.env.BASE_URL;
+interface Props { pagina?: Pagina; destaques?: boolean; comLink?: boolean }
+const { pagina, destaques = false, comLink = false } = Astro.props;
+const FOTO = { 'micro-sobrancelhas': microSobrancelhas, 'micro-labial': microLabial, 'brow-lamination': browLamination, 'sobrancelha-tintura': tintura, cilios };
+const lista = SERVICOS.filter((s) => (pagina ? s.pagina === pagina : true) && (destaques ? s.destaque : true));
 ---
 <ul class="cardapio">
   {lista.map((s) => (
     <li>
-      <Image quality={70} src={FOTO[s.id as keyof typeof FOTO]} alt={ALT[s.id as keyof typeof ALT]} width={208} height={208} densities={[1, 2]} loading="lazy" />
+      <Image src={FOTO[s.foto]} alt={s.nome} width={208} height={208} densities={[1, 2]} quality={70} loading="lazy" class={s.foto === 'sobrancelha-tintura' ? 'foto-tintura' : undefined} />
       <div>
-        <h3>{comLink ? <a href={`${base}${s.pagina}/`}>{s.nome}</a> : s.nome}</h3>
+        <h3>{comLink ? <a href={`/${s.pagina}/`}>{s.nome}</a> : s.nome}</h3>
         <p>{s.detalhe}</p>
       </div>
-      <span class="preco">{reais(s.preco)}{s.retoque && <small>retoque {reais(s.retoque)}</small>}</span>
+      <span class="preco">{reais(s.preco)}{s.observacao && <small>{s.observacao}</small>}</span>
     </li>
   ))}
 </ul>

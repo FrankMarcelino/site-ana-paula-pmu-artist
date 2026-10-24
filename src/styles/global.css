@@ -225,6 +225,7 @@ h1, h2, h3 { margin: 0; }
 /* ----- combos ----- */
 .combos { display: grid; gap: 1.25rem; }
 @media (min-width: 48rem) { .combos { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 64rem) { .combos { grid-template-columns: repeat(3, 1fr); } }
 .combo { padding: 2rem; border: 1px solid var(--pigmento); border-radius: .75rem; background: var(--po-de-arroz); }
 .combo h3 { font: 400 var(--t-g)/1 var(--display); font-variant-numeric: lining-nums; }
 .combo .valor { margin: .75rem 0 0; font-size: var(--t-m); font-weight: 600; }

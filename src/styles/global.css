@@ -325,6 +325,24 @@ h1, h2, h3 { margin: 0; }
 .combo h3 { font: 400 var(--t-g)/1 var(--display); color: var(--amora); }
 .combo .valor { margin: .6rem 0 0; font: 400 2.75rem/1 var(--display); font-variant-numeric: lining-nums; color: var(--vinho); }
 .combo .valor small { display: block; margin-top: .35rem; font: 400 var(--t-pequeno)/1.2 var(--texto); color: var(--pigmento-suave); }
+/* Para quem é cada combo: no celular (sem hover) sempre à vista; no computador, se abre ao
+   passar o mouse ou chegar pelo teclado. A altura anima por grid-template-rows (0fr → 1fr):
+   dá para animar até o tamanho do texto, o que height: auto não deixa. */
+.combo-para { display: grid; grid-template-rows: 1fr; margin: .9rem 0 0; }
+.combo-para > span { overflow: hidden; font: italic 400 1.1875rem/1.35 var(--display); color: var(--amora); text-wrap: pretty; }
+@media (hover: hover) and (min-width: 52rem) {
+  .combo { transition: transform .45s cubic-bezier(.2, .7, .2, 1), box-shadow .45s cubic-bezier(.2, .7, .2, 1); }
+  .combo-para { grid-template-rows: 0fr; margin-top: 0; transition: grid-template-rows .45s cubic-bezier(.2, .7, .2, 1), margin-top .45s cubic-bezier(.2, .7, .2, 1); }
+  .combo-para > span { opacity: 0; transform: translateY(-.3rem); transition: opacity .35s ease .1s, transform .45s cubic-bezier(.2, .7, .2, 1) .05s; }
+  .combo:hover, .combo:focus-within { transform: translateY(-4px); box-shadow: 0 14px 34px -18px rgb(136 46 78 / .35); }
+  .combo:hover .combo-para, .combo:focus-within .combo-para { grid-template-rows: 1fr; margin-top: .9rem; }
+  .combo:hover .combo-para > span, .combo:focus-within .combo-para > span { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .combo, .combo-para, .combo-para > span { transition: none; }
+  .combo-para { grid-template-rows: 1fr !important; margin-top: .9rem !important; }
+  .combo-para > span { opacity: 1 !important; transform: none !important; }
+}
 .combo ul { flex: 1; margin: 1.25rem 0 1.5rem; padding: 1rem 0 0 1.1rem; border-top: 1px solid color-mix(in srgb, var(--pigmento) 14%, transparent); }
 .combo li + li { margin-top: .3rem; }
 .combo li::marker { color: var(--rosa-casa); }

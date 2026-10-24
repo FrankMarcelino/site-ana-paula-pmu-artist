@@ -7,6 +7,13 @@ export const WHATSAPP = '5588981035530';
 export const whatsapp = (texto: string) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
 export const INSTAGRAM = 'https://www.instagram.com/anapaula_pmu_artist/';
 
+// O espaço se chama Miss Belle; a Ana Paula divide com duas sócias (só o nome e o Instagram).
+export const ESPACO = 'Miss Belle';
+export const SOCIAS = [
+  { nome: 'Sefora', instagram: 'https://www.instagram.com/sefora.rbeauty/', arroba: '@sefora.rbeauty' },
+  { nome: 'Thais', instagram: 'https://www.instagram.com/penteadosthaiss/', arroba: '@penteadosthaiss' },
+];
+
 export const ENDERECO = {
   rua: 'Rua José Sebastião de Carvalho, 450',
   bairro: 'Lagoa Seca',

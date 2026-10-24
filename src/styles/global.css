@@ -187,6 +187,8 @@ h1, h2, h3 { margin: 0; }
 /* Vídeo horizontal (a Ana atendendo, na página do espaço): 16:9, não 9:16 como os de procedimento. */
 .video-largo { margin: 1.75rem 0 0; }
 .video-largo video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--pigmento); border-radius: .5rem; }
+.socias { margin: 1.5rem 0 0; }
+.socias a { color: var(--vinho); font-weight: 600; }
 .video-largo figcaption { margin-top: .5rem; font-size: var(--t-pequeno); }
 
 /* ----- prova social: um dia de atendimento atrás da cortina (logo abaixo do topo) -----

@@ -13,7 +13,7 @@ import IconeWhatsapp from '../components/IconeWhatsapp.astro';
 import ChatLivia from '../components/ChatLivia.astro';
 import logo from '../assets/logo.svg';
 import logoVinho from '../assets/logo-vinho.svg';
-import { ENDERECO, HORARIO, INSTAGRAM, WHATSAPP, whatsapp } from '../data/ana';
+import { ENDERECO, ESPACO, HORARIO, INSTAGRAM, WHATSAPP, whatsapp } from '../data/ana';
 
 interface Props { titulo: string; descricao: string; mensagemAgendar?: string }
 const { titulo, descricao, mensagemAgendar } = Astro.props;
@@ -95,6 +95,7 @@ const negocio = {
         <div>
           <h2>Onde fica</h2>
           <ul>
+            <li>{ESPACO}</li>
             <li>{ENDERECO.rua}</li>
             <li>{ENDERECO.bairro}, {ENDERECO.cidade} – {ENDERECO.uf}</li>
             <li><a href={`tel:${telefone}`}>(88) 9 8103-5530</a></li>

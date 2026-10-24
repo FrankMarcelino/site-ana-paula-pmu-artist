@@ -6,13 +6,13 @@ import fachada from '../assets/espaco/fachada.jpeg';
 import fachadaFlores from '../assets/espaco/fachada-flores.jpeg';
 import retrato from '../assets/ana/topo.jpeg'; // a mesma foto do topo, com a blusa vinho
 import Perguntas from '../components/Perguntas.astro';
-import { ENDERECO, HORARIO, INSTAGRAM, PERGUNTAS_GERAIS } from '../data/ana';
+import { ENDERECO, HORARIO, INSTAGRAM, PERGUNTAS_GERAIS, SOCIAS } from '../data/ana';
 const enderecoBusca = encodeURIComponent(`${ENDERECO.rua}, ${ENDERECO.bairro}, ${ENDERECO.cidade} - ${ENDERECO.uf}`);
 ---
-<Base titulo="O espaço | Ana Paula Almeida, micropigmentação em Juazeiro do Norte" descricao="Endereço, horário e fotos do estúdio de Ana Paula Almeida em Juazeiro do Norte.">
+<Base titulo="Miss Belle | O espaço de Ana Paula Almeida em Juazeiro do Norte" descricao="Endereço, horário e fotos do Miss Belle, o espaço de Ana Paula Almeida e das sócias Sefora e Thais em Juazeiro do Norte.">
   <section class="pagina-topo miolo">
-    <h1>O espaço</h1>
-    <p>A casa rosa, em {ENDERECO.cidade}: um espaço pensado para você se sentir à vontade do começo ao fim.</p>
+    <h1>O Miss Belle</h1>
+    <p>O espaço da Ana Paula em {ENDERECO.cidade}: uma casa rosa com jardim na frente, pensada para você se sentir à vontade do começo ao fim.</p>
   </section>
 
   <section class="secao secao--branca" aria-labelledby="t-visite">
@@ -37,7 +37,7 @@ const enderecoBusca = encodeURIComponent(`${ENDERECO.rua}, ${ENDERECO.bairro}, $
     <div class="miolo">
       <h2 id="t-fotos" class="titulo-secao titulo-secao--menor">Fotos</h2>
       <ul class="resultados">
-        <li><figure><Image quality={70} width={600} src={fachadaFlores} alt="Varanda da casa rosa com o balanço" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /></figure></li>
+        <li><figure><Image quality={70} width={600} src={fachadaFlores} alt="Varanda do Miss Belle com o balanço" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /></figure></li>
       </ul>
       <p class="intro-secao" style="margin-top:1.5rem">Mais fotos no <a href={INSTAGRAM} target="_blank" rel="noopener">Instagram da Ana</a>.</p>
     </div>
@@ -60,8 +60,9 @@ const enderecoBusca = encodeURIComponent(`${ENDERECO.rua}, ${ENDERECO.bairro}, $
           <video controls playsinline preload="none" poster="/videos/ana-trabalhando.webp" width="1024" height="576">
             <source src="/videos/ana-trabalhando.mp4" type="video/mp4" />
           </video>
-          <figcaption>A Ana Paula no atendimento, na sala da casa rosa.</figcaption>
+          <figcaption>A Ana Paula no atendimento, na sala do Miss Belle.</figcaption>
         </figure>
+        <p class="socias">O Miss Belle é dividido com as sócias {SOCIAS.map((s, i) => <>{i ? ' e ' : ''}{s.nome}</>)}. Veja mais do trabalho delas no Instagram: {SOCIAS.map((s, i) => <>{i ? ' e ' : ''}<a href={s.instagram} target="_blank" rel="noopener">{s.arroba}</a></>)}.</p>
       </div>
     </div>
   </section>

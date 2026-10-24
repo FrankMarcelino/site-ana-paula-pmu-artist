@@ -14,16 +14,17 @@
   --pigmento-suave: #6E5450; /* texto secundário (contraste AA sobre o fundo) */
 
   /* Duas famílias, cada uma com um papel (ver /marca/):
-     Cormorant: a voz da marca. Títulos em pé; o itálico é a frase que a Ana diria.
+     EB Garamond: a voz da marca. Títulos em pé; o itálico é a frase que a Ana diria.
+     (Era a Cormorant: o circunflexo dela é alto e solto, e português tem muito ê/â/ô.)
      Albert Sans: a informação. Texto, preços na lista, botões, menu. */
-  --display: 'Cormorant', 'Cormorant Garamond', Garamond, serif;
+  --display: 'EB Garamond', Garamond, serif;
   --texto: 'Albert Sans', system-ui, sans-serif;
 
   --t-pequeno: 0.875rem;
   --t-base: 1.0625rem;
   --t-sub: 1.1875rem;    /* nome de serviço, de etapa: Albert Sans 600 */
   --t-m: 1.375rem;
-  --t-frase: 1.625rem;   /* Cormorant itálico: o olho da Cormorant é pequeno, por isso maior que --t-m */
+  --t-frase: 1.5rem;     /* EB Garamond itálico: serifada pede um pouco mais que o --t-m da sans */
   --t-g: 2.25rem;
   --t-xg: clamp(3rem, 10vw, 5.5rem);
 

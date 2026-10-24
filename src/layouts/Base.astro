@@ -1,13 +1,13 @@
 ---
-import '@fontsource/cormorant/400.css';
-import '@fontsource/cormorant/400-italic.css';
+import '@fontsource/eb-garamond/400.css';
+import '@fontsource/eb-garamond/400-italic.css';
 import '@fontsource/albert-sans/400.css';
 import '@fontsource/albert-sans/600.css';
 import '@fontsource/albert-sans/700.css';
 import '../styles/global.css';
 // As fontes da primeira tela baixam logo no começo: o texto aparece mais cedo e não pula de lugar.
-import cormorant from '@fontsource/cormorant/files/cormorant-latin-400-normal.woff2?url';
-import cormorantItalico from '@fontsource/cormorant/files/cormorant-latin-400-italic.woff2?url';
+import garamond from '@fontsource/eb-garamond/files/eb-garamond-latin-400-normal.woff2?url';
+import garamondItalico from '@fontsource/eb-garamond/files/eb-garamond-latin-400-italic.woff2?url';
 import albertSans from '@fontsource/albert-sans/files/albert-sans-latin-400-normal.woff2?url';
 import IconeWhatsapp from '../components/IconeWhatsapp.astro';
 import ChatLivia from '../components/ChatLivia.astro';
@@ -57,7 +57,7 @@ const negocio = {
   <link rel="canonical" href={canonica}>
   <meta name="theme-color" content="#F7EEEC">
   {/* Na inicial a primeira tela tem o itálico (a frase de abertura); nas outras, o título em pé. */}
-  <link rel="preload" href={inicial ? cormorantItalico : cormorant} as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href={inicial ? garamondItalico : garamond} as="font" type="font/woff2" crossorigin>
   <link rel="preload" href={albertSans} as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">

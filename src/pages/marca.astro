@@ -3,8 +3,8 @@
 // Fica fora do menu e do Google: é referência para quem cria peças da Ana Paula
 // (site, Instagram, cartão, fachada). Usa as mesmas fontes, cores e classes do site,
 // então o que está aqui é o que está no ar, sem cópia para envelhecer.
-import '@fontsource/cormorant/400.css';
-import '@fontsource/cormorant/400-italic.css';
+import '@fontsource/eb-garamond/400.css';
+import '@fontsource/eb-garamond/400-italic.css';
 import '@fontsource/albert-sans/400.css';
 import '@fontsource/albert-sans/600.css';
 import '@fontsource/albert-sans/700.css';
@@ -12,8 +12,8 @@ import '../styles/global.css';
 import Monograma from '../components/Monograma.astro';
 import logo from '../assets/logo.svg';
 import logoVinho from '../assets/logo-vinho.svg';
-import cormorant from '@fontsource/cormorant/files/cormorant-latin-400-normal.woff2?url';
-import cormorantItalico from '@fontsource/cormorant/files/cormorant-latin-400-italic.woff2?url';
+import garamond from '@fontsource/eb-garamond/files/eb-garamond-latin-400-normal.woff2?url';
+import garamondItalico from '@fontsource/eb-garamond/files/eb-garamond-latin-400-italic.woff2?url';
 import albertSans from '@fontsource/albert-sans/files/albert-sans-latin-400-normal.woff2?url';
 
 const CORES = [
@@ -27,9 +27,9 @@ const CORES = [
 ];
 
 const ESCALA = [
-  { token: '--t-xg', px: '48 a 88', familia: 'Cormorant 400', papel: 'Título de página e de seção', exemplo: 'Sobrancelhas', classe: 'ex-xg' },
-  { token: '--t-g', px: '36', familia: 'Cormorant 400', papel: 'Preço em destaque, nome de combo', exemplo: 'R$ 350', classe: 'ex-g' },
-  { token: '--t-frase', px: '26', familia: 'Cormorant 400 itálico', papel: 'A frase de abertura, a voz da Ana', exemplo: 'Especialista em sobrancelhas, lábios e cílios.', classe: 'ex-frase' },
+  { token: '--t-xg', px: '48 a 88', familia: 'EB Garamond 400', papel: 'Título de página e de seção', exemplo: 'Sobrancelhas', classe: 'ex-xg' },
+  { token: '--t-g', px: '36', familia: 'EB Garamond 400', papel: 'Preço em destaque, nome de combo', exemplo: 'R$ 350', classe: 'ex-g' },
+  { token: '--t-frase', px: '24', familia: 'EB Garamond 400 itálico', papel: 'A frase de abertura, a voz da Ana', exemplo: 'Especialista em sobrancelhas, lábios e cílios.', classe: 'ex-frase' },
   { token: '--t-m', px: '22', familia: 'Albert Sans 400', papel: 'Texto de abertura das páginas internas', exemplo: 'Micropigmentação fio a fio para preencher e desenhar.', classe: 'ex-m' },
   { token: '--t-sub', px: '19', familia: 'Albert Sans 600', papel: 'Nome de serviço, de etapa, pergunta', exemplo: 'Micropigmentação labial', classe: 'ex-sub' },
   { token: '--t-base', px: '17', familia: 'Albert Sans 400', papel: 'Texto corrido', exemplo: 'A avaliação é gratuita, pelo WhatsApp ou no estúdio.', classe: 'ex-base' },
@@ -45,8 +45,8 @@ const ESCALA = [
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#F7EEEC">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="preload" href={cormorant} as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href={cormorantItalico} as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href={garamond} as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href={garamondItalico} as="font" type="font/woff2" crossorigin>
   <link rel="preload" href={albertSans} as="font" type="font/woff2" crossorigin>
 </head>
 <body>
@@ -98,11 +98,11 @@ const ESCALA = [
 
     <section aria-labelledby="m-tipo">
       <h2 id="m-tipo">Tipografia</h2>
-      <p>Duas famílias, cada uma com um trabalho. Elas conversam porque são opostas: a Cormorant tem o contraste de traço fino e grosso da caligrafia, e a Albert Sans tem traço uniforme e é fácil de ler no celular.</p>
+      <p>Duas famílias, cada uma com um trabalho. Elas conversam porque são opostas: a EB Garamond tem o contraste de traço fino e grosso da caligrafia, e a Albert Sans tem traço uniforme e é fácil de ler no celular.</p>
       <div class="m-familias">
         <div class="m-familia">
-          <p class="m-familia-amostra m-cormorant">Aa <em>Aa</em></p>
-          <h3>Cormorant: a voz</h3>
+          <p class="m-familia-amostra m-garamond">Aa <em>Aa</em></p>
+          <h3>EB Garamond: a voz</h3>
           <p>Títulos, preços em destaque e, em itálico, a frase de abertura. O itálico dela tem o mesmo movimento da assinatura, e é por isso que as duas combinam.</p>
         </div>
         <div class="m-familia">
@@ -124,7 +124,7 @@ const ESCALA = [
 
       <h3 class="m-sub">Pesos</h3>
       <ul class="m-regras">
-        <li><strong>Cormorant 400</strong> nos títulos e <strong>400 itálico</strong> na frase de abertura. A Cormorant não usa negrito: o título ganha destaque pelo tamanho, não pelo peso.</li>
+        <li><strong>EB Garamond 400</strong> nos títulos e <strong>400 itálico</strong> na frase de abertura. A EB Garamond não usa negrito: o título ganha destaque pelo tamanho, não pelo peso.</li>
         <li><strong>Albert Sans 400</strong> para o texto e o menu.</li>
         <li><strong>Albert Sans 600</strong> para o que precisa de destaque: nome de serviço, link, botão, pergunta.</li>
         <li><strong>Albert Sans 700</strong> só no botão da Belle. O branco sobre o rosa Belle só passa no contraste mínimo como texto grande em negrito.</li>
@@ -133,8 +133,8 @@ const ESCALA = [
       <h3 class="m-sub">Regras</h3>
       <ul class="m-regras">
         <li>O itálico é para uma frase de até duas linhas. Parágrafo longo em itálico cansa a leitura.</li>
-        <li>Parágrafo nunca vai em Cormorant, e título nunca vai em Albert Sans.</li>
-        <li>Número em Cormorant usa algarismo alinhado (<code>lining-nums</code>): “R$ 350”, sem o 3 e o 5 descendo da linha.</li>
+        <li>Parágrafo nunca vai em EB Garamond, e título nunca vai em Albert Sans.</li>
+        <li>Número em EB Garamond usa algarismo alinhado (<code>lining-nums</code>): “R$ 350”, sem o 3 e o 5 descendo da linha.</li>
         <li>Nada em caixa-alta. Destaque é tamanho, peso ou cor, um de cada vez.</li>
         <li>Linha de texto com no máximo uns 70 caracteres.</li>
       </ul>
@@ -211,7 +211,7 @@ const ESCALA = [
   @media (min-width: 40rem) { .m-familias { grid-template-columns: 1fr 1fr; } }
   .m-familia { padding: 1.5rem; border-radius: .5rem; background: #fff; }
   .m-familia-amostra { margin: 0 0 .75rem; font-size: 4.5rem; line-height: 1; color: var(--vinho); }
-  .m-cormorant { font-family: var(--display); }
+  .m-garamond { font-family: var(--display); }
   .m-albert { font-family: var(--texto); }
   .manual .m-sub { margin: 2rem 0 1rem; }
   .m-escala { display: grid; gap: 1.25rem; margin: 0; padding: 0; list-style: none; }

@@ -104,9 +104,9 @@ h1, h2, h3 { margin: 0; }
     position: absolute; inset: 0 0 0 auto; width: 52%; height: auto;
     /* Some para a esquerda (onde está o texto) e de leve em cima e embaixo, para a borda
        da foto (cinza-claro) não marcar uma linha contra o pó de arroz. */
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 40%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 40%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 55%, transparent 92%);
     -webkit-mask-composite: source-in;
-    mask-image: linear-gradient(to right, transparent 0%, #000 40%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 80%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 40%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 55%, transparent 92%);
     mask-composite: intersect;
   }
   .topo-foto img { object-position: 62% 25%; }
@@ -296,7 +296,10 @@ h1, h2, h3 { margin: 0; }
 }
 .combos-secao .titulo-secao { margin-bottom: 1.5rem; padding-top: 1.5rem; text-align: center; }
 @media (min-width: 52rem) {
-  .combos-secao { padding-block: 5rem 5.5rem; }
+  /* O arco sobe até onde a foto do topo some: a curva continua o topo, sem vão entre os dois.
+     Fundo transparente (o body já é pó de arroz): opaco, a borda de cima da seção cortaria
+     a parte da foto que ainda está sumindo. */
+  .combos-secao { position: relative; margin-top: -3.5rem; padding-block: 3rem 5.5rem; background: transparent; }
   .combos-secao .miolo::before { inset: -3rem -2.5rem -3rem; border-radius: 50% 50% 1.25rem 1.25rem / 15rem 15rem 1.25rem 1.25rem; background: #F2D3D6; }
   .combos-secao .titulo-secao { padding-top: 2rem; margin-bottom: 2.25rem; }
   .combos { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }

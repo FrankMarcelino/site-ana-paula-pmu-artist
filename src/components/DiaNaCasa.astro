@@ -1,0 +1,29 @@
+---
+// "Um dia na casa rosa": a montagem de um dia de atendimento, rodando sozinha atrás de uma
+// cortina. O desfoque está gravado no vídeo (preparado a partir de midia-original/brutos/
+// ana-trabalhando.mp4): quem baixar o arquivo também não vê rosto. As dobras do tecido são CSS.
+// Só baixa o vídeo quando a faixa chega perto da tela e pausa quando sai; com "reduzir
+// movimento" ou economia de dados fica só a capa.
+---
+<section class="dia-casa" aria-labelledby="titulo-dia">
+  <video class="dia-casa-video" muted loop playsinline preload="none" poster="/videos/dia-na-casa-rosa.webp" data-src="/videos/dia-na-casa-rosa.mp4" aria-hidden="true"></video>
+  <div class="dia-casa-cortina" aria-hidden="true"></div>
+  <div class="dia-casa-texto miolo">
+    <h2 id="titulo-dia" class="titulo-secao">Um dia na casa rosa</h2>
+    <p>Mais de 10 anos e milhares de atendimentos.</p>
+  </div>
+</section>
+
+<script>
+  const video = document.querySelector<HTMLVideoElement>('.dia-casa-video');
+  const calmo = matchMedia('(prefers-reduced-motion: reduce)').matches
+    || (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+  if (video && !calmo && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        if (!video.src) video.src = video.dataset.src!;
+        video.play().catch(() => {});
+      } else if (video.src) video.pause();
+    }, { rootMargin: '200px 0px' }).observe(video);
+  }
+</script>

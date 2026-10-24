@@ -189,6 +189,30 @@ h1, h2, h3 { margin: 0; }
 .video-largo video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--pigmento); border-radius: .5rem; }
 .video-largo figcaption { margin-top: .5rem; font-size: var(--t-pequeno); }
 
+/* ----- um dia na casa rosa -----
+   O vídeo vem desfocado do arquivo (a cortina de verdade). Por cima, a cortina de voal:
+   dobras verticais claras e um véu pó de arroz que fica mais denso nas laterais, como o
+   tecido franzido nas pontas do varão. O texto fica sobre o véu, no centro. */
+.dia-casa { position: relative; isolation: isolate; overflow: clip; display: grid; place-items: center; min-height: 30rem; background: var(--rosa-pele); }
+@media (min-width: 52rem) { .dia-casa { min-height: min(36rem, 70svh); } }
+.dia-casa-video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.dia-casa-cortina {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    /* duas camadas de dobras com períodos diferentes (5 e 7,3 rem): somadas, não se repetem
+       num ritmo fixo e o tecido não vira persiana */
+    repeating-linear-gradient(90deg,
+      rgb(255 255 255 / .00) 0, rgb(255 255 255 / .18) 1.6rem, rgb(255 255 255 / .04) 2.6rem,
+      rgb(255 255 255 / .20) 3.6rem, rgb(255 255 255 / .00) 5rem),
+    repeating-linear-gradient(90deg,
+      rgb(255 255 255 / .00) 0, rgb(255 255 255 / .14) 2.9rem, rgb(255 255 255 / .00) 7.3rem),
+    linear-gradient(90deg, rgb(247 238 236 / .85), rgb(247 238 236 / .35) 22%, rgb(247 238 236 / .35) 78%, rgb(247 238 236 / .85)),
+    radial-gradient(60% 55% at 50% 50%, rgb(247 238 236 / .55), rgb(247 238 236 / 0));
+}
+.dia-casa-texto { text-align: center; padding-block: 4rem; }
+.dia-casa-texto .titulo-secao { margin-bottom: .75rem; text-wrap: balance; }
+.dia-casa-texto p { margin: 0; font: italic 400 var(--t-frase)/1.3 var(--display); color: var(--pigmento); text-wrap: balance; }
+
 /* ----- galeria de resultados (páginas de serviço) -----
    Colunas, não grade: cada foto no formato dela. Antes e depois não pode ser recortado. */
 .galeria { columns: 2; column-gap: 1rem; margin: 0; padding: 0; list-style: none; }

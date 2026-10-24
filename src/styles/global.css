@@ -338,12 +338,11 @@ h1, h2, h3 { margin: 0; }
 .fale-belle-selo {
   position: absolute; top: -.7rem; right: 1rem;
   display: inline-flex; align-items: center; gap: .25rem;
-  padding: .2rem .55rem .2rem .45rem; border-radius: 999px;
+  padding: .2rem .6rem; border-radius: 999px;
   background: #fff; color: var(--rosa-belle-escuro);
   font: 700 .75rem/1 var(--texto); font-style: normal; letter-spacing: .01em;
   box-shadow: 0 2px 8px rgb(143 31 99 / .25);
 }
-.fale-belle-selo svg { width: .85rem; height: .85rem; }
 
 /* ----- parallax: a foto anda devagar dentro da moldura enquanto a página rola -----
    Só CSS (animation-timeline: view()), sem JavaScript: o navegador move a imagem na placa

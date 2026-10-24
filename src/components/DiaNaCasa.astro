@@ -3,8 +3,8 @@
 // cortina. O desfoque está gravado no vídeo (preparado a partir de midia-original/brutos/
 // ana-trabalhando.mp4): quem baixar o arquivo também não vê rosto. As dobras do tecido são CSS.
 // Só baixa o vídeo quando um quarto da faixa já está na tela e pausa quando sai. Com "reduzir
-// movimento" (no Windows: Efeitos de animação desligados) ou economia de dados não começa
-// sozinho: fica a capa com o botão Assistir. Quando roda, o mesmo botão vira Pausar.
+// movimento" (no Windows: Efeitos de animação desligados) ou economia de dados fica a capa
+// parada (sem botão, decisão do Frank em 24/10).
 import chamada from '../data/chamada-escrita.json';
 // ordem da escrita: o índice corre pelas três linhas, letra por letra
 let n = 0;
@@ -25,25 +25,12 @@ const linhas = chamada.linhas.map((l) => ({ ...l, glifos: l.glifos.map((d) => ({
       </svg>
     </h2>
   </div>
-  <button type="button" class="dia-casa-botao" hidden>Assistir</button>
 </section>
 
 <script>
   const video = document.querySelector<HTMLVideoElement>('.dia-casa-video')!;
-  const botao = document.querySelector<HTMLButtonElement>('.dia-casa-botao')!;
   const calmo = matchMedia('(prefers-reduced-motion: reduce)').matches
     || (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
-  let pausadoPelaPessoa = !!calmo;
-  const carregar = () => { if (!video.src) video.src = video.dataset.src!; };
-  const tocar = () => { carregar(); video.play().catch(() => {}); };
-  const atualizar = () => { botao.textContent = video.paused ? 'Assistir' : 'Pausar'; };
-  video.addEventListener('play', atualizar);
-  video.addEventListener('pause', atualizar);
-  botao.hidden = false;
-  botao.addEventListener('click', () => {
-    pausadoPelaPessoa = !video.paused;
-    if (pausadoPelaPessoa) video.pause(); else tocar();
-  });
   // Escrita à mão: esconde a chamada e escreve quando a faixa aparece, uma vez só.
   // Sem JavaScript ou com "reduzir movimento", a chamada já aparece escrita.
   const escrita = document.querySelector('.escrita');
@@ -54,9 +41,9 @@ const linhas = chamada.linhas.map((l) => ({ ...l, glifos: l.glifos.map((d) => ({
     }, { threshold: .5 });
     io.observe(escrita);
   }
-  if ('IntersectionObserver' in window) {
+  if (!calmo && 'IntersectionObserver' in window) {
     new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { if (!pausadoPelaPessoa) tocar(); }
+      if (e.isIntersecting) { if (!video.src) video.src = video.dataset.src!; video.play().catch(() => {}); }
       else if (!video.paused) video.pause();
     }, { threshold: .25 }).observe(video); // sem antecipar: logo abaixo do topo, a margem baixaria o vídeo junto com a página
   }

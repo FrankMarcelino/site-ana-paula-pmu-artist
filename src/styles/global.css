@@ -210,7 +210,20 @@ h1, h2, h3 { margin: 0; }
     radial-gradient(60% 55% at 50% 50%, rgb(247 238 236 / .55), rgb(247 238 236 / 0));
 }
 .dia-casa-texto { text-align: center; padding-block: 4rem; }
-.dia-casa-texto .titulo-secao { margin-bottom: .75rem; text-wrap: balance; }
+/* A chamada escrita à mão (Allura, a cursiva mais próxima da assinatura), em desenho: uma
+   peça por letra (scripts/escrever-chamada.mjs). Cada letra: o contorno se desenha e a tinta
+   entra logo atrás, na ordem da escrita, ~55 ms por letra. Exceção do manual: a cursiva só aqui. */
+.dia-casa-titulo { margin: 0 auto; }
+.escrita { display: block; width: min(100%, 48rem); height: auto; margin-inline: auto; overflow: visible; }
+.escrita path { fill: var(--amora); stroke: var(--amora); stroke-width: 2; stroke-linejoin: round; } /* o traço fica: engrossa a Allura, fina sobre o vídeo */
+.escrita.vai-escrever path { fill-opacity: 0; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.escrita.escrevendo path {
+  animation: traco .45s ease-out forwards, tinta .5s ease-in forwards;
+  animation-delay: calc(var(--i) * 55ms), calc(var(--i) * 55ms + .25s);
+}
+@keyframes traco { to { stroke-dashoffset: 0; } }
+@keyframes tinta { to { fill-opacity: 1; } }
+.visualmente-oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .dia-casa-botao {
   /* à esquerda: o canto direito é dos botões flutuantes (WhatsApp e chat) */
   position: absolute; left: var(--margem); bottom: 1.25rem;
@@ -218,8 +231,6 @@ h1, h2, h3 { margin: 0; }
   background: rgb(247 238 236 / .85); color: var(--pigmento); font: 600 var(--t-pequeno)/1 var(--texto); cursor: pointer;
 }
 .dia-casa-botao:hover { background: var(--po-de-arroz); }
-.dia-casa-texto p span { display: inline-block; }
-.dia-casa-texto p { margin: 0; font: italic 400 var(--t-frase)/1.3 var(--display); color: var(--pigmento); text-wrap: balance; }
 
 /* ----- galeria de resultados (páginas de serviço) -----
    Colunas, não grade: cada foto no formato dela. Antes e depois não pode ser recortado. */

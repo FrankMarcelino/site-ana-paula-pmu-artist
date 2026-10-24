@@ -46,7 +46,7 @@ export const SERVICOS: Servico[] = [
   { id: 'design-henna', nome: 'Design com henna', detalhe: 'Cerca de 30 min', preco: 50, pagina: 'sobrancelhas', foto: 'henna-1', vitrine: 'henna-1' },
   { id: 'design', nome: 'Design de sobrancelha', detalhe: 'Personalizado para o formato do rosto · cerca de 30 min', preco: 30, pagina: 'sobrancelhas', foto: 'henna-2' },
   { id: 'micro-labial', nome: 'Micropigmentação labial', detalhe: 'Cor e contorno · cerca de 3h30 · até 3x sem juros', preco: 350, observacao: 'retoque R$ 200', pagina: 'labios', foto: 'micro-labial', vitrine: 'micro-labial' },
-  { id: 'extensao-cilios', nome: 'Extensão de cílios', detalhe: 'Cerca de 1h30', preco: 120, observacao: 'manutenção R$ 70', pagina: 'cilios', foto: 'cilios', vitrine: 'cilios' },
+  { id: 'extensao-cilios', nome: 'Extensão de cílios', detalhe: 'Cerca de 2h', preco: 120, observacao: 'manutenção R$ 70', pagina: 'cilios', foto: 'cilios', vitrine: 'cilios' },
 ];
 
 export const reais = (v: number) => `R$ ${v.toLocaleString('pt-BR')}`;

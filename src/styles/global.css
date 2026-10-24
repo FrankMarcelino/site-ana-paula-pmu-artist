@@ -189,7 +189,7 @@ h1, h2, h3 { margin: 0; }
 .video-largo video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--pigmento); border-radius: .5rem; }
 .video-largo figcaption { margin-top: .5rem; font-size: var(--t-pequeno); }
 
-/* ----- um dia na casa rosa -----
+/* ----- prova social: um dia de atendimento atrás da cortina (logo abaixo do topo) -----
    O vídeo vem desfocado do arquivo (a cortina de verdade). Por cima, a cortina de voal:
    dobras verticais claras e um véu pó de arroz que fica mais denso nas laterais, como o
    tecido franzido nas pontas do varão. O texto fica sobre o véu, no centro. */
@@ -212,11 +212,13 @@ h1, h2, h3 { margin: 0; }
 .dia-casa-texto { text-align: center; padding-block: 4rem; }
 .dia-casa-texto .titulo-secao { margin-bottom: .75rem; text-wrap: balance; }
 .dia-casa-botao {
-  position: absolute; right: var(--margem); bottom: 1.25rem;
+  /* à esquerda: o canto direito é dos botões flutuantes (WhatsApp e chat) */
+  position: absolute; left: var(--margem); bottom: 1.25rem;
   min-height: 2.75rem; padding: .55rem 1.1rem; border: 1px solid rgb(59 36 32 / .25); border-radius: 999px;
   background: rgb(247 238 236 / .85); color: var(--pigmento); font: 600 var(--t-pequeno)/1 var(--texto); cursor: pointer;
 }
 .dia-casa-botao:hover { background: var(--po-de-arroz); }
+.dia-casa-texto p span { display: inline-block; }
 .dia-casa-texto p { margin: 0; font: italic 400 var(--t-frase)/1.3 var(--display); color: var(--pigmento); text-wrap: balance; }
 
 /* ----- galeria de resultados (páginas de serviço) -----
@@ -296,10 +298,7 @@ h1, h2, h3 { margin: 0; }
 }
 .combos-secao .titulo-secao { margin-bottom: 1.5rem; padding-top: 1.5rem; text-align: center; }
 @media (min-width: 52rem) {
-  /* O arco sobe até onde a foto do topo some: a curva continua o topo, sem vão entre os dois.
-     Fundo transparente (o body já é pó de arroz): opaco, a borda de cima da seção cortaria
-     a parte da foto que ainda está sumindo. */
-  .combos-secao { position: relative; margin-top: -3.5rem; padding-block: 3rem 5.5rem; background: transparent; }
+  .combos-secao { padding-block: 5.5rem; }
   .combos-secao .miolo::before { inset: -3rem -2.5rem -3rem; border-radius: 50% 50% 1.25rem 1.25rem / 15rem 15rem 1.25rem 1.25rem; background: #F2D3D6; }
   .combos-secao .titulo-secao { padding-top: 2rem; margin-bottom: 2.25rem; }
   .combos { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }

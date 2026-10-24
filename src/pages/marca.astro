@@ -18,7 +18,8 @@ import albertSans from '@fontsource/albert-sans/files/albert-sans-latin-400-norm
 
 const CORES = [
   { nome: 'Pó de arroz', hex: '#F7EEEC', uso: 'Fundo de todas as páginas.', contraste: '' },
-  { nome: 'Pigmento', hex: '#3B2420', uso: 'Texto e rodapé. Nunca preto puro.', contraste: '12,6 : 1 sobre o pó de arroz' },
+  { nome: 'Amora', hex: '#5A2433', uso: 'Títulos (EB Garamond). Mais escura que o vinho, para o vinho seguir sendo a cor do que se clica.', contraste: '10,6 : 1 sobre o pó de arroz · 8,7 : 1 sobre o rosa do arco' },
+  { nome: 'Pigmento', hex: '#3B2420', uso: 'Texto corrido e rodapé. Nunca preto puro.', contraste: '12,6 : 1 sobre o pó de arroz' },
   { nome: 'Vinho', hex: '#882E4E', uso: 'A assinatura, o botão de agendar e os links.', contraste: '7,2 : 1 sobre o pó de arroz · branco sobre ele 8,2 : 1' },
   { nome: 'Rosa-pele', hex: '#EFC0C5', uso: 'Fundo das seções alternadas (a casa rosa).', contraste: 'texto em pigmento sobre ele 8,9 : 1' },
   { nome: 'Rosa-casa', hex: '#C0587D', uso: 'Só detalhe: números das etapas, ícones. Não serve para texto.', contraste: '3,7 : 1, abaixo do mínimo para texto' },
@@ -85,7 +86,7 @@ const ESCALA = [
 
     <section aria-labelledby="m-cores">
       <h2 id="m-cores">Cores</h2>
-      <p>Cinco cores de base e uma exclusiva da Belle. O contraste ao lado de cada uma diz onde ela pode ser texto: o mínimo para texto comum é 4,5 : 1.</p>
+      <p>Seis cores de base e uma exclusiva da Belle. Cada cor tem um papel: amora é título, pigmento é texto, vinho é ação (assinatura, preço, botão, link). O contraste ao lado de cada uma diz onde ela pode ser texto: o mínimo para texto comum é 4,5 : 1.</p>
       <ul class="m-cores">
         {CORES.map((c) => (
           <li>
@@ -181,13 +182,13 @@ const ESCALA = [
 <style>
   .manual { max-width: 46rem; padding-block: 3rem 4rem; }
   .manual section { padding-block: 2.5rem; border-top: 1px solid color-mix(in srgb, var(--pigmento) 20%, transparent); }
-  .manual h2 { margin-bottom: 1rem; font: 400 var(--t-xg)/.95 var(--display); }
+  .manual h2 { margin-bottom: 1rem; font: 400 var(--t-xg)/.95 var(--display); color: var(--amora); }
   .manual h3 { font: 600 var(--t-sub)/1.25 var(--texto); }
   .manual p { margin: 0 0 1rem; max-width: 38rem; }
   .m-capa { padding-bottom: 2.5rem; }
   .m-capa-logo { width: min(100%, 22rem); }
 
-  .m-capa h1 { font: 400 var(--t-xg)/.95 var(--display); }
+  .m-capa h1 { font: 400 var(--t-xg)/.95 var(--display); color: var(--amora); }
   .m-frase { margin-top: 1rem; font: italic 400 var(--t-frase)/1.25 var(--display); }
   .m-pares { display: grid; gap: .75rem; margin: 1.5rem 0 0; }
   .m-pares div { display: grid; grid-template-columns: 4.5rem 1fr; gap: 1rem; }

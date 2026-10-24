@@ -7,7 +7,8 @@
 
 :root {
   --po-de-arroz: #F7EEEC;    /* fundo */
-  --pigmento: #3B2420;       /* texto e o traço */
+  --pigmento: #3B2420;       /* texto corrido */
+  --amora: #5A2433;          /* títulos (EB Garamond): vinho bem escuro, conversa com os rosas sem pesar */
   --vinho: #882E4E;          /* ação: botões e links */
   --rosa-casa: #C0587D;      /* destaques pequenos */
   --rosa-pele: #EFC0C5;      /* fundo de seção alternada */
@@ -135,14 +136,14 @@ h1, h2, h3 { margin: 0; }
 
 /* ----- cabeçalho das páginas internas ----- */
 .pagina-topo { padding-block: 2.5rem 3rem; }
-.pagina-topo h1 { font: 400 var(--t-xg)/.95 var(--display); }
+.pagina-topo h1 { font: 400 var(--t-xg)/.95 var(--display); color: var(--amora); }
 .pagina-topo p { margin: 1rem 0 0; max-width: 38rem; font-size: var(--t-m); line-height: 1.4; }
 
 /* ----- seções ----- */
 .secao { padding-block: 4rem 4.5rem; }
 .secao--branca { background: #fff; }
 .secao--rosa { background: var(--rosa-pele); }
-.titulo-secao { margin: 0 0 .5rem; font: 400 var(--t-xg)/.95 var(--display); }
+.titulo-secao { margin: 0 0 .5rem; font: 400 var(--t-xg)/.95 var(--display); color: var(--amora); }
 .titulo-secao--menor { font-size: clamp(2.25rem, 7vw, 3.75rem); }
 .intro-secao { margin: 0 0 2.5rem; max-width: 38rem; color: var(--pigmento-suave); }
 .acoes { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; margin-top: 2.5rem; }
@@ -253,36 +254,29 @@ h1, h2, h3 { margin: 0; }
 
 /* ----- combos ----- */
 .combos { display: grid; gap: 1.25rem; }
-/* A sombra da primavera da casa rosa cai sobre a seção, como o sol atravessando a planta
-   e desenhando a silhueta dela na parede: borrada, de um tom só, bem clara. A forma vem de
-   scripts/sombra-planta.cjs (só a transparência); a cor e a intensidade ficam aqui. */
-.combos-secao { position: relative; isolation: isolate; overflow: clip; background: var(--po-de-arroz); }
-/* A sombra fica POR CIMA dos cartões, como a de verdade (o sol não pula o cartão), bem leve:
-   multiply a 10% não tira o texto do contraste mínimo e não pega o toque (pointer-events).
-   A 2ª máscara (radial) esmaece as bordas: a planta encosta na borda da foto, e sem ela o
-   corte vira uma linha reta depois de girar. */
-.combos-sombra {
-  position: absolute; z-index: 1; top: -3rem; left: -30%;
-  width: max(200%, 34rem); aspect-ratio: 3 / 4;
-  background: rgb(59 36 32 / .10); mix-blend-mode: multiply;
-  -webkit-mask: var(--sombra) center / contain no-repeat, radial-gradient(closest-side, #000 60%, transparent) center / 100% 100% no-repeat;
-  -webkit-mask-composite: source-in;
-  mask: var(--sombra) center / contain no-repeat, radial-gradient(closest-side, #000 60%, transparent) center / 100% 100% no-repeat;
-  mask-composite: intersect;
-  transform: rotate(-14deg); transform-origin: 0 0;
-  pointer-events: none;
+/* Os combos ficam dentro de um arco rosa-pele, como as janelas e a porta da casa rosa.
+   Computador: o arco abraça título e cards. Celular (cards empilhados, o arco ficaria alto
+   demais): só o topo em arco atrás do título, que se dissolve no rosa por trás dos cards. */
+.combos-secao { background: var(--po-de-arroz); }
+.combos-secao .miolo { position: relative; isolation: isolate; }
+.combos-secao .miolo::before {
+  content: ''; position: absolute; z-index: -1; inset: -2rem -.75rem -2rem;
+  border-radius: 50vw 50vw 1rem 1rem / 9rem 9rem 1rem 1rem;
+  background: linear-gradient(to bottom, #F2D3D6 0, #F2D3D6 40%, color-mix(in srgb, #F2D3D6 45%, var(--po-de-arroz)) 100%);
 }
+.combos-secao .titulo-secao { margin-bottom: 1.5rem; padding-top: 1.5rem; text-align: center; }
 @media (min-width: 52rem) {
   .combos-secao { padding-block: 5rem 5.5rem; }
-  .combos-sombra { top: -14rem; left: -6%; width: min(70rem, 80%); }
+  .combos-secao .miolo::before { inset: -3rem -2.5rem -3rem; border-radius: 50% 50% 1.25rem 1.25rem / 15rem 15rem 1.25rem 1.25rem; background: #F2D3D6; }
+  .combos-secao .titulo-secao { padding-top: 2rem; margin-bottom: 2.25rem; }
   .combos { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 }
 .combo {
   display: flex; flex-direction: column; padding: 1.75rem 1.5rem 1.5rem;
-  border-radius: .75rem; background: rgb(255 255 255 / .82);
+  border-radius: .75rem; background: rgb(255 255 255 / .9);
   border: 1px solid color-mix(in srgb, var(--pigmento) 14%, transparent);
 }
-.combo h3 { font: 400 var(--t-g)/1 var(--display); }
+.combo h3 { font: 400 var(--t-g)/1 var(--display); color: var(--amora); }
 .combo .valor { margin: .6rem 0 0; font: 400 2.75rem/1 var(--display); font-variant-numeric: lining-nums; color: var(--vinho); }
 .combo .valor small { display: block; margin-top: .35rem; font: 400 var(--t-pequeno)/1.2 var(--texto); color: var(--pigmento-suave); }
 .combo ul { flex: 1; margin: 1.25rem 0 1.5rem; padding: 1rem 0 0 1.1rem; border-top: 1px solid color-mix(in srgb, var(--pigmento) 14%, transparent); }

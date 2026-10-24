@@ -253,13 +253,59 @@ h1, h2, h3 { margin: 0; }
 
 /* ----- combos ----- */
 .combos { display: grid; gap: 1.25rem; }
-@media (min-width: 48rem) { .combos { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 64rem) { .combos { grid-template-columns: repeat(3, 1fr); } }
-.combo { padding: 2rem; border: 1px solid var(--pigmento); border-radius: .75rem; background: var(--po-de-arroz); }
-.combo h3 { font: 400 var(--t-g)/1 var(--display); font-variant-numeric: lining-nums; }
-.combo .valor { margin: .75rem 0 0; font-size: var(--t-m); font-weight: 600; }
-.combo .valor small { font-weight: 400; color: var(--pigmento-suave); font-size: var(--t-pequeno); }
-.combo ul { margin: 1rem 0 1.5rem; padding-left: 1.1rem; }
+/* A seção tem a primavera da casa rosa, clareada (scripts/clarear-fundo.cjs): parede e céu
+   quase somem no pó de arroz e só as flores e as folhas ficam. A planta tem espaço próprio:
+   no celular é a faixa de cima (o título entra sobre a parte que some); no computador, a foto
+   inteira, vertical como ela é, na coluna da esquerda, e os combos à direita como um cardápio. */
+.combos-secao { padding-top: 0; background: var(--po-de-arroz); }
+.combos-fundo { height: 24rem; }
+.combos-fundo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 30% 25%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent);
+  mask-image: linear-gradient(to bottom, #000 50%, transparent);
+}
+.combos-secao .miolo { position: relative; margin-top: -6rem; }
+.combos-secao .titulo-secao { margin-bottom: 1.5rem; }
+@media (min-width: 52rem) {
+  .combos-secao { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); align-items: center; padding-block: 3rem 5rem; }
+  .combos-fundo { height: 100%; max-height: 52rem; }
+  .combos-fundo img {
+    object-position: 35% 40%;
+    -webkit-mask-image: linear-gradient(to right, #000 60%, transparent), linear-gradient(to bottom, transparent, #000 10%, #000 85%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, #000 60%, transparent), linear-gradient(to bottom, transparent, #000 10%, #000 85%, transparent);
+    mask-composite: intersect;
+  }
+  .combos-secao .miolo { width: auto; max-width: 46rem; margin: 0 var(--margem) 0 0; }
+  .combos { grid-template-columns: 1fr; gap: 1rem; }
+}
+.combo {
+  display: flex; flex-direction: column; padding: 1.75rem 1.5rem 1.5rem;
+  border-radius: .75rem; background: rgb(255 255 255 / .9);
+  border: 1px solid color-mix(in srgb, var(--pigmento) 14%, transparent);
+}
+.combo h3 { font: 400 var(--t-g)/1 var(--display); }
+.combo .valor { margin: .6rem 0 0; font: 400 2.75rem/1 var(--display); font-variant-numeric: lining-nums; color: var(--vinho); }
+.combo .valor small { display: block; margin-top: .35rem; font: 400 var(--t-pequeno)/1.2 var(--texto); color: var(--pigmento-suave); }
+.combo ul { flex: 1; margin: 1.25rem 0 1.5rem; padding: 1rem 0 0 1.1rem; border-top: 1px solid color-mix(in srgb, var(--pigmento) 14%, transparent); }
+.combo li + li { margin-top: .3rem; }
+.combo li::marker { color: var(--rosa-casa); }
+/* Reservar: botão de contorno vinho, o cartão inteiro na mesma linha de base (flex). */
+.combo-reservar {
+  display: flex; align-items: center; justify-content: center; min-height: 3rem; padding: .7rem 1rem;
+  border: 1.5px solid var(--vinho); border-radius: 999px;
+  color: var(--vinho); font-weight: 600; text-decoration: none;
+}
+.combo-reservar:hover { background: var(--vinho); color: #fff; }
+/* No computador cada combo vira uma linha: nome e preço à esquerda; o que inclui e o botão à
+   direita. (Depois das regras base do .combo, senão o display: flex delas vence.) */
+@media (min-width: 52rem) {
+  .combo { display: grid; grid-template-columns: 11rem 1fr; grid-template-areas: "nome lista" "valor lista" "valor botao"; column-gap: 2rem; align-items: start; padding: 1.5rem 1.75rem; }
+  .combo h3 { grid-area: nome; }
+  .combo .valor { grid-area: valor; }
+  .combo ul { grid-area: lista; margin: 0 0 1rem; padding: 0 0 0 1.75rem; border-top: 0; border-left: 1px solid color-mix(in srgb, var(--pigmento) 14%, transparent); }
+  .combo .combo-reservar { grid-area: botao; justify-self: start; padding-inline: 1.5rem; margin-left: 1.75rem; }
+}
 
 /* ----- rodapé ----- */
 .rodape { padding-block: 3rem 2rem; background: var(--pigmento); color: var(--po-de-arroz); }

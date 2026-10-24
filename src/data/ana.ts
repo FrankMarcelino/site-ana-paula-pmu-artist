@@ -71,5 +71,5 @@ export const PERGUNTAS_GERAIS: Pergunta[] = [
   { p: 'Como faço para agendar?', r: 'Pelo WhatsApp: é só informar o procedimento e o dia e o horário de preferência. A Ana Paula verifica a agenda e sugere um horário disponível. Para confirmar, envie seu nome completo.' },
   { p: 'Como funciona a confirmação do agendamento?', r: 'Depois de agendar, você recebe a confirmação com dia e horário. Um dia antes do atendimento chega uma mensagem de confirmação, e é muito importante responder confirmando para garantir o horário.' },
   { p: 'Vocês atendem aos sábados?', r: 'Sim, há atendimento aos sábados pela manhã.' },
-  { p: 'Quais são as formas de pagamento?', r: PAGAMENTO },
+  { p: 'Como posso pagar?', r: PAGAMENTO },
 ];

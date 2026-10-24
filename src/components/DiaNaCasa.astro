@@ -6,9 +6,21 @@
 // movimento" (no Windows: Efeitos de animação desligados) ou economia de dados fica a capa
 // parada (sem botão, decisão do Frank em 24/10).
 import chamada from '../data/chamada-escrita.json';
-// ordem da escrita: o índice corre pelas três linhas, letra por letra
-let n = 0;
-const linhas = chamada.linhas.map((l) => ({ ...l, glifos: l.glifos.map((d) => ({ d, i: n++ })) }));
+// Tempo de cada letra: a caneta anda a VELOCIDADE (unidades do desenho por segundo); cada
+// letra começa quando a caneta chega nela e dura o que leva para atravessá-la. Entre linhas,
+// uma pausa curta (a mão descendo para a linha de baixo).
+const VELOCIDADE = 520, PAUSA = 0.28;
+let t = 0;
+const linhas = chamada.linhas.map((l) => {
+  const ini = l.glifos[0].x0;
+  const glifos = l.glifos.map((g) => ({
+    d: g.d,
+    atraso: (t + (g.x0 - ini) / VELOCIDADE).toFixed(2),
+    dur: Math.max(0.06, (g.x1 - g.x0) / VELOCIDADE).toFixed(2),
+  }));
+  t += (l.glifos[l.glifos.length - 1].x1 - ini) / VELOCIDADE + PAUSA;
+  return { ...l, glifos };
+});
 ---
 <section class="dia-casa" aria-labelledby="titulo-dia">
   <video class="dia-casa-video" muted loop playsinline preload="none" poster="/videos/dia-na-casa-rosa.webp" data-src="/videos/dia-na-casa-rosa.mp4" aria-hidden="true"></video>
@@ -19,7 +31,7 @@ const linhas = chamada.linhas.map((l) => ({ ...l, glifos: l.glifos.map((d) => ({
       <svg class="escrita" viewBox={`0 0 ${chamada.largura} ${chamada.altura}`} aria-hidden="true" focusable="false">
         {linhas.map((l) => (
           <g transform={`translate(${l.dx} 0)`}>
-            {l.glifos.map((g) => <path d={g.d} pathLength="1" style={`--i:${g.i}`} />)}
+            {l.glifos.map((g) => <path d={g.d} style={`--atraso:${g.atraso}s;--dur:${g.dur}s`} />)}
           </g>
         ))}
       </svg>

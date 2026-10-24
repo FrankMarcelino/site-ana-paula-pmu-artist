@@ -211,18 +211,17 @@ h1, h2, h3 { margin: 0; }
 }
 .dia-casa-texto { text-align: center; padding-block: 4rem; }
 /* A chamada escrita à mão (Allura, a cursiva mais próxima da assinatura), em desenho: uma
-   peça por letra (scripts/escrever-chamada.mjs). Cada letra: o contorno se desenha e a tinta
-   entra logo atrás, na ordem da escrita, ~55 ms por letra. Exceção do manual: a cursiva só aqui. */
+   peça por letra (scripts/escrever-chamada.mjs). Cada letra aparece já cheia, da esquerda
+   para a direita, como a ponta da caneta passando; o tempo é proporcional à largura, e há
+   uma pausa entre linhas. Exceção do manual: a cursiva só aqui. */
 .dia-casa-titulo { margin: 0 auto; }
 .escrita { display: block; width: min(100%, 48rem); height: auto; margin-inline: auto; overflow: visible; }
-.escrita path { fill: var(--amora); stroke: var(--amora); stroke-width: 2; stroke-linejoin: round; } /* o traço fica: engrossa a Allura, fina sobre o vídeo */
-.escrita.vai-escrever path { fill-opacity: 0; stroke-dasharray: 1; stroke-dashoffset: 1; }
-.escrita.escrevendo path {
-  animation: traco .45s ease-out forwards, tinta .5s ease-in forwards;
-  animation-delay: calc(var(--i) * 55ms), calc(var(--i) * 55ms + .25s);
-}
-@keyframes traco { to { stroke-dashoffset: 0; } }
-@keyframes tinta { to { fill-opacity: 1; } }
+.escrita path { fill: var(--amora); stroke: var(--amora); stroke-width: 2; stroke-linejoin: round; } /* o traço engrossa a Allura, fina sobre o vídeo */
+/* inset com folga em cima e embaixo; a borda direita anda (é a caneta). A esquerda começa em
+   0, não com folga: com folga, 1 px do traço da letra ainda não escrita vazava como um risquinho. */
+.escrita.vai-escrever path { clip-path: inset(-30% 100% -30% 0); }
+.escrita.escrevendo path { animation: escreve var(--dur) linear var(--atraso) forwards; }
+@keyframes escreve { to { clip-path: inset(-30% -30% -30% -30%); } }
 .visualmente-oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 /* ----- galeria de resultados (páginas de serviço) -----

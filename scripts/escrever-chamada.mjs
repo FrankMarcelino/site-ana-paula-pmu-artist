@@ -1,6 +1,8 @@
 // Converte a chamada em desenho (SVG), uma peça por letra, para a animação de escrita à mão.
-// A fonte é um contorno fechado (não tem traço): na animação, o contorno de cada letra se
-// desenha e o preenchimento entra logo atrás, letra por letra, na ordem da escrita.
+// Cada letra guarda onde começa e onde termina (x0, x1): na animação ela aparece já cheia,
+// da esquerda para a direita, com o tempo proporcional à largura (velocidade de caneta
+// constante). Animar o contorno não serve: a fonte é um carimbo com borda, e a caneta
+// passaria pela borda, não pelo meio da letra.
 // Uso: node scripts/escrever-chamada.mjs   → gera src/data/chamada-escrita.json
 import opentype from 'opentype.js';
 import { writeFileSync } from 'node:fs';
@@ -17,7 +19,7 @@ const linhas = LINHAS.map((texto, l) => {
   gs.forEach((g, i) => {
     const p = g.getPath(x, TAM + l * ENTRELINHA, TAM);
     const d = p.toPathData(1);
-    if (d) glifos.push(d);
+    if (d) { const bb = p.getBoundingBox(); glifos.push({ d, x0: Math.round(bb.x1), x1: Math.round(bb.x2) }); }
     x += g.advanceWidth * TAM / font.unitsPerEm;
     if (i < gs.length - 1) x += font.getKerningValue(g, gs[i + 1]) * TAM / font.unitsPerEm;
   });

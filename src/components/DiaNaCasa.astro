@@ -2,7 +2,7 @@
 // Faixa de prova social (logo abaixo do topo): a montagem de um dia de atendimento, rodando sozinha atrás de uma
 // cortina. O desfoque está gravado no vídeo (preparado a partir de midia-original/brutos/
 // ana-trabalhando.mp4): quem baixar o arquivo também não vê rosto. As dobras do tecido são CSS.
-// Só baixa o vídeo quando a faixa chega perto da tela e pausa quando sai. Com "reduzir
+// Só baixa o vídeo quando um quarto da faixa já está na tela e pausa quando sai. Com "reduzir
 // movimento" (no Windows: Efeitos de animação desligados) ou economia de dados não começa
 // sozinho: fica a capa com o botão Assistir. Quando roda, o mesmo botão vira Pausar.
 import chamada from '../data/chamada-escrita.json';
@@ -58,6 +58,6 @@ const linhas = chamada.linhas.map((l) => ({ ...l, glifos: l.glifos.map((d) => ({
     new IntersectionObserver(([e]) => {
       if (e.isIntersecting) { if (!pausadoPelaPessoa) tocar(); }
       else if (!video.paused) video.pause();
-    }, { rootMargin: '200px 0px' }).observe(video);
+    }, { threshold: .25 }).observe(video); // sem antecipar: logo abaixo do topo, a margem baixaria o vídeo junto com a página
   }
 </script>

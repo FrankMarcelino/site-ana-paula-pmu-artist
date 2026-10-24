@@ -9,7 +9,7 @@ import Videos from '../components/Videos.astro';
 import fotoTopo from '../assets/ana/topo.jpeg';
 import logoVinho from '../assets/logo-vinho.svg';
 import fachada from '../assets/espaco/fachada.jpeg';
-import primavera from '../assets/espaco/primavera-fundo.jpeg';
+import sombra from '../assets/espaco/sombra-primavera.webp';
 import { INSTAGRAM, whatsapp } from '../data/ana';
 ---
 <Base titulo="Ana Paula Almeida | Micropigmentação em Juazeiro do Norte" descricao="Micropigmentação de sobrancelhas e lábios em Juazeiro do Norte, com Ana Paula Almeida. Veja preços, vídeos e agende pelo WhatsApp.">
@@ -29,9 +29,7 @@ import { INSTAGRAM, whatsapp } from '../data/ana';
   </section>
 
   <section class="secao combos-secao" aria-labelledby="titulo-combos" id="combos">
-    <div class="combos-fundo" aria-hidden="true">
-      <Image src={primavera} alt="" width={960} widths={[480, 960]} sizes="(min-width: 52rem) 40vw, 100vw" quality={70} loading="lazy" />
-    </div>
+    <div class="combos-sombra" aria-hidden="true" style={`--sombra: url(${sombra.src})`}></div>
     <div class="miolo">
       <h2 id="titulo-combos" class="titulo-secao titulo-secao--menor">Combos deste mês</h2>
       <div class="combos">

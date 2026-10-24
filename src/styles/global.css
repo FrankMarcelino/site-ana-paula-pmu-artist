@@ -216,6 +216,15 @@ h1, h2, h3 { margin: 0; }
    uma pausa entre linhas. Exceção do manual: a cursiva só aqui. */
 .dia-casa-titulo { margin: 0 auto; }
 .escrita { display: block; width: min(100%, 48rem); height: auto; margin-inline: auto; overflow: visible; }
+/* No computador a chamada fica menor, no terço direito, sobre a porta da sala (a porta fica à
+   direita em quase toda a montagem): discreta, como um bilhete na porta, e não um letreiro. */
+@media (min-width: 52rem) {
+  .dia-casa { place-items: center end; }
+  .dia-casa-texto { width: auto; margin: 0 clamp(2rem, 9vw, 9rem) 0 0; padding-block: 3rem 7rem; }
+  .escrita { width: clamp(18rem, 27vw, 25rem); }
+  /* o pé da faixa se dissolve no pó de arroz: fora do arco dos combos não sobra linha reta */
+  .dia-casa::after { content: ''; position: absolute; inset: auto 0 0; z-index: -1; height: 9rem; background: linear-gradient(to bottom, rgb(247 238 236 / 0), var(--po-de-arroz)); }
+}
 .escrita path { fill: var(--amora); stroke: var(--amora); stroke-width: 2; stroke-linejoin: round; } /* o traço engrossa a Allura, fina sobre o vídeo */
 /* inset com folga em cima e embaixo; a borda direita anda (é a caneta). A esquerda começa em
    0, não com folga: com folga, 1 px do traço da letra ainda não escrita vazava como um risquinho. */
@@ -301,7 +310,9 @@ h1, h2, h3 { margin: 0; }
 }
 .combos-secao .titulo-secao { margin-bottom: 1.5rem; padding-top: 1.5rem; text-align: center; }
 @media (min-width: 52rem) {
-  .combos-secao { padding-block: 5.5rem; }
+  /* O arco dos combos sobe por cima do pé do vídeo: as duas seções se encaixam, sem a faixa
+     terminar numa linha reta. Fundo transparente para não cobrir o vídeo fora do arco. */
+  .combos-secao { position: relative; margin-top: -7rem; padding-block: 3rem 5.5rem; background: transparent; }
   .combos-secao .miolo::before { inset: -3rem -2.5rem -3rem; border-radius: 50% 50% 1.25rem 1.25rem / 15rem 15rem 1.25rem 1.25rem; background: #F2D3D6; }
   .combos-secao .titulo-secao { padding-top: 2rem; margin-bottom: 2.25rem; }
   .combos { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }

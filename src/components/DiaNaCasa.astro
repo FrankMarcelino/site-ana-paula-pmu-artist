@@ -2,8 +2,9 @@
 // "Um dia na casa rosa": a montagem de um dia de atendimento, rodando sozinha atrás de uma
 // cortina. O desfoque está gravado no vídeo (preparado a partir de midia-original/brutos/
 // ana-trabalhando.mp4): quem baixar o arquivo também não vê rosto. As dobras do tecido são CSS.
-// Só baixa o vídeo quando a faixa chega perto da tela e pausa quando sai; com "reduzir
-// movimento" ou economia de dados fica só a capa.
+// Só baixa o vídeo quando a faixa chega perto da tela e pausa quando sai. Com "reduzir
+// movimento" (no Windows: Efeitos de animação desligados) ou economia de dados não começa
+// sozinho: fica a capa com o botão Assistir. Quando roda, o mesmo botão vira Pausar.
 ---
 <section class="dia-casa" aria-labelledby="titulo-dia">
   <video class="dia-casa-video" muted loop playsinline preload="none" poster="/videos/dia-na-casa-rosa.webp" data-src="/videos/dia-na-casa-rosa.mp4" aria-hidden="true"></video>
@@ -12,18 +13,29 @@
     <h2 id="titulo-dia" class="titulo-secao">Um dia na casa rosa</h2>
     <p>Mais de 10 anos e milhares de atendimentos.</p>
   </div>
+  <button type="button" class="dia-casa-botao" hidden>Assistir</button>
 </section>
 
 <script>
-  const video = document.querySelector<HTMLVideoElement>('.dia-casa-video');
+  const video = document.querySelector<HTMLVideoElement>('.dia-casa-video')!;
+  const botao = document.querySelector<HTMLButtonElement>('.dia-casa-botao')!;
   const calmo = matchMedia('(prefers-reduced-motion: reduce)').matches
     || (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
-  if (video && !calmo && 'IntersectionObserver' in window) {
+  let pausadoPelaPessoa = !!calmo;
+  const carregar = () => { if (!video.src) video.src = video.dataset.src!; };
+  const tocar = () => { carregar(); video.play().catch(() => {}); };
+  const atualizar = () => { botao.textContent = video.paused ? 'Assistir' : 'Pausar'; };
+  video.addEventListener('play', atualizar);
+  video.addEventListener('pause', atualizar);
+  botao.hidden = false;
+  botao.addEventListener('click', () => {
+    pausadoPelaPessoa = !video.paused;
+    if (pausadoPelaPessoa) video.pause(); else tocar();
+  });
+  if ('IntersectionObserver' in window) {
     new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) {
-        if (!video.src) video.src = video.dataset.src!;
-        video.play().catch(() => {});
-      } else if (video.src) video.pause();
+      if (e.isIntersecting) { if (!pausadoPelaPessoa) tocar(); }
+      else if (!video.paused) video.pause();
     }, { rootMargin: '200px 0px' }).observe(video);
   }
 </script>

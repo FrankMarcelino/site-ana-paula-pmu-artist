@@ -211,6 +211,12 @@ h1, h2, h3 { margin: 0; }
 }
 .dia-casa-texto { text-align: center; padding-block: 4rem; }
 .dia-casa-texto .titulo-secao { margin-bottom: .75rem; text-wrap: balance; }
+.dia-casa-botao {
+  position: absolute; right: var(--margem); bottom: 1.25rem;
+  min-height: 2.75rem; padding: .55rem 1.1rem; border: 1px solid rgb(59 36 32 / .25); border-radius: 999px;
+  background: rgb(247 238 236 / .85); color: var(--pigmento); font: 600 var(--t-pequeno)/1 var(--texto); cursor: pointer;
+}
+.dia-casa-botao:hover { background: var(--po-de-arroz); }
 .dia-casa-texto p { margin: 0; font: italic 400 var(--t-frase)/1.3 var(--display); color: var(--pigmento); text-wrap: balance; }
 
 /* ----- galeria de resultados (páginas de serviço) -----

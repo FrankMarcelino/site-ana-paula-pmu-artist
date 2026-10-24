@@ -170,6 +170,34 @@ h1, h2, h3 { margin: 0; }
   .cardapio .preco small { display: inline; margin: 0 0 0 .5rem; }
 }
 
+/* ----- vitrine de serviços (inicial) -----
+   A foto vende mais que o texto: um cartão por serviço, foto 3:4, nome e preço da agenda.
+   O cartão inteiro é o link para a página do serviço. 2 colunas no celular, 3 no computador. */
+.vitrine { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.75rem 1rem; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 48rem) { .vitrine { grid-template-columns: repeat(3, 1fr); gap: 2.5rem 1.5rem; } }
+.vitrine a { display: block; color: inherit; text-decoration: none; }
+.vitrine img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: .5rem; }
+.vitrine h3 { margin-top: .75rem; font: 600 1rem/1.25 var(--texto); text-wrap: balance; }
+@media (min-width: 48rem) { .vitrine h3 { font-size: var(--t-sub); } }
+.vitrine a:hover h3 { color: var(--vinho); }
+.vitrine-preco { margin: .35rem 0 0; font: 400 1.75rem/1 var(--display); font-variant-numeric: lining-nums; }
+.vitrine-preco small { display: block; margin-top: .3rem; font: 400 var(--t-pequeno)/1.2 var(--texto); color: var(--pigmento-suave); }
+
+/* Vídeo horizontal (a Ana atendendo, na página do espaço): 16:9, não 9:16 como os de procedimento. */
+.video-largo { margin: 1.75rem 0 0; }
+.video-largo video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--pigmento); border-radius: .5rem; }
+.video-largo figcaption { margin-top: .5rem; font-size: var(--t-pequeno); }
+
+/* ----- galeria de resultados (páginas de serviço) -----
+   Colunas, não grade: cada foto no formato dela. Antes e depois não pode ser recortado. */
+.galeria { columns: 2; column-gap: 1rem; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 48rem) { .galeria { columns: 3; column-gap: 1.5rem; } }
+.galeria li { break-inside: avoid; margin-bottom: 1.25rem; }
+.galeria figure { margin: 0; }
+.galeria img { width: 100%; height: auto; border-radius: .5rem; }
+.galeria figcaption { margin-top: .4rem; font-size: var(--t-pequeno); line-height: 1.35; }
+.secao--rosa .galeria figcaption { color: var(--pigmento); }
+
 /* ----- como funciona: é uma sequência de verdade, então é numerada ----- */
 .etapas { display: grid; gap: 2rem; margin: 0; padding: 0; list-style: none; counter-reset: etapa; }
 @media (min-width: 48rem) { .etapas { grid-template-columns: repeat(3, 1fr); } }
@@ -280,8 +308,8 @@ h1, h2, h3 { margin: 0; }
 /* Sobre o rosa, o texto secundário claro não alcança o contraste 4.5:1: usa o pigmento cheio. */
 .secao--rosa .intro-secao, .secao--rosa .resultados figcaption { color: var(--pigmento); }
 
-/* A foto de design com tintura é de uma cliente deitada: no círculo, enquadra a sobrancelha. */
-.cardapio img.foto-tintura { object-position: 38% 52%; transform: rotate(180deg); }
+/* Foto tirada com a cliente deitada (rosto de ponta-cabeça): girada, fica de pé. */
+.foto-girada { transform: rotate(180deg); }
 
 /* ----- página de links (bio do Instagram) ----- */
 .links { max-width: 30rem; padding-block: 2.5rem 3rem; text-align: center; }

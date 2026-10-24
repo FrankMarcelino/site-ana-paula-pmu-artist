@@ -1,13 +1,11 @@
 ---
-import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Agendar from '../components/Agendar.astro';
 import Cardapio from '../components/Cardapio.astro';
 import ComoFunciona from '../components/ComoFunciona.astro';
 import Perguntas from '../components/Perguntas.astro';
+import Galeria from '../components/Galeria.astro';
 import Videos from '../components/Videos.astro';
-import microLabial from '../assets/resultados/micro-labial.jpeg';
-import microLabialAntigo from '../assets/servicos/micro-labial.jpg';
 import { INSTAGRAM, PAGAMENTO } from '../data/ana';
 const msg = 'Olá, Ana! Quero agendar micropigmentação labial.';
 // Treinamento da Belle (perguntas e respostas da micropigmentação labial).
@@ -45,10 +43,7 @@ const perguntas = [
     <div class="miolo">
       <h2 id="t-resultados" class="titulo-secao titulo-secao--menor">Resultados</h2>
       <p class="intro-secao">A Ana Paula também envia fotos de resultados já cicatrizados. Mais trabalhos no <a href={INSTAGRAM} target="_blank" rel="noopener">Instagram @anapaula_pmu_artist</a>.</p>
-      <ul class="resultados">
-        <li><figure><Image quality={70} width={600} src={microLabial} alt="Lábios logo após a micropigmentação labial" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Logo após o procedimento: a cor suaviza na cicatrização</figcaption></figure></li>
-        <li><figure><Image quality={70} width={600} src={microLabialAntigo} alt="Antes e depois de micropigmentação labial" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Antes e depois</figcaption></figure></li>
-      </ul>
+      <Galeria pagina="labios" />
     </div>
   </section>
 

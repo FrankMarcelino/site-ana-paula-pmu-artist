@@ -24,6 +24,8 @@ export const HORARIO = [
   { dias: 'Sábado', horas: '8h às 12h' },
 ];
 
+import type { IdFoto } from './galeria';
+
 export type Pagina = 'sobrancelhas' | 'labios' | 'cilios';
 
 export type Servico = {
@@ -33,18 +35,18 @@ export type Servico = {
   preco: number;
   observacao?: string;
   pagina: Pagina;
-  foto: 'micro-sobrancelhas' | 'brow-lamination' | 'micro-labial' | 'sobrancelha-tintura' | 'cilios';
-  destaque?: boolean; // aparece no resumo da inicial
+  foto: IdFoto;      // miniatura redonda do cardápio
+  vitrine?: IdFoto;  // aparece na vitrine da inicial com esta foto (a ordem fica em Vitrine.astro)
 };
 
 export const SERVICOS: Servico[] = [
-  { id: 'micro-sobrancelhas', nome: 'Micropigmentação de sobrancelhas', detalhe: 'Fio a fio · cerca de 1h30 · até 3x sem juros', preco: 350, observacao: 'retoque R$ 200', pagina: 'sobrancelhas', foto: 'micro-sobrancelhas', destaque: true },
-  { id: 'brow-lamination', nome: 'Brow lamination', detalhe: 'Já inclui o design e a finalização · cerca de 40 min', preco: 80, pagina: 'sobrancelhas', foto: 'brow-lamination', destaque: true },
-  { id: 'design-tintura', nome: 'Design com finalização em tintura', detalhe: 'Cerca de 30 min', preco: 40, pagina: 'sobrancelhas', foto: 'sobrancelha-tintura' },
-  { id: 'design-henna', nome: 'Design com henna', detalhe: 'Cerca de 30 min', preco: 50, pagina: 'sobrancelhas', foto: 'sobrancelha-tintura' },
-  { id: 'design', nome: 'Design de sobrancelha', detalhe: 'Personalizado para o formato do rosto · cerca de 30 min', preco: 30, pagina: 'sobrancelhas', foto: 'sobrancelha-tintura' },
-  { id: 'micro-labial', nome: 'Micropigmentação labial', detalhe: 'Cor e contorno · cerca de 3h30 · até 3x sem juros', preco: 350, observacao: 'retoque R$ 200', pagina: 'labios', foto: 'micro-labial', destaque: true },
-  { id: 'extensao-cilios', nome: 'Extensão de cílios', detalhe: 'Cerca de 1h30', preco: 120, observacao: 'manutenção R$ 70', pagina: 'cilios', foto: 'cilios', destaque: true },
+  { id: 'micro-sobrancelhas', nome: 'Micropigmentação de sobrancelhas', detalhe: 'Fio a fio · cerca de 1h30 · até 3x sem juros', preco: 350, observacao: 'retoque R$ 200', pagina: 'sobrancelhas', foto: 'fio-a-fio', vitrine: 'nano-fios' },
+  { id: 'brow-lamination', nome: 'Brow lamination', detalhe: 'Já inclui o design e a finalização · cerca de 40 min', preco: 80, pagina: 'sobrancelhas', foto: 'brow-lamination', vitrine: 'brow-lamination' },
+  { id: 'design-tintura', nome: 'Design com finalização em tintura', detalhe: 'Cerca de 30 min', preco: 40, pagina: 'sobrancelhas', foto: 'design-tintura', vitrine: 'design-tintura' },
+  { id: 'design-henna', nome: 'Design com henna', detalhe: 'Cerca de 30 min', preco: 50, pagina: 'sobrancelhas', foto: 'henna-1', vitrine: 'henna-1' },
+  { id: 'design', nome: 'Design de sobrancelha', detalhe: 'Personalizado para o formato do rosto · cerca de 30 min', preco: 30, pagina: 'sobrancelhas', foto: 'henna-2' },
+  { id: 'micro-labial', nome: 'Micropigmentação labial', detalhe: 'Cor e contorno · cerca de 3h30 · até 3x sem juros', preco: 350, observacao: 'retoque R$ 200', pagina: 'labios', foto: 'micro-labial', vitrine: 'micro-labial' },
+  { id: 'extensao-cilios', nome: 'Extensão de cílios', detalhe: 'Cerca de 1h30', preco: 120, observacao: 'manutenção R$ 70', pagina: 'cilios', foto: 'cilios', vitrine: 'cilios' },
 ];
 
 export const reais = (v: number) => `R$ ${v.toLocaleString('pt-BR')}`;
@@ -57,6 +59,7 @@ export const VIDEOS = [
   { arquivo: 'tecnica-fios', titulo: 'A técnica fio a fio', descricao: 'Como cada fio é desenhado na micropigmentação de sobrancelhas.', pagina: 'sobrancelhas' as Pagina },
   { arquivo: 'micro-labial', titulo: 'Micropigmentação labial', descricao: 'O resultado da micropigmentação labial: cor e contorno.', pagina: 'labios' as Pagina },
   { arquivo: 'cilios', titulo: 'Extensão de cílios', descricao: 'Antes e depois da extensão de cílios.', pagina: 'cilios' as Pagina },
+  { arquivo: 'cilios-modelo', titulo: 'Extensão de cílios: o resultado', descricao: 'Os cílios prontos, de vários ângulos.', pagina: 'cilios' as Pagina },
 ];
 
 export type Pergunta = { p: string; r: string };

@@ -1,26 +1,24 @@
 ---
 import { Image } from 'astro:assets';
 import { SERVICOS, reais, type Pagina } from '../data/ana';
-import microSobrancelhas from '../assets/servicos/micro-sobrancelhas.jpg';
-import microLabial from '../assets/servicos/micro-labial.jpg';
-import browLamination from '../assets/servicos/brow-lamination.jpg';
-import tintura from '../assets/resultados/sobrancelha-tintura.jpeg';
-import cilios from '../assets/servicos/cilios.jpg';
+import { FOTOS } from '../data/galeria';
 
-interface Props { pagina?: Pagina; destaques?: boolean; comLink?: boolean }
-const { pagina, destaques = false, comLink = false } = Astro.props;
-const FOTO = { 'micro-sobrancelhas': microSobrancelhas, 'micro-labial': microLabial, 'brow-lamination': browLamination, 'sobrancelha-tintura': tintura, cilios };
-const lista = SERVICOS.filter((s) => (pagina ? s.pagina === pagina : true) && (destaques ? s.destaque : true));
+interface Props { pagina?: Pagina; comLink?: boolean }
+const { pagina, comLink = false } = Astro.props;
+const lista = SERVICOS.filter((s) => (pagina ? s.pagina === pagina : true));
 ---
 <ul class="cardapio">
-  {lista.map((s) => (
-    <li>
-      <Image src={FOTO[s.foto]} alt={s.nome} width={208} height={208} densities={[1, 2]} quality={70} loading="lazy" class={s.foto === 'sobrancelha-tintura' ? 'foto-tintura' : undefined} />
-      <div>
-        <h3>{comLink ? <a href={`/${s.pagina}/`}>{s.nome}</a> : s.nome}</h3>
-        <p>{s.detalhe}</p>
-      </div>
-      <span class="preco">{reais(s.preco)}{s.observacao && <small>{s.observacao}</small>}</span>
-    </li>
-  ))}
+  {lista.map((s) => {
+    const f = FOTOS[s.foto];
+    return (
+      <li>
+        <Image src={f.src} alt={s.nome} width={208} height={208} densities={[1, 2]} quality={70} loading="lazy" class={f.girar ? 'foto-girada' : undefined} style={f.foco ? `object-position:${f.foco}` : undefined} />
+        <div>
+          <h3>{comLink ? <a href={`/${s.pagina}/`}>{s.nome}</a> : s.nome}</h3>
+          <p>{s.detalhe}</p>
+        </div>
+        <span class="preco">{reais(s.preco)}{s.observacao && <small>{s.observacao}</small>}</span>
+      </li>
+    );
+  })}
 </ul>

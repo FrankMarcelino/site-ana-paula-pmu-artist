@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import Agendar from '../components/Agendar.astro';
 import Monograma from '../components/Monograma.astro';
 import FaleComBelle from '../components/FaleComBelle.astro';
-import Cardapio from '../components/Cardapio.astro';
+import Vitrine from '../components/Vitrine.astro';
 import Videos from '../components/Videos.astro';
 import fotoTopo from '../assets/ana/topo.jpeg';
 import logoVinho from '../assets/logo-vinho.svg';
@@ -56,8 +56,8 @@ import { INSTAGRAM, whatsapp } from '../data/ana';
   <section class="secao" aria-labelledby="titulo-servicos">
     <div class="miolo">
       <h2 id="titulo-servicos" class="titulo-secao">Serviços</h2>
-      <p class="intro-secao">Os principais serviços. A avaliação é gratuita, e a micropigmentação sai em até 3x sem juros.</p>
-      <Cardapio destaques comLink />
+      <p class="intro-secao">Toque no serviço para ver todos os valores e mais resultados. A avaliação é gratuita, e a micropigmentação sai em até 3x sem juros.</p>
+      <Vitrine />
       <div class="acoes">
         <Agendar mensagem="Olá, Ana! Quero saber sobre os serviços." />
         <a class="link-forte" href={`/sobrancelhas/`}>Sobrancelhas</a>

@@ -1,13 +1,11 @@
 ---
-import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Agendar from '../components/Agendar.astro';
 import Cardapio from '../components/Cardapio.astro';
 import ComoFunciona from '../components/ComoFunciona.astro';
 import Videos from '../components/Videos.astro';
 import Perguntas from '../components/Perguntas.astro';
-import tintura from '../assets/resultados/sobrancelha-tintura.jpeg';
-import microSobrancelhas from '../assets/servicos/micro-sobrancelhas.jpg';
+import Galeria from '../components/Galeria.astro';
 import { INSTAGRAM, PAGAMENTO } from '../data/ana';
 const msg = 'Olá, Ana! Quero agendar sobrancelhas.';
 // Treinamento da Belle (perguntas e respostas da micropigmentação de sobrancelhas).
@@ -47,10 +45,7 @@ const perguntas = [
     <div class="miolo">
       <h2 id="t-resultados" class="titulo-secao titulo-secao--menor">Resultados</h2>
       <p class="intro-secao">A Ana Paula também envia fotos de resultados já cicatrizados. Mais trabalhos no <a href={INSTAGRAM} target="_blank" rel="noopener">Instagram @anapaula_pmu_artist</a>.</p>
-      <ul class="resultados">
-        <li><figure><Image quality={70} width={600} src={microSobrancelhas} alt="Antes e depois de micropigmentação de sobrancelhas" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Micropigmentação fio a fio</figcaption></figure></li>
-        <li><figure><Image quality={70} width={600} src={tintura} alt="Sobrancelhas com design e finalização em tintura" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Design com finalização em tintura</figcaption></figure></li>
-      </ul>
+      <Galeria pagina="sobrancelhas" />
     </div>
   </section>
 

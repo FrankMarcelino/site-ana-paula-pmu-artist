@@ -4,7 +4,8 @@ import Agendar from '../components/Agendar.astro';
 import Cardapio from '../components/Cardapio.astro';
 import Videos from '../components/Videos.astro';
 import Perguntas from '../components/Perguntas.astro';
-import { PAGAMENTO } from '../data/ana';
+import Galeria from '../components/Galeria.astro';
+import { INSTAGRAM, PAGAMENTO } from '../data/ana';
 const msg = 'Olá, Ana! Quero agendar extensão de cílios.';
 // Treinamento da Belle.
 const perguntas = [
@@ -24,6 +25,14 @@ const perguntas = [
       <h2 id="t-precos" class="titulo-secao titulo-secao--menor">Valores</h2>
       <Cardapio pagina="cilios" />
       <div class="acoes"><Agendar mensagem={msg} /></div>
+    </div>
+  </section>
+
+  <section class="secao secao--rosa" aria-labelledby="t-resultados">
+    <div class="miolo">
+      <h2 id="t-resultados" class="titulo-secao titulo-secao--menor">Resultados</h2>
+      <p class="intro-secao">Mais trabalhos no <a href={INSTAGRAM} target="_blank" rel="noopener">Instagram @anapaula_pmu_artist</a>.</p>
+      <Galeria pagina="cilios" />
     </div>
   </section>
 

@@ -1,0 +1,23 @@
+---
+// Galeria de resultados de uma página. Cada foto no formato dela (colunas, sem recorte):
+// antes e depois lado a lado ou empilhado não pode ser cortado.
+import { Image } from 'astro:assets';
+import { FOTOS, GALERIA } from '../data/galeria';
+import type { Pagina } from '../data/ana';
+
+interface Props { pagina: Pagina }
+const { pagina } = Astro.props;
+---
+<ul class="galeria">
+  {GALERIA[pagina].map((id) => {
+    const f = FOTOS[id];
+    return (
+      <li>
+        <figure>
+          <Image src={f.src} alt={f.alt} width={600} widths={[300, 450, 600]} sizes="(min-width: 64rem) 22rem, (min-width: 48rem) 30vw, 46vw" quality={70} loading="lazy" class={f.girar ? 'foto-girada' : undefined} />
+          <figcaption>{f.legenda}</figcaption>
+        </figure>
+      </li>
+    );
+  })}
+</ul>

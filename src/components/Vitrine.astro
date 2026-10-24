@@ -1,0 +1,24 @@
+---
+// Vitrine da inicial: um cartão por serviço, com a foto grande, o nome e o preço da agenda.
+// O cartão inteiro leva à página do serviço, onde estão o cardápio completo e a galeria.
+import { Image } from 'astro:assets';
+import { SERVICOS, reais } from '../data/ana';
+import { FOTOS } from '../data/galeria';
+
+const ORDEM = ['micro-sobrancelhas', 'micro-labial', 'extensao-cilios', 'brow-lamination', 'design-henna', 'design-tintura'];
+const lista = ORDEM.map((id) => SERVICOS.find((s) => s.id === id)!).filter((s) => s.vitrine);
+---
+<ul class="vitrine">
+  {lista.map((s) => {
+    const f = FOTOS[s.vitrine!];
+    return (
+      <li>
+        <a href={`/${s.pagina}/`}>
+          <Image src={f.src} alt={f.alt} width={600} widths={[300, 450, 600]} sizes="(min-width: 64rem) 22rem, (min-width: 48rem) 30vw, 46vw" quality={68} loading="lazy" class={f.girar ? 'foto-girada' : undefined} style={f.foco ? `object-position:${f.foco}` : undefined} />
+          <h3>{s.nome}</h3>
+          <p class="vitrine-preco">{reais(s.preco)}{s.observacao && <small>{s.observacao}</small>}</p>
+        </a>
+      </li>
+    );
+  })}
+</ul>

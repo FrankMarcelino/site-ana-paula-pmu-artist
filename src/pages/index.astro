@@ -27,7 +27,27 @@ import { INSTAGRAM, whatsapp } from '../data/ana';
     </div>
   </section>
 
-  <section class="secao secao--branca" aria-labelledby="titulo-servicos">
+  <section class="secao secao--branca" aria-labelledby="titulo-combos" id="combos">
+    <div class="miolo">
+      <h2 id="titulo-combos" class="titulo-secao titulo-secao--menor">Combos deste mês</h2>
+      <div class="combos">
+        <article class="combo">
+          <h3>Sextou</h3>
+          <p class="valor">R$ 200 <small>em até 3x no cartão</small></p>
+          <ul><li>Brow lamination</li><li>Hydra gloss</li><li>Mimo da Ana</li></ul>
+          <a class="link-forte" href={whatsapp('Olá, Ana! Quero reservar o combo Sextou.')} target="_blank" rel="noopener">Reservar o Sextou</a>
+        </article>
+        <article class="combo">
+          <h3>Barbie</h3>
+          <p class="valor">R$ 650 <small>em até 6x no cartão</small></p>
+          <ul><li>Micropigmentação de sobrancelhas</li><li>Micropigmentação labial</li><li>Mimo da Ana</li><li>1 retoque grátis</li></ul>
+          <a class="link-forte" href={whatsapp('Olá, Ana! Quero reservar o combo Barbie. Como funciona?')} target="_blank" rel="noopener">Reservar o Barbie</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" aria-labelledby="titulo-servicos">
     <div class="miolo">
       <h2 id="titulo-servicos" class="titulo-secao">Serviços</h2>
       <p class="intro-secao">Os principais serviços. A avaliação é gratuita, e a micropigmentação sai em até 3x sem juros.</p>
@@ -41,7 +61,7 @@ import { INSTAGRAM, whatsapp } from '../data/ana';
     </div>
   </section>
 
-  <section class="secao" aria-labelledby="titulo-videos">
+  <section class="secao secao--branca" aria-labelledby="titulo-videos">
     <div class="miolo">
       <h2 id="titulo-videos" class="titulo-secao">Vídeos</h2>
       <p class="intro-secao">Alguns procedimentos do começo ao fim.</p>
@@ -64,23 +84,4 @@ import { INSTAGRAM, whatsapp } from '../data/ana';
     </div>
   </section>
 
-  <section class="secao" aria-labelledby="titulo-combos" id="combos">
-    <div class="miolo">
-      <h2 id="titulo-combos" class="titulo-secao titulo-secao--menor">Combos</h2>
-      <div class="combos">
-        <article class="combo">
-          <h3>Sextou</h3>
-          <p class="valor">R$ 200 <small>em até 3x no cartão</small></p>
-          <ul><li>Brow lamination</li><li>Hydra gloss</li><li>Mimo da Ana</li></ul>
-          <a class="link-forte" href={whatsapp('Olá, Ana! Quero reservar o combo Sextou.')} target="_blank" rel="noopener">Reservar o Sextou</a>
-        </article>
-        <article class="combo">
-          <h3>Barbie</h3>
-          <p class="valor">R$ 650 <small>em até 6x no cartão</small></p>
-          <ul><li>Micropigmentação de sobrancelhas</li><li>Micropigmentação labial</li><li>Mimo da Ana</li><li>1 retoque grátis</li></ul>
-          <a class="link-forte" href={whatsapp('Olá, Ana! Quero reservar o combo Barbie. Como funciona?')} target="_blank" rel="noopener">Reservar o Barbie</a>
-        </article>
-      </div>
-    </div>
-  </section>
 </Base>

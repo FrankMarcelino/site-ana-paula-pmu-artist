@@ -5,6 +5,7 @@ import Agendar from '../components/Agendar.astro';
 import Cardapio from '../components/Cardapio.astro';
 import ComoFunciona from '../components/ComoFunciona.astro';
 import Perguntas from '../components/Perguntas.astro';
+import Videos from '../components/Videos.astro';
 import microLabial from '../assets/resultados/micro-labial.jpeg';
 import microLabialAntigo from '../assets/servicos/micro-labial.jpg';
 import { INSTAGRAM, PAGAMENTO } from '../data/ana';
@@ -48,6 +49,13 @@ const perguntas = [
         <li><figure><Image quality={70} width={600} src={microLabial} alt="Lábios logo após a micropigmentação labial" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Logo após o procedimento: a cor suaviza na cicatrização</figcaption></figure></li>
         <li><figure><Image quality={70} width={600} src={microLabialAntigo} alt="Antes e depois de micropigmentação labial" widths={[300, 600]} sizes="(min-width: 48rem) 33vw, 100vw" loading="lazy" /><figcaption>Antes e depois</figcaption></figure></li>
       </ul>
+    </div>
+  </section>
+
+  <section class="secao" aria-labelledby="t-video">
+    <div class="miolo">
+      <h2 id="t-video" class="titulo-secao titulo-secao--menor">O resultado em vídeo</h2>
+      <Videos pagina="labios" />
     </div>
   </section>
 

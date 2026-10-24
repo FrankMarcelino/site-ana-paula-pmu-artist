@@ -55,6 +55,7 @@ export const PAGAMENTO =
 
 export const VIDEOS = [
   { arquivo: 'tecnica-fios', titulo: 'A técnica fio a fio', descricao: 'Como cada fio é desenhado na micropigmentação de sobrancelhas.', pagina: 'sobrancelhas' as Pagina },
+  { arquivo: 'micro-labial', titulo: 'Micropigmentação labial', descricao: 'O resultado da micropigmentação labial: cor e contorno.', pagina: 'labios' as Pagina },
   { arquivo: 'cilios', titulo: 'Extensão de cílios', descricao: 'Antes e depois da extensão de cílios.', pagina: 'cilios' as Pagina },
 ];
 
